@@ -1,0 +1,23 @@
+{
+  "blue": {
+    "frames": 238,
+    "flagged": [],
+    "max_star_luma": 205,
+    "max_veo_luma": 144,
+    "clean_dir": "assets\\blue\\clean\\frames"
+  },
+  "brown": {
+    "frames": 240,
+    "flagged": [],
+    "max_star_luma": 102,
+    "max_veo_luma": 105,
+    "clean_dir": "assets\\brown\\clean\\frames"
+  },
+  "black": {
+    "frames": 240,
+    "flagged": [],
+    "max_star_luma": 88,
+    "max_veo_luma": 87,
+    "clean_dir": "assets\\black\\clean\\frames"
+  }
+}

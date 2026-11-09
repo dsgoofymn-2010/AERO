@@ -1,0 +1,72 @@
+{
+  "blue/closeup.mp4": {
+    "marks": [
+      "star"
+    ],
+    "action": "delogo"
+  },
+  "blue/parts.mp4": {
+    "marks": [
+      "veo"
+    ],
+    "action": "delogo"
+  },
+  "blue/reveal.mp4": {
+    "marks": [
+      "veo"
+    ],
+    "action": "delogo"
+  },
+  "blue/360.mp4": {
+    "marks": [],
+    "action": "rebuilt from clean frames"
+  },
+  "brown/360.mp4": {
+    "marks": [
+      "veo"
+    ],
+    "action": "delogo"
+  },
+  "brown/parts.mp4": {
+    "marks": [
+      "star"
+    ],
+    "action": "delogo"
+  },
+  "brown/reveal.mp4": {
+    "marks": [
+      "star"
+    ],
+    "action": "delogo"
+  },
+  "brown/closeup.mp4": {
+    "marks": [
+      "star"
+    ],
+    "action": "delogo"
+  },
+  "black/360.mp4": {
+    "marks": [
+      "star"
+    ],
+    "action": "delogo"
+  },
+  "black/closeup.mp4": {
+    "marks": [
+      "star"
+    ],
+    "action": "delogo"
+  },
+  "black/parts.mp4": {
+    "marks": [
+      "star"
+    ],
+    "action": "delogo"
+  },
+  "black/reveal.mp4": {
+    "marks": [
+      "star"
+    ],
+    "action": "delogo"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "blue/blue_shoe close up.mp4": {
+    "star_max": 213,
+    "veo_max": 223,
+    "marks_removed": [
+      "star"
+    ]
+  },
+  "blue/blue_shoe parts.mp4": {
+    "star_max": 108,
+    "veo_max": 103,
+    "marks_removed": [
+      "veo"
+    ]
+  },
+  "blue/blue_shoe reveal.mp4": {
+    "star_max": 192,
+    "veo_max": 122,
+    "marks_removed": [
+      "veo"
+    ]
+  },
+  "brown/brown_shoe  360.mp4": {
+    "star_max": 98,
+    "veo_max": 103,
+    "marks_removed": [
+      "veo"
+    ]
+  },
+  "brown/brown_shoe  parts.mp4": {
+    "star_max": 88,
+    "veo_max": 102,
+    "marks_removed": [
+      "star"
+    ]
+  },
+  "brown/brown_shoe  reveal.mp4": {
+    "star_max": 17,
+    "veo_max": 20,
+    "marks_removed": [
+      "star"
+    ]
+  },
+  "brown/brown_shoe close up.mp4": {
+    "star_max": 149,
+    "veo_max": 148,
+    "marks_removed": [
+      "star"
+    ]
+  },
+  "black/black_shoe 360.mp4": {
+    "star_max": 137,
+    "veo_max": 138,
+    "marks_removed": [
+      "star"
+    ]
+  },
+  "black/black_shoe close up.mp4": {
+    "star_max": 155,
+    "veo_max": 115,
+    "marks_removed": [
+      "star"
+    ]
+  },
+  "black/black_shoe parts.mp4": {
+    "star_max": 86,
+    "veo_max": 87,
+    "marks_removed": [
+      "star"
+    ]
+  },
+  "black/black_shoe reveal.mp4": {
+    "star_max": 27,
+    "veo_max": 81,
+    "marks_removed": [
+      "star"
+    ]
+  }
+}

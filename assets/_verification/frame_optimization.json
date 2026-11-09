@@ -1,0 +1,24 @@
+{
+  "blue": {
+    "requested": 240,
+    "source_available": 238,
+    "duplicated_tail": [
+      239,
+      240
+    ]
+  },
+  "brown": {
+    "requested": 240,
+    "source_available": 240,
+    "duplicated_tail": []
+  },
+  "black": {
+    "requested": 240,
+    "source_available": 240,
+    "duplicated_tail": []
+  },
+  "totals": {
+    "desktop_mb": 16.08,
+    "mobile_mb": 6.91
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "blue/360": {
+    "mp4_mb": 1.66,
+    "webm_mb": 0.94,
+    "poster_kb": 16.3
+  },
+  "blue/reveal": {
+    "mp4_mb": 1.61,
+    "webm_mb": 0.58,
+    "poster_kb": 24.8
+  },
+  "blue/parts": {
+    "mp4_mb": 1.56,
+    "webm_mb": 0.82,
+    "poster_kb": 24.8
+  },
+  "blue/closeup": {
+    "mp4_mb": 1.64,
+    "webm_mb": 0.94,
+    "poster_kb": 65.3
+  },
+  "brown/360": {
+    "mp4_mb": 1.03,
+    "webm_mb": 0.44,
+    "poster_kb": 20.6
+  },
+  "brown/reveal": {
+    "mp4_mb": 0.68,
+    "webm_mb": 0.16,
+    "poster_kb": 12.3
+  },
+  "brown/parts": {
+    "mp4_mb": 1.22,
+    "webm_mb": 0.44,
+    "poster_kb": 32.3
+  },
+  "brown/closeup": {
+    "mp4_mb": 1.53,
+    "webm_mb": 0.58,
+    "poster_kb": 25.1
+  },
+  "black/360": {
+    "mp4_mb": 0.91,
+    "webm_mb": 0.33,
+    "poster_kb": 14.2
+  },
+  "black/reveal": {
+    "mp4_mb": 0.92,
+    "webm_mb": 0.21,
+    "poster_kb": 13.3
+  },
+  "black/parts": {
+    "mp4_mb": 0.84,
+    "webm_mb": 0.26,
+    "poster_kb": 19.1
+  },
+  "black/closeup": {
+    "mp4_mb": 1.65,
+    "webm_mb": 0.61,
+    "poster_kb": 36.4
+  }
+}
