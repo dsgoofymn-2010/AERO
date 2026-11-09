@@ -1,0 +1,480 @@
+{
+  "checks": [
+    {
+      "name": "All filter shows 13",
+      "ok": true,
+      "detail": "13"
+    },
+    {
+      "name": "Sneakers filter shows 4",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "Boots filter shows 3",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "Formal filter shows 3",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "Casual filter shows 2",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "Sandals filter shows 1",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "collection exposes thirteen ids",
+      "ok": true,
+      "detail": "blue,brown,black,kestrel,vertex,trace,covent,cairn,kerb,alba,ledger,dune,loom"
+    },
+    {
+      "name": "blue dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "blue 360 preloads",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "blue 360 draws",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "blue exploded film mounts",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/blue/exploded.webm"
+    },
+    {
+      "name": "blue exploded film uses its own clip",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/blue/exploded.webm"
+    },
+    {
+      "name": "blue closeup film mounts",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/blue/closeup.webm"
+    },
+    {
+      "name": "blue closeup film uses its own clip",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/blue/closeup.webm"
+    },
+    {
+      "name": "blue has the expected tabs",
+      "ok": true,
+      "detail": "360,exploded,closeup,detail"
+    },
+    {
+      "name": "brown dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "brown 360 preloads",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "brown 360 draws",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "brown exploded film mounts",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/brown/exploded.webm"
+    },
+    {
+      "name": "brown exploded film uses its own clip",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/brown/exploded.webm"
+    },
+    {
+      "name": "brown closeup film mounts",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/brown/closeup.webm"
+    },
+    {
+      "name": "brown closeup film uses its own clip",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/brown/closeup.webm"
+    },
+    {
+      "name": "brown has the expected tabs",
+      "ok": true,
+      "detail": "360,exploded,closeup,detail"
+    },
+    {
+      "name": "black dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "black 360 preloads",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "black 360 draws",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "black exploded film mounts",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/black/exploded.webm"
+    },
+    {
+      "name": "black exploded film uses its own clip",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/black/exploded.webm"
+    },
+    {
+      "name": "black closeup film mounts",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/black/closeup.webm"
+    },
+    {
+      "name": "black closeup film uses its own clip",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/black/closeup.webm"
+    },
+    {
+      "name": "black has the expected tabs",
+      "ok": true,
+      "detail": "360,exploded,closeup,detail"
+    },
+    {
+      "name": "kestrel dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "kestrel still image loads",
+      "ok": true,
+      "detail": "public/shoes/kestrel/still-1600.webp"
+    },
+    {
+      "name": "kestrel detail image loads",
+      "ok": true,
+      "detail": "public/shoes/kestrel/detail-1600.webp"
+    },
+    {
+      "name": "kestrel has the expected tabs",
+      "ok": true,
+      "detail": "still,detail"
+    },
+    {
+      "name": "vertex dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "vertex still image loads",
+      "ok": true,
+      "detail": "public/shoes/vertex/still-1600.webp"
+    },
+    {
+      "name": "vertex detail image loads",
+      "ok": true,
+      "detail": "public/shoes/vertex/detail-1600.webp"
+    },
+    {
+      "name": "vertex has the expected tabs",
+      "ok": true,
+      "detail": "still,detail"
+    },
+    {
+      "name": "trace dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "trace still image loads",
+      "ok": true,
+      "detail": "public/shoes/trace/still-1600.webp"
+    },
+    {
+      "name": "trace detail image loads",
+      "ok": true,
+      "detail": "public/shoes/trace/detail-1600.webp"
+    },
+    {
+      "name": "trace has the expected tabs",
+      "ok": true,
+      "detail": "still,detail"
+    },
+    {
+      "name": "covent dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "covent still image loads",
+      "ok": true,
+      "detail": "public/shoes/covent/still-1600.webp"
+    },
+    {
+      "name": "covent detail image loads",
+      "ok": true,
+      "detail": "public/shoes/covent/detail-1600.webp"
+    },
+    {
+      "name": "covent has the expected tabs",
+      "ok": true,
+      "detail": "still,detail"
+    },
+    {
+      "name": "cairn dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cairn still image loads",
+      "ok": true,
+      "detail": "public/shoes/cairn/still-1600.webp"
+    },
+    {
+      "name": "cairn detail image loads",
+      "ok": true,
+      "detail": "public/shoes/cairn/detail-1600.webp"
+    },
+    {
+      "name": "cairn has the expected tabs",
+      "ok": true,
+      "detail": "still,detail"
+    },
+    {
+      "name": "kerb dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "kerb still image loads",
+      "ok": true,
+      "detail": "public/shoes/kerb/still-1600.webp"
+    },
+    {
+      "name": "kerb detail image loads",
+      "ok": true,
+      "detail": "public/shoes/kerb/detail-1600.webp"
+    },
+    {
+      "name": "kerb has the expected tabs",
+      "ok": true,
+      "detail": "still,detail"
+    },
+    {
+      "name": "alba dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "alba still image loads",
+      "ok": true,
+      "detail": "public/shoes/alba/still-1600.webp"
+    },
+    {
+      "name": "alba detail image loads",
+      "ok": true,
+      "detail": "public/shoes/alba/detail-1600.webp"
+    },
+    {
+      "name": "alba has the expected tabs",
+      "ok": true,
+      "detail": "still,detail"
+    },
+    {
+      "name": "ledger dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ledger still image loads",
+      "ok": true,
+      "detail": "public/shoes/ledger/still-1600.webp"
+    },
+    {
+      "name": "ledger detail image loads",
+      "ok": true,
+      "detail": "public/shoes/ledger/detail-1600.webp"
+    },
+    {
+      "name": "ledger has the expected tabs",
+      "ok": true,
+      "detail": "still,detail"
+    },
+    {
+      "name": "dune dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dune still image loads",
+      "ok": true,
+      "detail": "public/shoes/dune/still-1600.webp"
+    },
+    {
+      "name": "dune detail image loads",
+      "ok": true,
+      "detail": "public/shoes/dune/detail-1600.webp"
+    },
+    {
+      "name": "dune has the expected tabs",
+      "ok": true,
+      "detail": "still,detail"
+    },
+    {
+      "name": "loom dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "loom still image loads",
+      "ok": true,
+      "detail": "public/shoes/loom/still-1600.webp"
+    },
+    {
+      "name": "loom detail image loads",
+      "ok": true,
+      "detail": "public/shoes/loom/detail-1600.webp"
+    },
+    {
+      "name": "loom has the expected tabs",
+      "ok": true,
+      "detail": "still,detail"
+    },
+    {
+      "name": "all product dialogs closed",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "passed": 72,
+  "total": 72,
+  "products": [
+    {
+      "id": "blue",
+      "name": "Cirra",
+      "tabs": [
+        "360",
+        "exploded",
+        "closeup",
+        "detail"
+      ]
+    },
+    {
+      "id": "brown",
+      "name": "Terrae",
+      "tabs": [
+        "360",
+        "exploded",
+        "closeup",
+        "detail"
+      ]
+    },
+    {
+      "id": "black",
+      "name": "Onyx",
+      "tabs": [
+        "360",
+        "exploded",
+        "closeup",
+        "detail"
+      ]
+    },
+    {
+      "id": "kestrel",
+      "name": "Kestrel",
+      "tabs": [
+        "still",
+        "detail"
+      ]
+    },
+    {
+      "id": "vertex",
+      "name": "Vertex",
+      "tabs": [
+        "still",
+        "detail"
+      ]
+    },
+    {
+      "id": "trace",
+      "name": "Trace",
+      "tabs": [
+        "still",
+        "detail"
+      ]
+    },
+    {
+      "id": "covent",
+      "name": "Covent",
+      "tabs": [
+        "still",
+        "detail"
+      ]
+    },
+    {
+      "id": "cairn",
+      "name": "Cairn",
+      "tabs": [
+        "still",
+        "detail"
+      ]
+    },
+    {
+      "id": "kerb",
+      "name": "Kerb",
+      "tabs": [
+        "still",
+        "detail"
+      ]
+    },
+    {
+      "id": "alba",
+      "name": "Alba",
+      "tabs": [
+        "still",
+        "detail"
+      ]
+    },
+    {
+      "id": "ledger",
+      "name": "Ledger",
+      "tabs": [
+        "still",
+        "detail"
+      ]
+    },
+    {
+      "id": "dune",
+      "name": "Dune",
+      "tabs": [
+        "still",
+        "detail"
+      ]
+    },
+    {
+      "id": "loom",
+      "name": "Loom",
+      "tabs": [
+        "still",
+        "detail"
+      ]
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}

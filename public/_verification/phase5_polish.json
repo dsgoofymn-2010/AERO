@@ -1,0 +1,169 @@
+{
+  "checks": [
+    {
+      "name": "html lang is set",
+      "ok": true,
+      "detail": "en"
+    },
+    {
+      "name": "document title names AERO",
+      "ok": true,
+      "detail": "AERO | Weightless objects for the ground"
+    },
+    {
+      "name": "meta description present",
+      "ok": true,
+      "detail": "130"
+    },
+    {
+      "name": "one h1",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "heading levels do not skip",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "no duplicate ids",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "all images have alt",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "all buttons have names",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "main landmark present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "footer landmark present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "live region present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "skip link is the first focusable element",
+      "ok": true,
+      "detail": "{\"first\":true,\"tabIndex\":0,\"href\":\"#main\"}"
+    },
+    {
+      "name": "skip link is revealed on focus",
+      "ok": true,
+      "detail": "{\"top\":12,\"height\":44}"
+    },
+    {
+      "name": "skip link moves focus to main",
+      "ok": true,
+      "detail": "main"
+    },
+    {
+      "name": "filter works from the keyboard",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "filter reports aria-pressed",
+      "ok": true,
+      "detail": "true"
+    },
+    {
+      "name": "card opens the study from the keyboard",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "focus stays inside the product dialog",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape closes the product dialog",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "focus returns to the card after Escape",
+      "ok": true,
+      "detail": "kestrel"
+    },
+    {
+      "name": "gallery stage is keyboard focusable",
+      "ok": true,
+      "detail": "Kestrel, chelsea boot, studio still study. Drag or use the arrow keys to turn the still. Move the pointer to inspect the material."
+    },
+    {
+      "name": "arrow key turns the gallery",
+      "ok": true,
+      "detail": "matrix(1, 0, 0, 1, 0, 0) -> matrix3d(0.997586, 0, -0.0694459, 0, 0, 1, 0, 0, 0.0694459, 0, 0.997586, 0, 0, 0, 0, 1)"
+    },
+    {
+      "name": "bag opens from the keyboard",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cart focuses its close button",
+      "ok": true,
+      "detail": "cartClose"
+    },
+    {
+      "name": "Escape closes the bag",
+      "ok": true,
+      "detail": "true"
+    },
+    {
+      "name": "bag returns focus to its trigger",
+      "ok": true,
+      "detail": "bagToggle"
+    },
+    {
+      "name": "bag close unlocks the page",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "all visible text meets WCAG AA contrast",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "touch targets are at least 44 px",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "360 product controls are at least 44 px",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "gallery product controls are at least 44 px",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "bag controls are at least 44 px",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "passed": 32,
+  "total": 32,
+  "contrast": [],
+  "targets": [],
+  "errors": []
+}

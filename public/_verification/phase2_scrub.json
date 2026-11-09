@@ -1,0 +1,378 @@
+{
+  "checks": [
+    {
+      "name": "harness: modules load",
+      "pass": true
+    },
+    {
+      "name": "new data: blue desktop count 215",
+      "pass": true
+    },
+    {
+      "name": "new data: blue starts at frame 1",
+      "pass": true
+    },
+    {
+      "name": "new data: last frame URL",
+      "pass": true
+    },
+    {
+      "name": "preload: first 20 frames",
+      "pass": true
+    },
+    {
+      "name": "preload: progress reaches 1",
+      "pass": true
+    },
+    {
+      "name": "preload: frames are ImageBitmaps",
+      "pass": true
+    },
+    {
+      "name": "dispose: clears sequence",
+      "pass": true
+    },
+    {
+      "name": "mobile: uses mobile path",
+      "pass": true
+    },
+    {
+      "name": "mobile: frames are 720 wide",
+      "pass": true
+    },
+    {
+      "name": "fallback: HTMLImageElement path",
+      "pass": true
+    },
+    {
+      "name": "legacy: keeps 240 frames and start 24",
+      "pass": true
+    },
+    {
+      "name": "legacy: loads and resizes frames",
+      "pass": true
+    },
+    {
+      "name": "cache: bounded background load",
+      "pass": true
+    },
+    {
+      "name": "stage: lerp lands on frame 129",
+      "pass": true
+    },
+    {
+      "name": "stage: canvas is DPR aware",
+      "pass": true
+    },
+    {
+      "name": "stage: canvas draws pixels",
+      "pass": true
+    },
+    {
+      "name": "stage: label and dispose",
+      "pass": true
+    },
+    {
+      "name": "stage: DPR 2 backing store",
+      "pass": true
+    },
+    {
+      "name": "reduced motion: jumps to target frame",
+      "pass": true
+    },
+    {
+      "name": "harness: no runtime errors",
+      "pass": true
+    },
+    {
+      "name": "harness: no failed requests",
+      "pass": true
+    },
+    {
+      "name": "page: boot completes",
+      "pass": true
+    },
+    {
+      "name": "page: ScrollTrigger pin initializes",
+      "pass": true
+    },
+    {
+      "name": "page: canvas has a backing store",
+      "pass": true
+    },
+    {
+      "name": "page: scroll changes the frame counter",
+      "pass": true
+    },
+    {
+      "name": "page: ScrollTrigger pin active",
+      "pass": true
+    },
+    {
+      "name": "page: canvas draws the shoe",
+      "pass": true
+    },
+    {
+      "name": "video: muted, inline, metadata, poster",
+      "pass": true
+    },
+    {
+      "name": "video: plays when visible",
+      "pass": true
+    },
+    {
+      "name": "video: pauses offscreen",
+      "pass": true
+    },
+    {
+      "name": "network: frame requests succeed",
+      "pass": true
+    },
+    {
+      "name": "network: public blue frames used",
+      "pass": true
+    },
+    {
+      "name": "page: switch to brown updates stage",
+      "pass": true
+    },
+    {
+      "name": "network: brown frames requested",
+      "pass": true
+    },
+    {
+      "name": "page: switch to black updates stage",
+      "pass": true
+    },
+    {
+      "name": "network: black frames requested",
+      "pass": true
+    },
+    {
+      "name": "mobile page: boot and pin",
+      "pass": true
+    },
+    {
+      "name": "mobile page: 720 px frames requested",
+      "pass": true
+    },
+    {
+      "name": "mobile page: scroll changes counter",
+      "pass": true
+    },
+    {
+      "name": "mobile page: canvas draws",
+      "pass": true
+    },
+    {
+      "name": "console: no runtime errors",
+      "pass": true
+    },
+    {
+      "name": "network: no failed requests",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "desktop": {
+      "basePath": "public/shoes/blue/frames/desktop",
+      "count": 215,
+      "first": 0,
+      "span": 214,
+      "urlFirst": "public/shoes/blue/frames/desktop/frame_001.webp",
+      "urlLast": "public/shoes/blue/frames/desktop/frame_215.webp",
+      "frameAt0": 0,
+      "frameAt1": 214,
+      "load": {
+        "loaded": 20,
+        "ready": true,
+        "elapsed": 118,
+        "progressCount": 20,
+        "progressFirst": 0.05,
+        "progressLast": 1,
+        "bitmap": true,
+        "width": 1280,
+        "height": 720
+      },
+      "disposed": {
+        "disposed": true,
+        "images": 0
+      }
+    },
+    "mobile": {
+      "basePath": "public/shoes/blue/frames/mobile",
+      "count": 215,
+      "urlFirst": "public/shoes/blue/frames/mobile/frame_001.webp",
+      "load": {
+        "loaded": 2,
+        "bitmap": true,
+        "width": 720,
+        "height": 405
+      }
+    },
+    "fallback": {
+      "loaded": 1,
+      "htmlImage": true,
+      "complete": true,
+      "width": 1280
+    },
+    "legacy": {
+      "count": 240,
+      "first": 23,
+      "span": 216,
+      "urlFirst": "assets/blue/frames/desktop/frame_024.webp",
+      "urlLast": "assets/blue/frames/desktop/frame_240.webp",
+      "load": {
+        "loaded": 2,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    "cache": {
+      "loaded": 24,
+      "complete": true,
+      "maxCached": 24
+    },
+    "stage": {
+      "canvas": {
+        "width": 480,
+        "height": 300,
+        "cssWidth": 480,
+        "cssHeight": 300
+      },
+      "counter": "129",
+      "label": "Cirra",
+      "frame": 128,
+      "running": false,
+      "exactFrameLoaded": true,
+      "lit": 1485,
+      "samples": 1485,
+      "disposed": true
+    }
+  },
+  "page": {
+    "before": {
+      "shoe": "blue",
+      "counter": "001",
+      "canvas": {
+        "width": 1425,
+        "height": 900,
+        "cssWidth": 1425,
+        "cssHeight": 900
+      },
+      "preloaderHidden": true
+    },
+    "after": {
+      "counter": "072",
+      "name": "Cirra",
+      "pinned": true,
+      "callout": "Toe spring",
+      "lit": 1235,
+      "samples": 1287
+    }
+  },
+  "network": {
+    "count": 215,
+    "first": [
+      "frames/desktop/frame_001.webp",
+      "frames/desktop/frame_002.webp",
+      "frames/desktop/frame_003.webp",
+      "frames/desktop/frame_004.webp",
+      "frames/desktop/frame_005.webp"
+    ],
+    "last": [
+      "frames/desktop/frame_211.webp",
+      "frames/desktop/frame_212.webp",
+      "frames/desktop/frame_213.webp",
+      "frames/desktop/frame_214.webp",
+      "frames/desktop/frame_215.webp"
+    ],
+    "statuses": [
+      200
+    ]
+  },
+  "console": {
+    "errors": [],
+    "warnings": [],
+    "failedRequests": []
+  },
+  "dpr": {
+    "dpr": 2,
+    "width": 960,
+    "height": 600,
+    "cssWidth": 480,
+    "cssHeight": 300
+  },
+  "reduced": {
+    "reduced": true,
+    "frame": 107,
+    "expected": 107,
+    "running": false,
+    "progress": 0.5
+  },
+  "harnessConsole": {
+    "errors": [],
+    "failedRequests": []
+  },
+  "videoAttrs": [
+    {
+      "id": "heroVideo",
+      "muted": true,
+      "playsInline": true,
+      "preload": "metadata",
+      "poster": true
+    },
+    {
+      "id": "techVideo",
+      "muted": true,
+      "playsInline": true,
+      "preload": "metadata",
+      "poster": true
+    },
+    {
+      "id": "materialVideo",
+      "muted": true,
+      "playsInline": true,
+      "preload": "metadata",
+      "poster": true
+    },
+    {
+      "id": "collectionVideo",
+      "muted": true,
+      "playsInline": true,
+      "preload": "metadata",
+      "poster": true
+    }
+  ],
+  "videoPlayback": {
+    "visible": {
+      "paused": false,
+      "time": 0.8059,
+      "readyState": 4
+    },
+    "hiddenPaused": true
+  },
+  "mobilePage": {
+    "before": {
+      "counter": "001",
+      "canvas": {
+        "width": 390,
+        "height": 844,
+        "cssWidth": 390,
+        "cssHeight": 844
+      }
+    },
+    "after": {
+      "counter": "052",
+      "name": "Cirra",
+      "canvas": {
+        "width": 390,
+        "height": 844,
+        "cssWidth": 390,
+        "cssHeight": 844
+      },
+      "lit": 331,
+      "samples": 331
+    }
+  }
+}

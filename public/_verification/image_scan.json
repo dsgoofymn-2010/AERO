@@ -1,0 +1,353 @@
+{
+  "blue": {
+    "source": "BLUE SHOE\\blue shoe.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 892,
+      "bottom_right_max": 100,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 105,
+        "hot": 0
+      },
+      "veo": {
+        "max": 100,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 892,
+    "files": {
+      "still-1600.webp": 62240,
+      "still-800.webp": 24662,
+      "detail-1600.webp": 80090
+    },
+    "id": "blue",
+    "name": "Cirra"
+  },
+  "brown": {
+    "source": "BROWN_SHOE\\brown_shoe .jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 884,
+      "height": 579,
+      "bottom_right_max": 107,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 92,
+        "hot": 0
+      },
+      "veo": {
+        "max": 105,
+        "hot": 0
+      }
+    },
+    "width": 884,
+    "height": 579,
+    "files": {
+      "still-1600.webp": 35712,
+      "still-800.webp": 26282,
+      "detail-1600.webp": 49424
+    },
+    "id": "brown",
+    "name": "Terrae"
+  },
+  "black": {
+    "source": "BLACK_SHOE\\black shoe.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 968,
+      "height": 584,
+      "bottom_right_max": 94,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 98,
+        "hot": 0
+      },
+      "veo": {
+        "max": 94,
+        "hot": 0
+      }
+    },
+    "width": 968,
+    "height": 584,
+    "files": {
+      "still-1600.webp": 24922,
+      "still-800.webp": 15450,
+      "detail-1600.webp": 33524
+    },
+    "id": "black",
+    "name": "Onyx"
+  },
+  "kestrel": {
+    "source": "Chelsea boot\\Chelsea boot.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 893,
+      "bottom_right_max": 101,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 106,
+        "hot": 0
+      },
+      "veo": {
+        "max": 100,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 893,
+    "files": {
+      "still-1600.webp": 62084,
+      "still-800.webp": 19608,
+      "detail-1600.webp": 81156
+    },
+    "id": "kestrel",
+    "name": "Kestrel"
+  },
+  "vertex": {
+    "source": "High-top basketball sneaker\\High-top basketball sneaker.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 893,
+      "bottom_right_max": 98,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 101,
+        "hot": 0
+      },
+      "veo": {
+        "max": 96,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 893,
+    "files": {
+      "still-1600.webp": 66614,
+      "still-800.webp": 26476,
+      "detail-1600.webp": 85212
+    },
+    "id": "vertex",
+    "name": "Vertex"
+  },
+  "trace": {
+    "source": "Trail running shoe\\Trail running shoe.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 893,
+      "bottom_right_max": 87,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 93,
+        "hot": 0
+      },
+      "veo": {
+        "max": 85,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 893,
+    "files": {
+      "still-1600.webp": 55728,
+      "still-800.webp": 22358,
+      "detail-1600.webp": 72964
+    },
+    "id": "trace",
+    "name": "Trace"
+  },
+  "covent": {
+    "source": "new shoes\\Derby shoe.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 893,
+      "bottom_right_max": 84,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 91,
+        "hot": 0
+      },
+      "veo": {
+        "max": 82,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 893,
+    "files": {
+      "still-1600.webp": 72744,
+      "still-800.webp": 27132,
+      "detail-1600.webp": 91458
+    },
+    "id": "covent",
+    "name": "Covent"
+  },
+  "cairn": {
+    "source": "new shoes\\Hiking boot.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 893,
+      "bottom_right_max": 99,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 101,
+        "hot": 0
+      },
+      "veo": {
+        "max": 95,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 893,
+    "files": {
+      "still-1600.webp": 59754,
+      "still-800.webp": 22358,
+      "detail-1600.webp": 76354
+    },
+    "id": "cairn",
+    "name": "Cairn"
+  },
+  "kerb": {
+    "source": "new shoes\\Low-top skate shoe.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 893,
+      "bottom_right_max": 90,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 93,
+        "hot": 0
+      },
+      "veo": {
+        "max": 88,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 893,
+    "files": {
+      "still-1600.webp": 81280,
+      "still-800.webp": 26380,
+      "detail-1600.webp": 102990
+    },
+    "id": "kerb",
+    "name": "Kerb"
+  },
+  "alba": {
+    "source": "new shoes\\Minimalist white sneaker.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 893,
+      "bottom_right_max": 72,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 80,
+        "hot": 0
+      },
+      "veo": {
+        "max": 71,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 893,
+    "files": {
+      "still-1600.webp": 37208,
+      "still-800.webp": 15636,
+      "detail-1600.webp": 48402
+    },
+    "id": "alba",
+    "name": "Alba"
+  },
+  "ledger": {
+    "source": "new shoes\\Penny loafer.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 893,
+      "bottom_right_max": 94,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 98,
+        "hot": 0
+      },
+      "veo": {
+        "max": 93,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 893,
+    "files": {
+      "still-1600.webp": 57898,
+      "still-800.webp": 19300,
+      "detail-1600.webp": 75556
+    },
+    "id": "ledger",
+    "name": "Ledger"
+  },
+  "dune": {
+    "source": "new shoes\\Slide sandal.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 893,
+      "bottom_right_max": 88,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 89,
+        "hot": 0
+      },
+      "veo": {
+        "max": 86,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 893,
+    "files": {
+      "still-1600.webp": 46898,
+      "still-800.webp": 18134,
+      "detail-1600.webp": 60984
+    },
+    "id": "dune",
+    "name": "Dune"
+  },
+  "loom": {
+    "source": "new shoes\\Slip-on knit sneaker.jpeg",
+    "action": "clean",
+    "scan": {
+      "width": 1599,
+      "height": 893,
+      "bottom_right_max": 79,
+      "bottom_right_hot": 0,
+      "star": {
+        "max": 86,
+        "hot": 0
+      },
+      "veo": {
+        "max": 77,
+        "hot": 0
+      }
+    },
+    "width": 1599,
+    "height": 893,
+    "files": {
+      "still-1600.webp": 85700,
+      "still-800.webp": 28384,
+      "detail-1600.webp": 105446
+    },
+    "id": "loom",
+    "name": "Loom"
+  }
+}

@@ -1,0 +1,563 @@
+{
+  "base": {
+    "cards": 13,
+    "filters": 6,
+    "notes": 3,
+    "studyTabs": 3,
+    "anatomyTabs": 3,
+    "heroRevealed": 8,
+    "overflowX": false,
+    "introHidden": true,
+    "introInert": false,
+    "lenis": "on",
+    "motion": true,
+    "mainFocused": true
+  },
+  "checks": [
+    {
+      "name": "13 cards render",
+      "ok": true,
+      "detail": "13"
+    },
+    {
+      "name": "6 category filters",
+      "ok": true,
+      "detail": "6"
+    },
+    {
+      "name": "3 notes render",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "3 study tabs",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "3 anatomy tabs",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "hero reveals",
+      "ok": true,
+      "detail": "8"
+    },
+    {
+      "name": "no horizontal overflow at 1440",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "intro hidden after boot",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "main released from inert",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Lenis started",
+      "ok": true,
+      "detail": "on"
+    },
+    {
+      "name": "motion class present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "focus moves to main after intro",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Boots filter shows 3",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "filter count label updates",
+      "ok": true,
+      "detail": "3 objects shown"
+    },
+    {
+      "name": "Boots filter active",
+      "ok": true,
+      "detail": "Boots"
+    },
+    {
+      "name": "All filter restores 13",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "gallery product dialog opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "gallery product name is Kestrel",
+      "ok": true,
+      "detail": "Kestrel"
+    },
+    {
+      "name": "gallery has 2 viewer tabs",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "gallery viewer mounts",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "gallery counter is 04 / 13",
+      "ok": true,
+      "detail": "04 / 13"
+    },
+    {
+      "name": "default size 42",
+      "ok": true,
+      "detail": "42"
+    },
+    {
+      "name": "body locks for product dialog",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "detail tab shows detail image",
+      "ok": true,
+      "detail": "public/shoes/kestrel/detail-1600.webp"
+    },
+    {
+      "name": "add to bag updates count",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "add note names size",
+      "ok": true,
+      "detail": "Added / EU 43"
+    },
+    {
+      "name": "bag persists to localStorage",
+      "ok": true,
+      "detail": "[{\"shoeId\":\"kestrel\",\"size\":43,\"qty\":1}]"
+    },
+    {
+      "name": "product dialog closes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "focus returns to the card",
+      "ok": true,
+      "detail": "kestrel"
+    },
+    {
+      "name": "body unlocks after product close",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "video product has 4 tabs",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "360 orbit mounts",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360 frames preload",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360 counter advances",
+      "ok": true,
+      "detail": "027 / 215"
+    },
+    {
+      "name": "360 canvas draws a frame",
+      "ok": true,
+      "detail": "67,97,179,255"
+    },
+    {
+      "name": "exploded film mounts",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "exploded counter label",
+      "ok": true,
+      "detail": "Exploded film"
+    },
+    {
+      "name": "close-up film mounts",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cart drawer opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cart has one line item",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "cart quantity is 1",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "cart subtotal is ₹14,499",
+      "ok": true,
+      "detail": "₹14,499"
+    },
+    {
+      "name": "checkout enabled with items",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "quantity increments",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "subtotal doubles",
+      "ok": true,
+      "detail": "₹28,998"
+    },
+    {
+      "name": "bag count updates",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "demo checkout opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout summary has 2 items",
+      "ok": true,
+      "detail": "2 items / ₹28,998"
+    },
+    {
+      "name": "cart closes for checkout",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout closes and unlocks",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "study stage ready",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "study frame count is 215",
+      "ok": true,
+      "detail": "/ 215"
+    },
+    {
+      "name": "study counter advances",
+      "ok": true,
+      "detail": "023"
+    },
+    {
+      "name": "study canvas draws",
+      "ok": true,
+      "detail": "63,89,176,255"
+    },
+    {
+      "name": "study model is Cirra",
+      "ok": true,
+      "detail": "Cirra"
+    },
+    {
+      "name": "study switches to Terrae",
+      "ok": true,
+      "detail": "Terrae"
+    },
+    {
+      "name": "Terrae has 192 frames",
+      "ok": true,
+      "detail": "/ 192"
+    },
+    {
+      "name": "anatomy follows feature",
+      "ok": true,
+      "detail": "Terrae / welted boot"
+    },
+    {
+      "name": "materials follow feature",
+      "ok": true,
+      "detail": "Full-grain leather / 1.4 mm / vegetable tanned"
+    },
+    {
+      "name": "study tab state follows",
+      "ok": true,
+      "detail": "brown"
+    },
+    {
+      "name": "anatomy has 4 parts",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "anatomy has 4 specs",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "anatomy film has a source",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/brown/exploded.webm"
+    },
+    {
+      "name": "anatomy marks render",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "part selection updates the note",
+      "ok": true,
+      "detail": "Outsole -> Upper"
+    },
+    {
+      "name": "part button is pressed",
+      "ok": true,
+      "detail": "true"
+    },
+    {
+      "name": "part selection seeks the film",
+      "ok": true,
+      "detail": "5.7781"
+    },
+    {
+      "name": "materials quote is set",
+      "ok": true,
+      "detail": "One hide, cut so the grain runs with the foot. Creases are the finish."
+    },
+    {
+      "name": "materials caption is set",
+      "ok": true,
+      "detail": "Full-grain leather / 1.4 mm / vegetable tanned"
+    },
+    {
+      "name": "three metrics render",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "material film has a source",
+      "ok": true,
+      "detail": "http://127.0.0.1:5500/public/shoes/brown/closeup.webm"
+    },
+    {
+      "name": "invalid email shows an error",
+      "ok": true,
+      "detail": "That address is missing something. Try name@studio.com."
+    },
+    {
+      "name": "invalid email does not show success",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "valid email shows success",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "error clears on success",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "input locks after success",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "footer has 9 links",
+      "ok": true,
+      "detail": "9"
+    },
+    {
+      "name": "footer email is set",
+      "ok": true,
+      "detail": "studio@aero.example"
+    },
+    {
+      "name": "year is current",
+      "ok": true,
+      "detail": "2026"
+    },
+    {
+      "name": "back to top returns to hero",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "no horizontal overflow at 390",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop nav hidden at 390",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "name": "menu toggle visible at 390",
+      "ok": true,
+      "detail": "flex"
+    },
+    {
+      "name": "mobile filters scroll horizontally",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile grid is one column",
+      "ok": true,
+      "detail": "354.797px"
+    },
+    {
+      "name": "mobile menu opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "menu toggle reports expanded",
+      "ok": true,
+      "detail": "true"
+    },
+    {
+      "name": "menu aria-hidden is false",
+      "ok": true,
+      "detail": "false"
+    },
+    {
+      "name": "menu locks the page",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "menu focuses its close button",
+      "ok": true,
+      "detail": "menuClose"
+    },
+    {
+      "name": "menu has 5 links",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "menu closes after choosing a link",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "menu returns aria-hidden",
+      "ok": true,
+      "detail": "true"
+    },
+    {
+      "name": "menu unlocks the page",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "menu link scrolls to collection",
+      "ok": true,
+      "detail": "1035"
+    },
+    {
+      "name": "no horizontal overflow at 360",
+      "ok": true,
+      "detail": "360px viewport"
+    },
+    {
+      "name": "no horizontal overflow at 768",
+      "ok": true,
+      "detail": "768px viewport"
+    },
+    {
+      "name": "no horizontal overflow at 1024",
+      "ok": true,
+      "detail": "1024px viewport"
+    },
+    {
+      "name": "no horizontal overflow at 1440",
+      "ok": true,
+      "detail": "1440px viewport"
+    },
+    {
+      "name": "no horizontal overflow at 1920",
+      "ok": true,
+      "detail": "1920px viewport"
+    },
+    {
+      "name": "nav hidden at 1024 and below",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "nav visible at 1440 and 1920",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "menu toggle visible at 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion skips the intro",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion skips the motion class",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion shows all reveals",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion has no overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion disables the cursor",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "passed": 108,
+  "total": 108,
+  "errors": [],
+  "warnings": [],
+  "failedRequests": []
+}
