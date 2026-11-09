@@ -1,0 +1,233 @@
+{
+  "blue/360": {
+    "width": 1280,
+    "height": 720,
+    "frames": 215,
+    "star_max": 159,
+    "star_hot": 0,
+    "star_match": 0.219,
+    "veo_max": 142,
+    "veo_hot": 0,
+    "veo_match": 0.03
+  },
+  "blue/exploded": {
+    "width": 1280,
+    "height": 720,
+    "frames": 190,
+    "star_max": 108,
+    "star_hot": 0,
+    "star_match": 0.332,
+    "veo_max": 103,
+    "veo_hot": 0,
+    "veo_match": 0.172
+  },
+  "blue/closeup": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 214,
+    "star_hot": 0,
+    "star_match": 0.46,
+    "veo_max": 224,
+    "veo_hot": 0,
+    "veo_match": 0.217
+  },
+  "blue/reveal": {
+    "width": 1280,
+    "height": 720,
+    "frames": 190,
+    "star_max": 188,
+    "star_hot": 0,
+    "star_match": 0.121,
+    "veo_max": 126,
+    "veo_hot": 0,
+    "veo_match": 0.0
+  },
+  "brown/360": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 98,
+    "star_hot": 0,
+    "star_match": 0.0,
+    "veo_max": 103,
+    "veo_hot": 0,
+    "veo_match": 0.177
+  },
+  "brown/exploded": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 88,
+    "star_hot": 0,
+    "star_match": 0.064,
+    "veo_max": 102,
+    "veo_hot": 0,
+    "veo_match": 0.048
+  },
+  "brown/closeup": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 149,
+    "star_hot": 0,
+    "star_match": 0.318,
+    "veo_max": 148,
+    "veo_hot": 0,
+    "veo_match": 0.208
+  },
+  "brown/reveal": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 17,
+    "star_hot": 0,
+    "star_match": 0.15,
+    "veo_max": 20,
+    "veo_hot": 0,
+    "veo_match": 0.156
+  },
+  "black/360": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 137,
+    "star_hot": 0,
+    "star_match": 0.0,
+    "veo_max": 138,
+    "veo_hot": 0,
+    "veo_match": 0.215
+  },
+  "black/exploded": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 86,
+    "star_hot": 0,
+    "star_match": 0.0,
+    "veo_max": 88,
+    "veo_hot": 0,
+    "veo_match": 0.178
+  },
+  "black/closeup": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 156,
+    "star_hot": 0,
+    "star_match": 0.227,
+    "veo_max": 115,
+    "veo_hot": 0,
+    "veo_match": 0.158
+  },
+  "black/reveal": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 25,
+    "star_hot": 0,
+    "star_match": 0.248,
+    "veo_max": 97,
+    "veo_hot": 0,
+    "veo_match": 0.18
+  },
+  "kestrel/360": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 159,
+    "star_hot": 0,
+    "star_match": 0.306,
+    "veo_max": 207,
+    "veo_hot": 0,
+    "veo_match": 0.193
+  },
+  "kestrel/exploded": {
+    "width": 1280,
+    "height": 720,
+    "frames": 121,
+    "star_max": 71,
+    "star_hot": 0,
+    "star_match": 0.0,
+    "veo_max": 174,
+    "veo_hot": 0,
+    "veo_match": 0.44
+  },
+  "kestrel/closeup": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 159,
+    "star_hot": 0,
+    "star_match": 0.306,
+    "veo_max": 207,
+    "veo_hot": 0,
+    "veo_match": 0.193
+  },
+  "vertex/360": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 104,
+    "star_hot": 0,
+    "star_match": 0.0,
+    "veo_max": 104,
+    "veo_hot": 0,
+    "veo_match": 0.255
+  },
+  "vertex/exploded": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 104,
+    "star_hot": 0,
+    "star_match": 0.0,
+    "veo_max": 97,
+    "veo_hot": 0,
+    "veo_match": 0.197
+  },
+  "vertex/closeup": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 107,
+    "star_hot": 0,
+    "star_match": 0.156,
+    "veo_max": 102,
+    "veo_hot": 0,
+    "veo_match": 0.225
+  },
+  "trace/360": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 94,
+    "star_hot": 0,
+    "star_match": 0.16,
+    "veo_max": 88,
+    "veo_hot": 0,
+    "veo_match": 0.219
+  },
+  "trace/exploded": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 94,
+    "star_hot": 0,
+    "star_match": 0.133,
+    "veo_max": 89,
+    "veo_hot": 0,
+    "veo_match": 0.124
+  },
+  "trace/closeup": {
+    "width": 1280,
+    "height": 720,
+    "frames": 192,
+    "star_max": 221,
+    "star_hot": 0,
+    "star_match": 0.407,
+    "veo_max": 93,
+    "veo_hot": 0,
+    "veo_match": 0.131
+  }
+}

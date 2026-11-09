@@ -1,0 +1,27 @@
+{
+  "backend": "rembg",
+  "turntables": {
+    "brown": {
+      "dir": "public/showroom/frames/brown",
+      "pattern": "f_%03d.webp",
+      "count": 48,
+      "step": 4,
+      "sourceCount": 192,
+      "width": 773,
+      "height": 601,
+      "aspect": 1.2862,
+      "bytes": 1190394
+    },
+    "black": {
+      "dir": "public/showroom/frames/black",
+      "pattern": "f_%03d.webp",
+      "count": 48,
+      "step": 4,
+      "sourceCount": 192,
+      "width": 798,
+      "height": 418,
+      "aspect": 1.9091,
+      "bytes": 776600
+    }
+  }
+}

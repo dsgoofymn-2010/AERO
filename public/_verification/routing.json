@@ -1,0 +1,166 @@
+{
+  "checks": [
+    {
+      "name": "intro builds a WebGL scene on first visit",
+      "pass": true
+    },
+    {
+      "name": "intro reaches ready",
+      "pass": true
+    },
+    {
+      "name": "loading counter reaches 100",
+      "pass": true,
+      "note": "100"
+    },
+    {
+      "name": "wordmark is split into letters",
+      "pass": true,
+      "note": "4 letters"
+    },
+    {
+      "name": "enter and skip are both present",
+      "pass": true,
+      "note": "skip width 59.984375"
+    },
+    {
+      "name": "wordmark letters have risen into view",
+      "pass": true
+    },
+    {
+      "name": "enter removes the intro and disposes it",
+      "pass": true
+    },
+    {
+      "name": "hero is the first thing seen after enter",
+      "pass": true,
+      "note": "view home, scrollY 0"
+    },
+    {
+      "name": "intro is marked seen for the session",
+      "pass": true
+    },
+    {
+      "name": "no console errors during the intro",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "name": "home is the default view",
+      "pass": true
+    },
+    {
+      "name": "hidden view is inert",
+      "pass": true
+    },
+    {
+      "name": "nav has the six named tabs",
+      "pass": true,
+      "note": "Home|Hangar|Technology|Materials|Collection|Contact"
+    },
+    {
+      "name": "hangar is not initialised until opened",
+      "pass": true
+    },
+    {
+      "name": "hangar tab opens the hangar view",
+      "pass": true
+    },
+    {
+      "name": "hangar updates the url hash",
+      "pass": true,
+      "note": "#hangar"
+    },
+    {
+      "name": "home view is hidden and inert while in the hangar",
+      "pass": true
+    },
+    {
+      "name": "back to home control is present",
+      "pass": true
+    },
+    {
+      "name": "active tab follows the route",
+      "pass": true,
+      "note": "Hangar"
+    },
+    {
+      "name": "nav indicator has been positioned",
+      "pass": true,
+      "note": "86.625px"
+    },
+    {
+      "name": "browser back returns to home",
+      "pass": true
+    },
+    {
+      "name": "hangar stays instantiated while closed",
+      "pass": true
+    },
+    {
+      "name": "browser forward reopens the hangar",
+      "pass": true
+    },
+    {
+      "name": "hangar keeps its state when reopened",
+      "pass": true,
+      "note": "focus 4, visible true"
+    },
+    {
+      "name": "a section tab returns home and scrolls there",
+      "pass": true,
+      "note": "view home, near true"
+    },
+    {
+      "name": "no console errors while routing",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "name": "deep link to #hangar opens the hangar",
+      "pass": true
+    },
+    {
+      "name": "no console errors on a deep link",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "name": "reduced motion gets the fade intro, not the scene",
+      "pass": true
+    },
+    {
+      "name": "reduced motion builds no WebGL scene",
+      "pass": true
+    },
+    {
+      "name": "reduced motion intro can be entered",
+      "pass": true
+    },
+    {
+      "name": "no console errors with reduced motion",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "name": "no-WebGL falls back to the static intro",
+      "pass": true
+    },
+    {
+      "name": "hangar tab shows the grid fallback without WebGL",
+      "pass": true,
+      "note": "{\"view\":\"hangar\",\"fallback\":true,\"cards\":13}"
+    },
+    {
+      "name": "collection grid intact without WebGL",
+      "pass": true
+    },
+    {
+      "name": "no console errors without WebGL",
+      "pass": true,
+      "note": ""
+    }
+  ],
+  "passed": 36,
+  "total": 36
+}
