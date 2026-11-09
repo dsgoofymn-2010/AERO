@@ -1,0 +1,495 @@
+{
+  "viewports": [
+    {
+      "label": "360",
+      "width": 360,
+      "height": 780,
+      "scrollWidth": 360,
+      "bodyWidth": 360,
+      "scrollHeight": 10873,
+      "preloaderHidden": true,
+      "isFallback": false,
+      "shoe": "blue",
+      "heroSplit": true,
+      "words": 4,
+      "heroOpacity": "1",
+      "fonts": "loaded",
+      "gsap": true,
+      "lenis": true,
+      "canvas": {
+        "w": 360,
+        "h": 780,
+        "cssW": 360,
+        "cssH": 780
+      },
+      "h1": "Three studies\nin walking.",
+      "overflow": false
+    },
+    {
+      "label": "768",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "bodyWidth": 768,
+      "scrollHeight": 12224,
+      "preloaderHidden": true,
+      "isFallback": false,
+      "shoe": "blue",
+      "heroSplit": true,
+      "words": 4,
+      "heroOpacity": "1",
+      "fonts": "loaded",
+      "gsap": true,
+      "lenis": true,
+      "canvas": {
+        "w": 768,
+        "h": 1024,
+        "cssW": 768,
+        "cssH": 1024
+      },
+      "h1": "Three studies\nin walking.",
+      "overflow": false
+    },
+    {
+      "label": "1024",
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "bodyWidth": 1024,
+      "scrollHeight": 10780,
+      "preloaderHidden": true,
+      "isFallback": false,
+      "shoe": "blue",
+      "heroSplit": true,
+      "words": 4,
+      "heroOpacity": "1",
+      "fonts": "loaded",
+      "gsap": true,
+      "lenis": true,
+      "canvas": {
+        "w": 1024,
+        "h": 768,
+        "cssW": 1024,
+        "cssH": 768
+      },
+      "h1": "Three studies\nin walking.",
+      "overflow": false
+    },
+    {
+      "label": "1440",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "bodyWidth": 1440,
+      "scrollHeight": 11706,
+      "preloaderHidden": true,
+      "isFallback": false,
+      "shoe": "blue",
+      "heroSplit": true,
+      "words": 4,
+      "heroOpacity": "1",
+      "fonts": "loaded",
+      "gsap": true,
+      "lenis": true,
+      "canvas": {
+        "w": 1440,
+        "h": 900,
+        "cssW": 1440,
+        "cssH": 900
+      },
+      "h1": "Three studies\nin walking.",
+      "overflow": false
+    },
+    {
+      "label": "1920",
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "bodyWidth": 1920,
+      "scrollHeight": 13151,
+      "preloaderHidden": true,
+      "isFallback": false,
+      "shoe": "blue",
+      "heroSplit": true,
+      "words": 4,
+      "heroOpacity": "1",
+      "fonts": "loaded",
+      "gsap": true,
+      "lenis": true,
+      "canvas": {
+        "w": 1920,
+        "h": 1080,
+        "cssW": 1920,
+        "cssH": 1080
+      },
+      "h1": "Three studies\nin walking.",
+      "overflow": false
+    }
+  ],
+  "checks": [
+    {
+      "name": "360: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "360: boot completed",
+      "pass": true
+    },
+    {
+      "name": "360: split title active",
+      "pass": true
+    },
+    {
+      "name": "360: hero copy visible",
+      "pass": true
+    },
+    {
+      "name": "360: fonts loaded",
+      "pass": true
+    },
+    {
+      "name": "768: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768: boot completed",
+      "pass": true
+    },
+    {
+      "name": "768: split title active",
+      "pass": true
+    },
+    {
+      "name": "768: hero copy visible",
+      "pass": true
+    },
+    {
+      "name": "768: fonts loaded",
+      "pass": true
+    },
+    {
+      "name": "1024: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1024: boot completed",
+      "pass": true
+    },
+    {
+      "name": "1024: split title active",
+      "pass": true
+    },
+    {
+      "name": "1024: hero copy visible",
+      "pass": true
+    },
+    {
+      "name": "1024: fonts loaded",
+      "pass": true
+    },
+    {
+      "name": "1440: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440: boot completed",
+      "pass": true
+    },
+    {
+      "name": "1440: split title active",
+      "pass": true
+    },
+    {
+      "name": "1440: hero copy visible",
+      "pass": true
+    },
+    {
+      "name": "1440: fonts loaded",
+      "pass": true
+    },
+    {
+      "name": "1920: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1920: boot completed",
+      "pass": true
+    },
+    {
+      "name": "1920: split title active",
+      "pass": true
+    },
+    {
+      "name": "1920: hero copy visible",
+      "pass": true
+    },
+    {
+      "name": "1920: fonts loaded",
+      "pass": true
+    },
+    {
+      "name": "product switch: theme and copy",
+      "pass": true
+    },
+    {
+      "name": "product switch: aria/state",
+      "pass": true
+    },
+    {
+      "name": "product switch: media paths",
+      "pass": true
+    },
+    {
+      "name": "product switch: accent token",
+      "pass": true
+    },
+    {
+      "name": "product switch: stage label",
+      "pass": true
+    },
+    {
+      "name": "tech: part selection syncs copy, button, hotspot",
+      "pass": true
+    },
+    {
+      "name": "tech: video seeks to part",
+      "pass": false
+    },
+    {
+      "name": "cart: add opens drawer with correct line",
+      "pass": true
+    },
+    {
+      "name": "cart: subtotal for Terrain",
+      "pass": true
+    },
+    {
+      "name": "cart: focus moves into drawer",
+      "pass": true
+    },
+    {
+      "name": "checkout: dialog opens with summary",
+      "pass": true
+    },
+    {
+      "name": "checkout: focus on return button",
+      "pass": true
+    },
+    {
+      "name": "checkout: dialog closes",
+      "pass": true
+    },
+    {
+      "name": "cart: close restores state and focus",
+      "pass": true
+    },
+    {
+      "name": "wishlist: toggles and persists",
+      "pass": true
+    },
+    {
+      "name": "newsletter: rejects invalid email",
+      "pass": true
+    },
+    {
+      "name": "newsletter: accepts valid email, demo state",
+      "pass": true
+    },
+    {
+      "name": "mobile menu: opens, locks page, moves focus",
+      "pass": true
+    },
+    {
+      "name": "mobile menu: Escape closes and restores focus",
+      "pass": true
+    },
+    {
+      "name": "mobile cart: opens within viewport",
+      "pass": true
+    },
+    {
+      "name": "orbit: GSAP + Lenis libraries load",
+      "pass": true
+    },
+    {
+      "name": "orbit: pin initializes",
+      "pass": true
+    },
+    {
+      "name": "orbit: scroll updates frame counter",
+      "pass": true
+    },
+    {
+      "name": "orbit: ScrollTrigger pin active",
+      "pass": true
+    },
+    {
+      "name": "orbit: callout is present",
+      "pass": true
+    },
+    {
+      "name": "a11y: skip link targets focusable main",
+      "pass": true
+    },
+    {
+      "name": "reduced motion: no hidden reveals",
+      "pass": true
+    },
+    {
+      "name": "reduced motion: no title transforms",
+      "pass": true
+    },
+    {
+      "name": "reduced motion: no autoplay videos",
+      "pass": true
+    },
+    {
+      "name": "reduced motion: no pin",
+      "pass": true
+    },
+    {
+      "name": "console: no runtime errors",
+      "pass": true
+    },
+    {
+      "name": "network: no failed requests",
+      "pass": true
+    }
+  ],
+  "console": {
+    "errors": [],
+    "warnings": [],
+    "failedRequests": []
+  },
+  "screenshots": [
+    "360-hero",
+    "360-orbit",
+    "360-tech",
+    "360-collection",
+    "768-hero",
+    "768-orbit",
+    "768-tech",
+    "768-collection",
+    "1024-hero",
+    "1024-orbit",
+    "1024-tech",
+    "1024-collection",
+    "1440-hero",
+    "1440-orbit",
+    "1440-tech",
+    "1440-collection",
+    "1920-hero",
+    "1920-orbit",
+    "1920-tech",
+    "1920-collection"
+  ],
+  "interactions": {
+    "brown": {
+      "shoe": "brown",
+      "name": "Terrain",
+      "type": "Leather boot",
+      "price": "₹24,500",
+      "heroName": "Terrain",
+      "outline": "TERRAIN",
+      "swatchPressed": "true",
+      "cardPressed": "true",
+      "poster": "http://127.0.0.1:5500/assets/brown/posters/360.webp",
+      "sources": [
+        "http://127.0.0.1:5500/assets/brown/videos/360.mp4",
+        "http://127.0.0.1:5500/assets/brown/videos/360.webm"
+      ],
+      "accent": "rgb(181, 115, 59)",
+      "stageName": "Terrain"
+    },
+    "tech": {
+      "before": {
+        "time": 0,
+        "duration": 8,
+        "readyState": 4,
+        "networkState": 1,
+        "seeking": false,
+        "src": "http://127.0.0.1:5500/assets/brown/videos/parts.mp4"
+      },
+      "immediate": {
+        "time": 0,
+        "readyState": 4,
+        "seeking": false
+      },
+      "after": {
+        "name": "Upper",
+        "active": "2",
+        "hotspot": "2",
+        "time": 0,
+        "duration": 8,
+        "readyState": 4,
+        "seeking": false,
+        "networkState": 1,
+        "src": "http://127.0.0.1:5500/assets/brown/videos/parts.mp4",
+        "error": null
+      }
+    },
+    "cart": {
+      "open": true,
+      "hidden": "false",
+      "count": "1",
+      "subtotal": "₹24,500",
+      "items": 1,
+      "focus": "cartClose",
+      "bodyLocked": true
+    },
+    "checkout": {
+      "open": true,
+      "summary": "1 item / ₹24,500",
+      "focus": "closeCheckout"
+    },
+    "cartClosed": {
+      "open": false,
+      "hidden": "true",
+      "focus": "addToCart"
+    },
+    "newsletter": {
+      "newsBad": {
+        "error": "That email does not look complete. Try you@studio.com.",
+        "invalid": "true",
+        "hidden": false
+      },
+      "newsGood": {
+        "success": true,
+        "errorHidden": true,
+        "value": ""
+      }
+    },
+    "menu": {
+      "menu": {
+        "open": true,
+        "expanded": "true",
+        "hidden": "false",
+        "focus": "menuClose",
+        "body": true
+      },
+      "menuClosed": {
+        "open": false,
+        "expanded": "false",
+        "focus": "menuToggle"
+      }
+    },
+    "orbit": {
+      "orbitBefore": "001",
+      "orbitAfter": {
+        "counter": "206",
+        "pinned": true,
+        "activeCallout": "Sole geometry",
+        "canvasRect": {
+          "top": 1,
+          "height": 900
+        }
+      }
+    },
+    "reduced": {
+      "revealsHidden": 0,
+      "words": 0,
+      "videos": 0,
+      "pinned": false
+    }
+  }
+}
