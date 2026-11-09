@@ -1,0 +1,146 @@
+{
+  "checks": [
+    {
+      "name": "hangar tab opens the wall",
+      "pass": true
+    },
+    {
+      "name": "all 13 bays load",
+      "pass": true
+    },
+    {
+      "name": "hangar does not duplicate the site header",
+      "pass": true
+    },
+    {
+      "name": "counter is blank until a shoe is chosen",
+      "pass": true,
+      "note": "--"
+    },
+    {
+      "name": "back to home control is present",
+      "pass": true
+    },
+    {
+      "name": "page accent follows the focused shoe",
+      "pass": true,
+      "note": "#3656ae -> #b92c32"
+    },
+    {
+      "name": "details panel opens",
+      "pass": true
+    },
+    {
+      "name": "focus narrows the lens",
+      "pass": true,
+      "note": "30"
+    },
+    {
+      "name": "canvas is focusable and labelled",
+      "pass": true
+    },
+    {
+      "name": "back to wall is visible in focus",
+      "pass": true
+    },
+    {
+      "name": "section is labelled and controls carry roles",
+      "pass": true
+    },
+    {
+      "name": "back to home returns to the grid page",
+      "pass": true,
+      "note": "13 cards"
+    },
+    {
+      "name": "no console errors",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "name": "no failed requests",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "name": "mobile hangar tab opens",
+      "pass": true
+    },
+    {
+      "name": "mobile wall loads",
+      "pass": true
+    },
+    {
+      "name": "mobile is a single column",
+      "pass": true,
+      "note": "1 col, 13 rows"
+    },
+    {
+      "name": "mobile pixel ratio capped at 1.5",
+      "pass": true,
+      "note": "1.5"
+    },
+    {
+      "name": "mobile wall has room to pan",
+      "pass": true,
+      "note": "span 23.84"
+    },
+    {
+      "name": "no horizontal scroll at 390px",
+      "pass": true,
+      "note": "0px"
+    },
+    {
+      "name": "wheel pans the mobile wall",
+      "pass": true,
+      "note": "11.64 -> -4.25"
+    },
+    {
+      "name": "panel becomes a bottom sheet",
+      "pass": true
+    },
+    {
+      "name": "every tap target is at least 44px",
+      "pass": true,
+      "note": "0 of 12 too small"
+    },
+    {
+      "name": "no console errors on mobile",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "name": "reduced motion is detected",
+      "pass": true
+    },
+    {
+      "name": "reduced motion cross-fades instead of flying",
+      "pass": true,
+      "note": "z 2.74 of 13.05"
+    },
+    {
+      "name": "no console errors with reduced motion",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "name": "no-WebGL marks the section unavailable",
+      "pass": true
+    },
+    {
+      "name": "no-WebGL shows the fallback pointing at the grid",
+      "pass": true
+    },
+    {
+      "name": "collection grid is intact without WebGL",
+      "pass": true
+    },
+    {
+      "name": "no console errors without WebGL",
+      "pass": true,
+      "note": ""
+    }
+  ],
+  "passed": 31,
+  "total": 31
+}

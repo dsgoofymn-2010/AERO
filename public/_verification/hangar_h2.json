@@ -1,0 +1,221 @@
+{
+  "page": "http://127.0.0.1:5500/scripts/hangar-test.html",
+  "probe": {
+    "errors": [],
+    "hoverLog": [],
+    "shoes": 13,
+    "loaded": 13,
+    "missing": [],
+    "cols": 7,
+    "rows": 2,
+    "fps": 60,
+    "drawCalls": 105,
+    "triangles": 312,
+    "textures": 16,
+    "geometries": 5,
+    "pixelRatio": 1.25,
+    "reduced": false
+  },
+  "fps": 57,
+  "hover": [
+    "blue"
+  ],
+  "select": "0:blue",
+  "teardown": {
+    "before": {
+      "geometries": 5,
+      "textures": 35
+    },
+    "after": {
+      "geometries": 1,
+      "textures": 1
+    },
+    "canvas": false
+  },
+  "errors": [],
+  "failed": [],
+  "focus": {
+    "overviewZ": 13.06,
+    "f1": {
+      "index": 3,
+      "focused": "3:kestrel",
+      "panelHidden": false,
+      "name": "Kestrel",
+      "price": "₹14,499",
+      "specs": 3,
+      "sizes": 7,
+      "bay": "04",
+      "tier": "1",
+      "counter": "04",
+      "total": "13",
+      "coordsHidden": false,
+      "backHidden": false,
+      "accent": "#c87729",
+      "fov": 30,
+      "camZ": 2.86,
+      "dimmed": 12,
+      "focusedTex": 1600,
+      "brownMap": true
+    },
+    "f2": {
+      "index": 4,
+      "focused": "4:vertex",
+      "panelHidden": false,
+      "name": "Vertex",
+      "price": "₹11,999",
+      "specs": 3,
+      "sizes": 7,
+      "bay": "05",
+      "tier": "1",
+      "counter": "05",
+      "total": "13",
+      "coordsHidden": false,
+      "backHidden": false,
+      "accent": "#e07a43",
+      "fov": 30,
+      "camZ": 2.74,
+      "dimmed": 12,
+      "focusedTex": 1600,
+      "brownMap": true
+    },
+    "back": {
+      "index": -1,
+      "focused": null,
+      "panelHidden": true,
+      "name": "Terrae",
+      "price": "₹14,999",
+      "specs": 3,
+      "sizes": 7,
+      "bay": "02",
+      "tier": "1",
+      "counter": "--",
+      "total": "13",
+      "coordsHidden": true,
+      "backHidden": true,
+      "accent": "#8a5a3f",
+      "fov": 35,
+      "camZ": 13.06,
+      "dimmed": 0,
+      "focusedTex": 0,
+      "brownMap": true
+    },
+    "actions": {
+      "saved": [
+        "brown"
+      ],
+      "pressed": "true",
+      "cleared": [],
+      "size": 45
+    },
+    "spinA": "http://127.0.0.1:5500/public/showroom/frames/brown/f_007.webp",
+    "spinB": "http://127.0.0.1:5500/public/showroom/frames/brown/f_012.webp"
+  },
+  "checks": [
+    {
+      "name": "focus enters a shoe",
+      "pass": true
+    },
+    {
+      "name": "focus narrows the lens",
+      "pass": true
+    },
+    {
+      "name": "other bays dim",
+      "pass": true
+    },
+    {
+      "name": "focus loads the 1600px texture",
+      "pass": true
+    },
+    {
+      "name": "panel shows name, price, 3 specs, sizes",
+      "pass": true
+    },
+    {
+      "name": "panel takes the shoe accent",
+      "pass": true
+    },
+    {
+      "name": "hud shows bay, tier and counter",
+      "pass": true
+    },
+    {
+      "name": "back button and coords visible in focus",
+      "pass": true
+    },
+    {
+      "name": "arrow key steps to the next shoe",
+      "pass": true
+    },
+    {
+      "name": "turntable frames advance",
+      "pass": true
+    },
+    {
+      "name": "size selector drives state",
+      "pass": true
+    },
+    {
+      "name": "wishlist writes and clears localStorage",
+      "pass": true
+    },
+    {
+      "name": "leaving a turntable restores a live texture",
+      "pass": true
+    },
+    {
+      "name": "escape returns to overview",
+      "pass": true
+    },
+    {
+      "name": "all 13 shoes placed",
+      "pass": true
+    },
+    {
+      "name": "no missing cutouts",
+      "pass": true
+    },
+    {
+      "name": "2 rows on desktop",
+      "pass": true
+    },
+    {
+      "name": "7 columns",
+      "pass": true
+    },
+    {
+      "name": "pixel ratio capped at 2",
+      "pass": true
+    },
+    {
+      "name": "no page errors",
+      "pass": true
+    },
+    {
+      "name": "no failed requests",
+      "pass": true
+    },
+    {
+      "name": "hover reports bay 0",
+      "pass": true
+    },
+    {
+      "name": "click reports a shoe",
+      "pass": true
+    },
+    {
+      "name": "teardown frees textures",
+      "pass": true
+    },
+    {
+      "name": "teardown frees geometries",
+      "pass": true
+    },
+    {
+      "name": "teardown removes canvas",
+      "pass": true
+    }
+  ],
+  "passed": 26,
+  "total": 26
+}

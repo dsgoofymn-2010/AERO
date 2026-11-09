@@ -1,0 +1,90 @@
+{
+  "BLUE SHOE\\blue_shoe close up.mp4": {
+    "file": "BLUE SHOE\\blue_shoe close up.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 192,
+    "duration": 8.0
+  },
+  "BLUE SHOE\\blue_shoe parts.mp4": {
+    "file": "BLUE SHOE\\blue_shoe parts.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 190,
+    "duration": 7.92
+  },
+  "BLUE SHOE\\blue_shoe reveal.mp4": {
+    "file": "BLUE SHOE\\blue_shoe reveal.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 190,
+    "duration": 7.92
+  },
+  "BROWN_SHOE\\brown_shoe  360.mp4": {
+    "file": "BROWN_SHOE\\brown_shoe  360.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 192,
+    "duration": 8.0
+  },
+  "BROWN_SHOE\\brown_shoe  parts.mp4": {
+    "file": "BROWN_SHOE\\brown_shoe  parts.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 192,
+    "duration": 8.0
+  },
+  "BROWN_SHOE\\brown_shoe  reveal.mp4": {
+    "file": "BROWN_SHOE\\brown_shoe  reveal.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 192,
+    "duration": 8.0
+  },
+  "BROWN_SHOE\\brown_shoe close up.mp4": {
+    "file": "BROWN_SHOE\\brown_shoe close up.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 192,
+    "duration": 8.0
+  },
+  "BLACK_SHOE\\black_shoe 360.mp4": {
+    "file": "BLACK_SHOE\\black_shoe 360.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 192,
+    "duration": 8.0
+  },
+  "BLACK_SHOE\\black_shoe close up.mp4": {
+    "file": "BLACK_SHOE\\black_shoe close up.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 192,
+    "duration": 8.0
+  },
+  "BLACK_SHOE\\black_shoe parts.mp4": {
+    "file": "BLACK_SHOE\\black_shoe parts.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 192,
+    "duration": 8.0
+  },
+  "BLACK_SHOE\\black_shoe reveal.mp4": {
+    "file": "BLACK_SHOE\\black_shoe reveal.mp4",
+    "width": 854,
+    "height": 480,
+    "fps": 24.0,
+    "frames": 192,
+    "duration": 8.0
+  }
+}

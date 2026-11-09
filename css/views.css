@@ -1,0 +1,169 @@
+/* View routing and the pill nav.
+   Loaded after styles.css so it can override the original flat nav. */
+
+.view[hidden] { display: none; }
+
+.view--hangar {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* The wipe covers the swap between two views that share no spatial
+   relationship, so neither has to slide anywhere believable. */
+.view-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(120% 90% at 50% 40%, rgba(241, 238, 231, 0.16), rgba(10, 8, 14, 0.96) 62%);
+  backdrop-filter: blur(0px);
+  transition:
+    opacity 360ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
+    backdrop-filter 360ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.view-wipe.is-on {
+  opacity: 1;
+  backdrop-filter: blur(14px);
+}
+
+/* The hangar is its own screen, so the page must not scroll behind it. */
+html[data-view="hangar"],
+html[data-view="hangar"] body {
+  overflow: hidden;
+}
+
+html[data-view="hangar"] .scroll-progress,
+html[data-view="hangar"] .footer,
+html[data-view="hangar"] .marquee {
+  display: none;
+}
+
+/* Nav */
+
+.nav--pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.3rem;
+  border: 1px solid var(--line, rgba(241, 238, 231, 0.14));
+  border-radius: 999px;
+  background: rgba(14, 14, 16, 0.5);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+}
+
+/* The one pill shape on the site, and it earns it: the indicator slides
+   between tabs, which needs a continuous track to slide along. */
+.nav__indicator {
+  position: absolute;
+  top: 0.3rem;
+  left: 0;
+  height: calc(100% - 0.6rem);
+  width: 0;
+  border-radius: 999px;
+  background: rgba(241, 238, 231, 0.1);
+  border: 1px solid var(--line, rgba(241, 238, 231, 0.14));
+  opacity: 0;
+  transition:
+    transform 520ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
+    width 520ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
+    opacity 220ms linear;
+  pointer-events: none;
+}
+
+.nav--pill .nav__link {
+  position: relative;
+  z-index: 1;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  color: var(--quiet, #8a867e);
+  transition: color 0.25s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.nav--pill .nav__link::after { display: none; }
+.nav--pill .nav__link:hover { color: var(--bone-dim, #d2cdc2); }
+.nav--pill .nav__link.is-active { color: var(--bone, #f1eee7); }
+
+.header.is-tucked {
+  transform: translateY(-110%);
+}
+
+.header {
+  transition: transform 420ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+/* Hangar view chrome */
+
+.hangar__home {
+  position: absolute;
+  z-index: 6;
+  top: calc(var(--header-h, 76px) + 0.75rem);
+  left: var(--gutter, 2rem);
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--line, rgba(241, 238, 231, 0.14));
+  border-radius: var(--radius, 2px);
+  background: rgba(10, 8, 14, 0.5);
+  color: var(--bone-dim, #d2cdc2);
+  font-family: var(--text, Inter, sans-serif);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.25s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.hangar__home:hover { color: var(--bone, #f1eee7); }
+
+.hangar__home:focus-visible {
+  outline: 2px solid var(--accent-text, #a9bcff);
+  outline-offset: 3px;
+}
+
+.footer__link-button {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.footer__link-button:hover { color: var(--bone, #f1eee7); }
+
+@media (max-width: 1100px) {
+  .nav--pill { display: none; }
+}
+
+@media (max-width: 900px) {
+  .hangar__home {
+    top: calc(var(--header-h, 64px) + 0.5rem);
+    left: 0.75rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Back to wall would collide with Back to home, so it moves inboard. */
+  .hangar-hud__back {
+    left: auto;
+    right: 0.75rem;
+  }
+
+  html[data-view="hangar"] .hangar-hud__corner--br {
+    top: auto;
+    bottom: calc(58svh + 0.75rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view-wipe,
+  .nav__indicator,
+  .header { transition: none; }
+  .header.is-tucked { transform: none; }
+}

@@ -1,0 +1,496 @@
+/* AERO hangar showroom.
+   The site's global .grain and .vignette overlays already sit above this
+   section, so this file adds only what the hangar itself needs. */
+
+.hangar {
+  position: relative;
+  height: 100svh;
+  overflow: clip;
+  background:
+    radial-gradient(120% 90% at 50% 8%, #2a2430 0%, #1f1b25 42%, #17141c 100%),
+    #17141c;
+  isolation: isolate;
+}
+
+/* One slow light wash drifting across the back wall. It carries the sense of a
+   large room the 3D scene cannot show on its own, so it stays very low
+   contrast and very slow rather than reading as a pulse. */
+.hangar::before {
+  content: "";
+  position: absolute;
+  inset: -22%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 46% at 28% 24%, rgba(132, 118, 150, 0.17), transparent 70%),
+    radial-gradient(32% 40% at 74% 68%, rgba(96, 104, 132, 0.14), transparent 72%);
+  animation: hangar-wash 68s ease-in-out infinite alternate;
+}
+
+/* Tighter than the site vignette: it pulls the eye off the section edges and
+   onto the wall. */
+.hangar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse 78% 74% at 50% 48%, transparent 46%, rgba(9, 7, 12, 0.62) 100%);
+}
+
+@keyframes hangar-wash {
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to { transform: translate3d(3%, 2%, 0) scale(1.08); }
+}
+
+.hangar__stage {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+}
+
+.hangar__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+}
+
+/* Loader */
+
+.hangar__loading {
+  position: absolute;
+  z-index: 3;
+  right: var(--gutter, 2rem);
+  bottom: clamp(1.5rem, 4vh, 3rem);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--quiet, #8a867e);
+  font-family: var(--text, Inter, sans-serif);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.5s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.hangar__loading[hidden] {
+  display: none;
+}
+
+.hangar__loading.is-done {
+  opacity: 0;
+}
+
+.hangar__loading-bar {
+  position: relative;
+  width: 84px;
+  height: 1px;
+  background: rgba(241, 238, 231, 0.16);
+}
+
+.hangar__loading-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--progress, 0) * 100%);
+  background: var(--bone-dim, #d2cdc2);
+  transition: width 0.3s linear;
+}
+
+/* Without the wall there is nothing to fill a screen with, so the section
+   shrinks to the message rather than leaving a viewport of empty dark. */
+.hangar.is-unavailable {
+  height: auto;
+  min-height: 0;
+}
+
+.hangar.is-unavailable .hangar__stage {
+  position: static;
+  height: auto;
+  padding: clamp(3rem, 10vh, 6rem) 0;
+}
+
+.hangar__fallback {
+  position: static;
+  z-index: 4;
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  padding: var(--gutter, 2rem);
+  text-align: center;
+  color: var(--bone-dim, #d2cdc2);
+  font-family: var(--text, Inter, sans-serif);
+}
+
+.hangar__fallback-text {
+  max-width: 34ch;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hangar::before {
+    animation: none;
+  }
+
+  .hangar__loading,
+  .hangar__loading-bar::after {
+    transition: none;
+  }
+}
+
+/* HUD
+   Digits change as the viewer moves along the wall, so the readouts are
+   tabular to stop them jittering. Inter, not a second mono face. */
+
+.hangar-hud {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  font-family: var(--text, Inter, sans-serif);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--quiet, #8a867e);
+}
+
+.hangar-hud__corner {
+  position: absolute;
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.hangar-hud__corner--tl { top: clamp(1.25rem, 3vh, 2.25rem); left: var(--gutter, 2rem); gap: 0.75rem; }
+.hangar-hud__corner--tr { top: clamp(1.25rem, 3vh, 2.25rem); right: var(--gutter, 2rem); }
+.hangar-hud__corner--bl { bottom: clamp(1.5rem, 4vh, 2.75rem); left: var(--gutter, 2rem); flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+.hangar-hud__corner--br { bottom: clamp(1.5rem, 4vh, 2.75rem); right: var(--gutter, 2rem); }
+
+.hangar-hud__brand {
+  font-family: var(--display, Syne, sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--bone, #f1eee7);
+}
+
+.hangar-hud__sub { color: var(--quiet, #8a867e); }
+
+.hangar-hud__link,
+.hangar-hud__step,
+.hangar-hud__back {
+  pointer-events: auto;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--bone-dim, #d2cdc2);
+  background: none;
+  border: 0;
+  padding: 0.35rem 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.25s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.hangar-hud__link:hover,
+.hangar-hud__step:hover,
+.hangar-hud__back:hover { color: var(--bone, #f1eee7); }
+
+.hangar-hud__link:focus-visible,
+.hangar-hud__step:focus-visible,
+.hangar-hud__back:focus-visible,
+.hangar-panel__size:focus-visible,
+.hangar-panel__add:focus-visible,
+.hangar-panel__save:focus-visible {
+  outline: 2px solid var(--accent-text, #a9bcff);
+  outline-offset: 3px;
+}
+
+.hangar-hud__coord {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.hangar-hud__coord b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--bone, #f1eee7);
+}
+
+/* The rule grows out of the corner when a bay is selected, tying the readout
+   to the wall rather than floating it. */
+.hangar-hud__rule {
+  display: block;
+  width: 0;
+  height: 1px;
+  background: var(--accent, #d2cdc2);
+  transition: width 0.7s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.hangar-hud__corner--bl:not([hidden]) .hangar-hud__rule { width: 34px; }
+.hangar-hud__corner--bl:not([hidden]) .hangar-hud__coord:last-child .hangar-hud__rule { width: 20px; }
+
+.hangar-hud__count {
+  margin: 0 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.hangar-hud__count b { font-weight: 500; color: var(--bone, #f1eee7); }
+
+.hangar-hud__back {
+  position: absolute;
+  top: clamp(1.25rem, 3vh, 2.25rem);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid var(--line, rgba(241, 238, 231, 0.14));
+  border-radius: var(--radius, 2px);
+  padding: 0.5rem 1rem;
+  background: rgba(10, 8, 14, 0.5);
+}
+
+/* Details panel — the one glass surface in the hangar. */
+
+.hangar-panel {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  right: var(--gutter, 2rem);
+  transform: translateY(-50%);
+  width: min(23rem, 32vw);
+  padding: clamp(1.5rem, 2.4vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  pointer-events: auto;
+  border: 1px solid var(--line, rgba(241, 238, 231, 0.14));
+  border-radius: var(--radius, 2px);
+  background: rgba(16, 13, 21, 0.55);
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  color: var(--bone, #f1eee7);
+  font-family: var(--text, Inter, sans-serif);
+}
+
+.hangar-panel[hidden] { display: none; }
+
+.hangar-panel__head { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.hangar-panel__eyebrow {
+  margin: 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-text, #a9bcff);
+}
+
+.hangar-panel__name {
+  margin: 0;
+  font-family: var(--display, Syne, sans-serif);
+  font-size: clamp(1.75rem, 2.6vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hangar-panel__tagline { margin: 0; color: var(--muted, #a29e95); font-size: 0.875rem; }
+
+.hangar-panel__price {
+  margin: 0.4rem 0 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--accent, #3656ae);
+  font-size: 1.0625rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.hangar-panel__specs {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  font-size: 0.8125rem;
+}
+
+.hangar-panel__specs dt {
+  color: var(--quiet, #8a867e);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.hangar-panel__specs dd { margin: 0; color: var(--bone-dim, #d2cdc2); }
+
+.hangar-panel__label {
+  margin: 0 0 0.6rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--quiet, #8a867e);
+}
+
+.hangar-panel__size-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.hangar-panel__size {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0 0.5rem;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--bone-dim, #d2cdc2);
+  background: none;
+  border: 1px solid var(--line, rgba(241, 238, 231, 0.14));
+  border-radius: var(--radius, 2px);
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease, cubic-bezier(0.22, 1, 0.36, 1)), color 0.2s;
+}
+
+.hangar-panel__size:hover { border-color: var(--line-strong, rgba(241, 238, 231, 0.28)); color: var(--bone, #f1eee7); }
+
+.hangar-panel__size[aria-checked="true"] {
+  border-color: var(--accent, #3656ae);
+  background: var(--accent, #3656ae);
+  color: var(--accent-ink, #fff);
+}
+
+.hangar-panel__actions { display: flex; gap: 0.5rem; }
+
+.hangar-panel__add,
+.hangar-panel__save {
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  font: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius, 2px);
+  cursor: pointer;
+  transition: opacity 0.2s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.hangar-panel__add {
+  flex: 1;
+  border: 0;
+  background: var(--accent, #3656ae);
+  color: var(--accent-ink, #fff);
+}
+
+.hangar-panel__add:hover { opacity: 0.88; }
+
+.hangar-panel__save {
+  border: 1px solid var(--line, rgba(241, 238, 231, 0.14));
+  background: none;
+  color: var(--bone-dim, #d2cdc2);
+}
+
+.hangar-panel__save[aria-pressed="true"] {
+  border-color: var(--accent, #3656ae);
+  color: var(--accent-text, #a9bcff);
+}
+
+.hangar.is-turntable .hangar__canvas { cursor: grab; }
+.hangar.is-turntable .hangar__canvas:active { cursor: grabbing; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hangar-hud__rule { transition: none; }
+}
+
+/* Mobile is its own layout, not the wall shrunk.
+
+   One column, and the section is taller than the screen so the wall pans with
+   ordinary page scroll. Taking over the touch gesture instead would fight the
+   page, and there is nowhere to put a right-hand panel, so it becomes a sheet. */
+
+@media (max-width: 900px) {
+  /* The wall fills the view and pans by gesture, so the canvas keeps the
+     vertical drag rather than handing it to a page that cannot scroll. */
+  .hangar__canvas {
+    touch-action: none;
+  }
+
+  .hangar-hud {
+    font-size: 0.625rem;
+  }
+
+  /* The bottom belongs to the sheet, so the whole HUD moves into one row
+     under the site header. The site header already carries the wordmark and
+     the bag, so the hangar's own copies come out rather than doubling up. */
+  .hangar-hud__corner--tl,
+  .hangar-hud__corner--tr {
+    display: none;
+  }
+
+  .hangar-hud__corner--bl {
+    display: none;
+  }
+
+  .hangar-hud__corner--br {
+    top: calc(var(--header-h, 64px) + 0.5rem);
+    right: 0.75rem;
+    bottom: auto;
+    gap: 0.25rem;
+  }
+
+  /* Thumb-sized, and spaced apart so prev and next are not one target. */
+  .hangar-hud__step,
+  .hangar-hud__link,
+  .hangar-hud__back {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hangar-hud__count { margin: 0 0.35rem; }
+
+  .hangar-hud__back {
+    top: calc(var(--header-h, 64px) + 0.5rem);
+    bottom: auto;
+    left: 0.75rem;
+    transform: none;
+    padding: 0.5rem 0.9rem;
+  }
+
+  /* The panel becomes a bottom sheet: the shoe keeps the upper half. */
+  .hangar-panel {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: auto;
+    max-height: 58svh;
+    overflow-y: auto;
+    transform: none;
+    gap: 1.1rem;
+    padding: 1.25rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
+    border-width: 1px 0 0;
+  }
+
+  .hangar-panel__name { font-size: clamp(1.5rem, 7vw, 2rem); }
+  .hangar-panel__size { min-width: 44px; min-height: 44px; }
+  .hangar-panel__add,
+  .hangar-panel__save { min-height: 48px; }
+}
+
+/* Between the phone sheet and the full wall the panel would crowd the shoe,
+   so it narrows before it moves. */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .hangar-panel {
+    width: min(19rem, 36vw);
+    padding: 1.25rem;
+    gap: 1.1rem;
+  }
+
+  .hangar-panel__name { font-size: 1.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hangar-panel { transition: opacity 0.2s linear; }
+}

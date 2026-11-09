@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="/">
+<title>AERO hangar — scene test</title>
+<link rel="icon" href="public/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/hangar.css">
+<style>
+  body { margin: 0; background: #17141c; }
+  .probe {
+    position: fixed; left: 12px; top: 12px; z-index: 40;
+    font: 11px/1.6 ui-monospace, Menlo, Consolas, monospace;
+    color: #d2cdc2; background: rgba(0,0,0,.55); padding: 8px 10px;
+    white-space: pre;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <section class="hangar" id="hangar" aria-label="Hangar showroom scene test">
+    <p class="hangar__loading" id="loading">
+      <span class="hangar__loading-bar" id="bar"></span>
+      <span id="loadingText">Loading the wall</span>
+    </p>
+  </section>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <pre class="probe" id="probe">booting</pre>
+
+<script type="module">
+import { SHOES } from "/js/data.js";
+import { createHangar } from "/js/hangar.js";
+import { createFocus } from "/js/hangar-focus.js";
+import { createWishlist } from "/js/wishlist.js";
+import { createCart } from "/js/cart.js";
+
+const probe = document.getElementById("probe");
+const loading = document.getElementById("loading");
+const bar = document.getElementById("bar");
+const loadingText = document.getElementById("loadingText");
+const results = { errors: [], hoverLog: [] };
+// Declared up front: the hangar callbacks can fire before createFocus resolves.
+let focus = null;
+window.addEventListener("error", (e) => results.errors.push(String(e.message)));
+
+const hangar = await createHangar({
+  mount: document.getElementById("hangar"),
+  shoes: SHOES,
+  onProgress(done, total) {
+    bar.style.setProperty("--progress", done / total);
+    loadingText.textContent = `Loading the wall — ${done} / ${total}`;
+  },
+  onHover(shoe) {
+    results.lastHover = shoe ? shoe.id : null;
+    if (shoe) results.hoverLog.push(shoe.id);
+  },
+  onSelect(shoe, index) {
+    results.lastSelect = `${index}:${shoe.id}`;
+    focus?.focus(index);
+  },
+  onSelectEmpty() {
+    focus?.overview();
+  },
+});
+
+const cart = createCart({});
+const wishlist = createWishlist({});
+focus = await createFocus({
+  hangar,
+  mount: document.getElementById("hangar"),
+  shoes: SHOES,
+  cart,
+  wishlist,
+  chrome: true,
+  onFocusChange(shoe, index) {
+    results.focused = shoe ? `${index}:${shoe.id}` : null;
+  },
+});
+window.__focus = focus;
+
+await hangar.ready;
+loading.classList.add("is-done");
+
+// Measured on demand so the verifier can sample after texture decode has
+// settled rather than during it.
+window.__measureFps = (ms = 2000) => new Promise((resolve) => {
+  let frames = 0;
+  const t0 = performance.now();
+  const tick = () => {
+    const now = performance.now();
+    if (now - t0 >= ms) return resolve(frames / ((now - t0) / 1000));
+    frames += 1;
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+});
+
+setTimeout(async () => {
+  const fps = await window.__measureFps(2000);
+  const loaded = hangar.bays.filter((b) => b.loaded).length;
+  const info = hangar.renderer.info;
+  Object.assign(results, {
+    shoes: SHOES.length,
+    loaded,
+    missing: hangar.bays.filter((b) => !b.loaded).map((b) => b.shoe.id),
+    cols: hangar.grid.cols,
+    rows: hangar.grid.rows,
+    fps: Math.round(fps),
+    drawCalls: info.render.calls,
+    triangles: info.render.triangles,
+    textures: info.memory.textures,
+    geometries: info.memory.geometries,
+    pixelRatio: hangar.renderer.getPixelRatio(),
+    reduced: hangar.reduced,
+  });
+  probe.textContent = JSON.stringify(results, null, 1);
+  window.__hangar = { hangar, focus, results };
+  document.title = "hangar-ready";
+}, 2400);
+</script>
+</body>
+</html>

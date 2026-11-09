@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#08090a">
+  <title>AERO | Weightless objects for the ground</title>
+  <meta name="description" content="AERO is a concept footwear studio in Bengaluru. Thirteen shoes, three films, ten still studies. Weightless objects for the ground.">
+  <meta name="author" content="AERO Studio">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AERO | Weightless objects for the ground">
+  <meta property="og:description" content="Thirteen shoes from one studio. Three carry film. Ten hold still. Every one starts with the sole.">
+  <meta property="og:image" content="public/shoes/blue/still-1600.webp">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="893">
+  <meta property="og:site_name" content="AERO">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AERO | Weightless objects for the ground">
+  <meta name="twitter:description" content="Thirteen shoes from one studio. Three carry film. Ten hold still.">
+  <meta name="twitter:image" content="public/shoes/blue/still-1600.webp">
+  <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="public/favicon.svg">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" href="public/fonts/syne.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="public/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="public/shoes/blue/still-1600.webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/hangar.css">
+  <link rel="stylesheet" href="css/views.css">
+  <link rel="stylesheet" href="css/intro.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script>document.documentElement.classList.add("js");</script>
+  <script type="module" src="js/main.js"></script>
+  <noscript>
+    <style>
+      .intro, .cursor, .grain, .vignette, .scroll-progress, .hero__scroll { display: none !important; }
+      body { overflow: auto !important; }
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+      .collection__grid { display: none !important; }
+      .collection__fallback { display: block !important; }
+    </style>
+  </noscript>
+</head>
+<body class="is-intro">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="AERO opening sequence">
+    <div class="intro__canvas" id="introCanvas" aria-hidden="true"></div>
+    <div class="intro__veil" aria-hidden="true"></div>
+    <div class="intro__flash" id="introFlash" aria-hidden="true"></div>
+
+    <div class="intro__frame" aria-hidden="true">
+      <i class="intro__corner intro__corner--tl"></i>
+      <i class="intro__corner intro__corner--tr"></i>
+      <i class="intro__corner intro__corner--bl"></i>
+      <i class="intro__corner intro__corner--br"></i>
+    </div>
+
+    <div class="intro__hud">
+      <div class="intro__hud-row intro__hud-row--top">
+        <span class="intro__tag">Collection 2026</span>
+        <span class="intro__tag">13 models</span>
+        <span class="intro__tag intro__tag--clock" id="introClock">12.9716 N / 77.5946 E</span>
+      </div>
+
+      <div class="intro__center">
+        <p class="intro__kicker">A study in weight</p>
+        <h1 class="intro__word" id="introWord" aria-label="AERO"></h1>
+        <p class="intro__line">Weightless objects for the ground.</p>
+      </div>
+
+      <div class="intro__hud-row intro__hud-row--bottom">
+        <div class="intro__status">
+          <p class="intro__count"><span id="introCount">000</span><i>/100</i></p>
+          <p class="intro__state" id="introState">Loading the hangar</p>
+        </div>
+        <div class="intro__meter" aria-hidden="true"><span id="introBar"></span></div>
+      </div>
+    </div>
+
+    <p class="intro__label" id="introLabel" aria-hidden="true"><b></b><i></i></p>
+
+    <div class="intro__actions">
+      <button class="intro__enter" id="introEnter" type="button" data-magnetic>
+        <span class="intro__enter-ring" aria-hidden="true"></span>
+        <span class="intro__enter-text">Enter</span>
+      </button>
+    </div>
+
+    <div class="intro__utils">
+      <button class="intro__util" id="introSound" type="button" aria-pressed="false">Sound off</button>
+      <button class="intro__util" id="introSkip" type="button">Skip</button>
+    </div>
+  </div>
+
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__ring"></span>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+  <header class="header" id="siteHeader">
+    <div class="header__inner">
+      <a class="brand" href="#top" aria-label="AERO, back to top">
+        <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="brand__word">AERO</span>
+      </a>
+
+      <nav class="nav nav--pill" id="primaryNav" aria-label="Primary">
+        <span class="nav__indicator" id="navIndicator" aria-hidden="true"></span>
+        <a class="nav__link" href="#home" data-route="home">Home</a>
+        <a class="nav__link" href="#hangar" data-route="hangar">Hangar</a>
+        <a class="nav__link" href="#anatomy" data-section="anatomy">Technology</a>
+        <a class="nav__link" href="#materials" data-section="materials">Materials</a>
+        <a class="nav__link" href="#collection" data-section="collection">Collection</a>
+        <a class="nav__link" href="#contact" data-section="contact">Contact</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="bag-button" id="bagToggle" type="button" aria-label="Open bag, 0 items">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8Z" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M9 9V6.5a3 3 0 0 1 6 0V9" stroke="currentColor" stroke-width="1.3"/>
+          </svg>
+          <span class="bag-button__count" id="bagCount" aria-hidden="true">0</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu" id="siteMenu" role="dialog" aria-modal="true" aria-labelledby="menuTitle" aria-hidden="true" inert>
+    <div class="menu__top">
+      <span class="menu__brand">AERO</span>
+      <button class="menu__close" id="menuClose" type="button" aria-label="Close menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+    </div>
+    <h2 class="sr-only" id="menuTitle">Menu</h2>
+    <nav class="menu__nav" aria-label="Mobile">
+      <a class="menu__link" href="#home" data-route="home" style="--i:0"><span>01</span>Home</a>
+      <a class="menu__link" href="#hangar" data-route="hangar" style="--i:1"><span>02</span>Hangar</a>
+      <a class="menu__link" href="#anatomy" data-section="anatomy" style="--i:2"><span>03</span>Technology</a>
+      <a class="menu__link" href="#materials" data-section="materials" style="--i:3"><span>04</span>Materials</a>
+      <a class="menu__link" href="#collection" data-section="collection" style="--i:4"><span>05</span>Collection</a>
+      <a class="menu__link" href="#contact" data-section="contact" style="--i:5"><span>06</span>Contact</a>
+    </nav>
+    <div class="menu__foot">
+      <a href="mailto:studio@aero.example">studio@aero.example</a>
+      <button class="menu__bag" id="menuBag" type="button">Open bag <span id="menuBagCount">(0)</span></button>
+      <p>Bengaluru, IN / 12.9716 N</p>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1">
+    <div class="view view--home is-active" id="viewHome" data-view="home">
+    <section class="hero" id="top" aria-labelledby="heroTitle">
+      <span class="hero__ghost" aria-hidden="true">AERO</span>
+      <div class="hero__grid container">
+        <div class="hero__copy">
+          <p class="eyebrow" data-hero="0"><span class="eyebrow__rule" aria-hidden="true"></span>Collection 001 / Autumn 2026</p>
+          <h1 class="hero__title" id="heroTitle">
+            <span class="hero__line"><span data-hero="1">Weightless</span></span>
+            <span class="hero__line"><span data-hero="2">objects for</span></span>
+            <span class="hero__line"><span data-hero="3">the <em>ground.</em></span></span>
+          </h1>
+          <p class="hero__lede" data-hero="4">Thirteen shoes from one studio. Three carry film. Ten hold still. Every one starts with the sole.</p>
+          <div class="hero__actions" data-hero="5">
+            <a class="button button--solid" href="#hangar" data-route="hangar" data-magnetic><span>Enter the hangar</span></a>
+            <a class="link-arrow" href="#anatomy">How they are built <span aria-hidden="true">+</span></a>
+          </div>
+          <dl class="hero__facts" data-hero="6">
+            <div><dt>Objects</dt><dd>13</dd></div>
+            <div><dt>Films</dt><dd>03</dd></div>
+            <div><dt>Still studies</dt><dd>10</dd></div>
+          </dl>
+        </div>
+
+        <figure class="hero__media" data-hero="7" data-parallax="0.05">
+          <div class="hero__frame">
+            <img class="hero__image" src="public/shoes/blue/still-1600.webp" srcset="public/shoes/blue/still-800.webp 800w, public/shoes/blue/still-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 42vw" width="1600" height="893" alt="Cirra, a cobalt road sneaker, photographed in the AERO studio" fetchpriority="high" decoding="async">
+            <span class="frame-corner frame-corner--tl" aria-hidden="true"></span>
+            <span class="frame-corner frame-corner--tr" aria-hidden="true"></span>
+            <span class="frame-corner frame-corner--bl" aria-hidden="true"></span>
+            <span class="frame-corner frame-corner--br" aria-hidden="true"></span>
+            <span class="hero__media-index">01</span>
+            <figcaption class="hero__caption">
+              <span class="hero__caption-name">Cirra</span>
+              <span class="hero__caption-type">Road sneaker / Cobalt</span>
+              <span class="hero__caption-price">₹12,999</span>
+            </figcaption>
+          </div>
+          <p class="hero__media-note"><span aria-hidden="true">●</span> Film study 01 / 360 view inside</p>
+        </figure>
+      </div>
+      <a class="hero__scroll" href="#collection">
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+        <span>Scroll to the collection</span>
+      </a>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Weightless objects</span><i></i><span>Collection 001</span><i></i><span>Bengaluru, IN</span><i></i><span>Autumn 2026</span><i></i>
+        <span>Weightless objects</span><i></i><span>Collection 001</span><i></i><span>Bengaluru, IN</span><i></i><span>Autumn 2026</span><i></i>
+      </div>
+    </div>
+
+    <section class="collection section" id="collection" aria-labelledby="collectionTitle">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>The collection / 13 objects</p>
+          <div class="section-head__row">
+            <h2 class="section-title" id="collectionTitle">Thirteen ways<br>to meet the ground.</h2>
+            <div class="section-head__side">
+              <p class="section-lede">Sneakers, boots, formal shoes, sandals, and two quiet casuals. Filter by category, then open any object for the full study.</p>
+              <p class="section-count"><span id="collectionCount">13</span> <span id="collectionCountLabel">objects shown</span></p>
+            </div>
+          </div>
+        </header>
+
+        <div class="filters" id="filters" role="group" aria-label="Filter collection by category"></div>
+        <div class="collection__grid" id="collectionGrid" aria-live="polite"></div>
+        <noscript>
+          <div class="collection__fallback">
+            <p>The collection needs JavaScript for its viewers. The studio contact is <a href="mailto:studio@aero.example">studio@aero.example</a>.</p>
+          </div>
+        </noscript>
+      </div>
+    </section>
+
+    <section class="study" id="study" aria-labelledby="studyTitle">
+      <div class="study__sticky">
+        <div class="study__stage" id="studyStage">
+          <canvas class="study__canvas" id="studyCanvas" aria-label="360 degree view of the active film shoe"></canvas>
+          <img class="study__poster" id="studyPoster" src="public/shoes/blue/poster-360.webp" alt="" aria-hidden="true">
+          <div class="study__scrim" aria-hidden="true"></div>
+
+          <div class="study__head container">
+            <div>
+              <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>Object study / 360</p>
+              <h2 class="study__title" id="studyTitle">Turn it over.<br>Then look again.</h2>
+            </div>
+            <div class="study__tabs" id="studyTabs" role="group" aria-label="Choose a film study"></div>
+          </div>
+
+          <div class="study__callouts" id="studyCallouts"></div>
+
+          <div class="study__foot container">
+            <div class="study__model">
+              <span class="study__counter" id="studyCounter">001</span>
+              <span class="study__total" id="studyTotal">/ 215</span>
+              <span class="study__name" id="studyName">Cirra</span>
+            </div>
+            <p class="study__hint"><span class="study__hint-line" aria-hidden="true"></span>Scroll to turn <span>Three films, one scroll</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="anatomy section" id="anatomy" aria-labelledby="anatomyTitle">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>Anatomy / exploded view</p>
+          <div class="section-head__row">
+            <h2 class="section-title" id="anatomyTitle">Four parts.<br>No spare decisions.</h2>
+            <div class="section-head__side">
+              <p class="section-lede">A shoe comes apart in the order it was made. Choose a film study, then choose a part. The film moves to that layer.</p>
+              <p class="section-count"><span id="anatomyActive">Cirra / road sneaker</span></p>
+            </div>
+          </div>
+        </header>
+
+        <div class="anatomy__tabs" id="anatomyTabs" role="group" aria-label="Choose a shoe to take apart"></div>
+
+        <div class="anatomy__grid">
+          <div class="anatomy__media" data-reveal>
+            <div class="anatomy__frame">
+              <video class="anatomy__video" id="anatomyVideo" muted playsinline loop preload="metadata" poster="public/shoes/blue/poster-exploded.webp" aria-label="Exploded view of the Cirra sneaker">
+                <source src="public/shoes/blue/exploded.mp4" type="video/mp4">
+                <source src="public/shoes/blue/exploded.webm" type="video/webm">
+              </video>
+              <div class="anatomy__rail" aria-hidden="true"><span id="anatomyProgress"></span></div>
+              <div class="anatomy__marks" id="anatomyMarks" aria-hidden="true"></div>
+              <button class="film-toggle" id="anatomyPlay" type="button" aria-label="Pause the exploded film">Pause film</button>
+              <div class="anatomy__tag"><span>Exploded view</span><span>Not to scale</span></div>
+            </div>
+            <p class="anatomy__caption"><span id="anatomyCaption">Cirra / four components</span><span>Concept study</span></p>
+          </div>
+
+          <div class="anatomy__copy" data-reveal>
+            <p class="anatomy__kicker">The order matters</p>
+            <ol class="anatomy__parts" id="anatomyParts"></ol>
+            <div class="anatomy__active" aria-live="polite">
+              <p class="anatomy__active-name" id="anatomyPartName">Outsole</p>
+              <p class="anatomy__active-note" id="anatomyPartNote">Carbon rubber perimeter with a 4 mm lug. Open channels let the forefoot flex without fighting the road.</p>
+            </div>
+            <dl class="anatomy__specs" id="anatomySpecs"></dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="materials" id="materials" aria-labelledby="materialsTitle">
+      <div class="materials__film">
+        <video class="materials__video" id="materialVideo" muted playsinline loop preload="metadata" poster="public/shoes/blue/poster-closeup.webp" aria-label="Close study of the Cirra knit upper">
+          <source src="public/shoes/blue/closeup.mp4" type="video/mp4">
+          <source src="public/shoes/blue/closeup.webm" type="video/webm">
+        </video>
+        <div class="materials__scrim" aria-hidden="true"></div>
+        <div class="materials__overlay container">
+          <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>Material / close study</p>
+          <h2 class="materials__title" id="materialsTitle">The surface<br>does the talking.</h2>
+          <blockquote class="materials__quote" id="materialQuote">One knit surface. Denser where the foot needs it. Nothing stitched on top.</blockquote>
+          <p class="materials__caption" id="materialCaption">Engineered knit / 1.2 mm / 68% recycled yarn</p>
+          <button class="film-toggle film-toggle--light" id="materialPlay" type="button" aria-label="Play the material film">Play film</button>
+        </div>
+      </div>
+
+      <div class="container materials__body">
+        <div class="materials__intro" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>Measured, not promised</p>
+          <p class="materials__note" id="materialNote">One continuous knit surface, zonally densified at the heel and vamp. No overlays, no stitched panels, no seams to break in.</p>
+        </div>
+        <div class="metrics" id="metrics"></div>
+        <p class="footnote">Concept measurements from studio fit panels. Not certified lab data. Prices in INR.</p>
+      </div>
+    </section>
+
+    <section class="notes section" id="notes" aria-labelledby="notesTitle">
+      <div class="container">
+        <header class="notes__head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>Notes / from the bench</p>
+          <div class="section-head__row">
+            <h2 class="section-title" id="notesTitle">Three things<br>we keep relearning.</h2>
+            <p class="section-lede">Development notes, not reviews. The shoes are concept studies, and the work is in the decisions you cannot see.</p>
+          </div>
+        </header>
+        <div class="notes__grid" id="notesGrid"></div>
+      </div>
+    </section>
+
+    <section class="letters section" id="letters" aria-labelledby="lettersTitle">
+      <div class="container">
+        <div class="letters__inner" data-reveal>
+          <div class="letters__copy">
+            <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>Letters / four per year</p>
+            <h2 class="letters__title" id="lettersTitle">Stay close<br>to the ground.</h2>
+            <p>New work, material notes, and the occasional factory visit. Four letters a year. Nothing else.</p>
+          </div>
+
+          <form class="letters__form" id="newsletterForm" novalidate>
+            <label class="field">
+              <span class="field__label">Email address</span>
+              <span class="field__row">
+                <input class="field__input" id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@studio.com" aria-describedby="emailNote emailError" required>
+                <button class="button button--solid field__button" type="submit">Join the list</button>
+              </span>
+            </label>
+            <p class="field__note" id="emailNote">One letter per season. Demo form, nothing is stored or sent.</p>
+            <p class="field__error" id="emailError" role="alert" hidden></p>
+            <div class="letters__success" id="newsletterSuccess" role="status" hidden>
+              <span class="letters__check" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.2 18 20 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+              <span>You are on the list. This is a demo, so no email was sent.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <div class="view view--hangar" id="viewHangar" data-view="hangar" hidden>
+    <section class="hangar" id="showroom" aria-labelledby="showroomTitle">
+      <h2 class="sr-only" id="showroomTitle">Hangar showroom</h2>
+      <a class="hangar__home" href="#home" data-route="home">Back to home</a>
+      <div class="hangar__stage" id="hangarStage">
+        <p class="hangar__loading" id="hangarLoading" hidden>
+          <span class="hangar__loading-bar" id="hangarLoadingBar"></span>
+          <span id="hangarLoadingText">Loading the wall</span>
+        </p>
+        <div class="hangar__fallback" id="hangarFallback" hidden>
+          <p class="hangar__fallback-text">This browser has no WebGL, so the 3D showroom cannot run. The same thirteen shoes are in the collection grid.</p>
+          <a class="button button--solid" href="#collection"><span>Browse the collection grid</span></a>
+        </div>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__contact">
+          <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>Contact</p>
+          <h2 class="footer__title">Talk to<br>the studio.</h2>
+          <a class="footer__email" href="mailto:studio@aero.example">studio@aero.example</a>
+          <p class="footer__address">Bengaluru, IN / 12.9716 N, 77.5946 E</p>
+        </div>
+
+        <div class="footer__nav">
+          <div>
+            <p class="footer__label">Explore</p>
+            <a href="#hangar" data-route="hangar">Hangar</a>
+            <a href="#collection">Collection</a>
+            <a href="#study">Object study</a>
+            <a href="#anatomy">Anatomy</a>
+            <a href="#materials">Materials</a>
+            <a href="#notes">Notes</a>
+          </div>
+          <div>
+            <p class="footer__label">Elsewhere</p>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (opens in a new tab)</span></a>
+            <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer">Pinterest<span class="sr-only"> (opens in a new tab)</span></a>
+            <a href="https://www.are.na/" target="_blank" rel="noopener noreferrer">Are.na<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+          <div>
+            <p class="footer__label">Practical</p>
+            <a href="#letters">Letters</a>
+            <button class="footer__link-button" id="replayIntro" type="button">Replay intro</button>
+            <button class="footer__top-button" id="backToTop" type="button">Back to top <span aria-hidden="true">↑</span></button>
+            <p class="footer__small">Ships worldwide, in another life.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__wordmark" aria-hidden="true">AERO</div>
+
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> AERO. A concept study. No real orders are fulfilled.</p>
+        <p>Specifications are illustrative. Prices in INR.</p>
+        <p>Built with 599 frames and a slow scroll.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+  <aside class="cart" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true" inert>
+    <div class="cart__panel">
+      <header class="cart__head">
+        <div>
+          <p class="cart__eyebrow">Your selection</p>
+          <h2 class="cart__title" id="cartTitle">Bag <span id="cartCountInline">(0)</span></h2>
+        </div>
+        <button class="cart__close" id="cartClose" type="button" aria-label="Close bag">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.3"/>
+          </svg>
+        </button>
+      </header>
+
+      <div class="cart__body">
+        <div class="cart__empty" id="cartEmpty">
+          <span class="cart__empty-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3>Nothing here yet.</h3>
+          <p>Thirteen objects are waiting. Start with the one you would wear first.</p>
+          <button class="button" id="cartBrowse" type="button">Browse the collection</button>
+        </div>
+        <ul class="cart__items" id="cartItems" aria-label="Items in your bag"></ul>
+      </div>
+
+      <footer class="cart__foot">
+        <div class="cart__subtotal"><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div>
+        <p class="cart__fine">Taxes and shipping are calculated at checkout. This is a demo storefront, no payment is taken.</p>
+        <button class="button button--solid cart__checkout" id="checkoutButton" type="button">Checkout demo</button>
+      </footer>
+    </div>
+  </aside>
+
+  <dialog class="product" id="productDialog" aria-labelledby="productName">
+    <div class="product__shell">
+      <button class="product__close" id="productClose" type="button" aria-label="Close product study">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+
+      <div class="product__media">
+        <div class="product__viewer" id="productViewer"></div>
+        <div class="product__media-bar">
+          <div class="product__tabs" id="productTabs" role="tablist" aria-label="Viewer mode"></div>
+          <span class="product__counter" id="productCounter">001 / 215</span>
+        </div>
+      </div>
+
+      <div class="product__info" id="productInfo">
+        <div class="product__heading">
+          <p class="product__index" id="productIndex">01 / 13</p>
+          <p class="product__category" id="productCategory">Sneakers / Road sneaker</p>
+          <h2 class="product__name" id="productName">Cirra</h2>
+          <p class="product__tagline" id="productTagline">Built around moving air.</p>
+          <p class="product__price" id="productPrice">₹12,999</p>
+        </div>
+
+        <p class="product__desc" id="productDesc">A road sneaker reduced to three ideas: a single knit upper, a foam stack that returns more than it takes, and a sole that knows where the ground is.</p>
+
+        <fieldset class="sizes" id="productSizes">
+          <legend>Size / EU</legend>
+          <div class="sizes__options" id="productSizeOptions"></div>
+        </fieldset>
+
+        <div class="product__buy">
+          <button class="button button--solid product__add" id="productAdd" type="button">Add to bag</button>
+          <p class="product__added" id="productAdded" role="status" aria-live="polite"></p>
+        </div>
+
+        <dl class="product__specs" id="productSpecs"></dl>
+
+        <div class="product__metrics" id="productMetrics"></div>
+
+        <div class="product__material">
+          <p class="product__material-label">Material note</p>
+          <p id="productMaterial"></p>
+          <p class="product__material-caption" id="productMaterialCaption"></p>
+        </div>
+
+        <div class="product__pager">
+          <button class="product__pager-button" id="productPrev" type="button"><span aria-hidden="true">←</span> Previous object</button>
+          <button class="product__pager-button" id="productNext" type="button">Next object <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="checkout" id="checkoutDialog" aria-labelledby="checkoutTitle">
+    <div class="checkout__inner">
+      <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>Demo checkout</p>
+      <h2 id="checkoutTitle">No payment<br>was taken.</h2>
+      <p class="checkout__copy">This storefront is a front-end study. Your bag stays saved on this device, ready for another look.</p>
+      <div class="checkout__summary">
+        <span>AERO / Collection 001</span>
+        <span id="checkoutSummary">0 items</span>
+      </div>
+      <button class="button button--solid" id="closeCheckout" type="button">Return to the studio</button>
+      <p class="checkout__fine">No order number, no shipment, no email. Just the shoes.</p>
+    </div>
+  </dialog>
+
+  <div class="sr-only" id="liveRegion" aria-live="polite" aria-atomic="true"></div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AERO",
+    "description": "A concept footwear studio. Thirteen shoes, three films, ten still studies.",
+    "email": "studio@aero.example",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bengaluru",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+
+  <script>
+    /* If the module layer never boots, release the intro and show the static page. */
+    window.__aeroBootTimer = window.setTimeout(function () {
+      document.documentElement.classList.add("is-fallback");
+      document.body.classList.remove("is-intro");
+      var intro = document.getElementById("intro");
+      if (intro) {
+        intro.classList.add("is-done");
+        intro.hidden = true;
+      }
+      ["siteHeader", "main", "contact"].forEach(function (id) {
+        var node = document.getElementById(id);
+        if (node) node.inert = false;
+      });
+      document.querySelectorAll("[data-reveal], [data-hero]").forEach(function (node) {
+        node.classList.add("is-revealed");
+      });
+    }, 9000);
+  </script>
+</body>
+</html>

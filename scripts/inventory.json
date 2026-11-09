@@ -1,0 +1,126 @@
+{
+  "frames": {
+    "blue": {
+      "source_folder": "BLUE SHOE",
+      "count": 238,
+      "first": "frame_001.jpg",
+      "last": "frame_238.jpg",
+      "missing": [
+        239,
+        240
+      ],
+      "dimensions_sample": {
+        "(1920, 1080)": 12
+      }
+    },
+    "brown": {
+      "source_folder": "BROWN_SHOE",
+      "count": 240,
+      "first": "frame_001.jpg",
+      "last": "frame_240.jpg",
+      "missing": [],
+      "dimensions_sample": {
+        "(1920, 1080)": 12
+      }
+    },
+    "black": {
+      "source_folder": "BLACK_SHOE",
+      "count": 240,
+      "first": "frame_001.jpg",
+      "last": "frame_240.jpg",
+      "missing": [],
+      "dimensions_sample": {
+        "(1920, 1080)": 12
+      }
+    }
+  },
+  "videos": [
+    {
+      "color": "blue",
+      "file": "blue_shoe close up.mp4",
+      "bytes": 755578
+    },
+    {
+      "color": "blue",
+      "file": "blue_shoe parts.mp4",
+      "bytes": 976193
+    },
+    {
+      "color": "blue",
+      "file": "blue_shoe reveal.mp4",
+      "bytes": 990759
+    },
+    {
+      "color": "brown",
+      "file": "brown_shoe  360.mp4",
+      "bytes": 889165
+    },
+    {
+      "color": "brown",
+      "file": "brown_shoe  parts.mp4",
+      "bytes": 896130
+    },
+    {
+      "color": "brown",
+      "file": "brown_shoe  reveal.mp4",
+      "bytes": 488370
+    },
+    {
+      "color": "brown",
+      "file": "brown_shoe close up.mp4",
+      "bytes": 884950
+    },
+    {
+      "color": "black",
+      "file": "black_shoe 360.mp4",
+      "bytes": 808072
+    },
+    {
+      "color": "black",
+      "file": "black_shoe close up.mp4",
+      "bytes": 874081
+    },
+    {
+      "color": "black",
+      "file": "black_shoe parts.mp4",
+      "bytes": 737854
+    },
+    {
+      "color": "black",
+      "file": "black_shoe reveal.mp4",
+      "bytes": 609205
+    }
+  ],
+  "stills": [
+    {
+      "color": "blue",
+      "file": "blue shoe.jpeg",
+      "bytes": 79091,
+      "size": [
+        1599,
+        892
+      ]
+    },
+    {
+      "color": "brown",
+      "file": "brown_shoe .jpeg",
+      "bytes": 265817,
+      "size": [
+        884,
+        579
+      ]
+    },
+    {
+      "color": "black",
+      "file": "black shoe.jpeg",
+      "bytes": 232135,
+      "size": [
+        968,
+        584
+      ]
+    }
+  ],
+  "notes": [
+    "blue: missing frames [239, 240]"
+  ]
+}

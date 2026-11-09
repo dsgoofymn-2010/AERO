@@ -1,0 +1,96 @@
+{
+  "videos": {
+    "blue": {
+      "blue_shoe close up.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      },
+      "blue_shoe parts.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      },
+      "blue_shoe reveal.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      }
+    },
+    "blue_combined": [],
+    "brown": {
+      "brown_shoe  360.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      },
+      "brown_shoe  parts.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      },
+      "brown_shoe  reveal.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      },
+      "brown_shoe close up.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      }
+    },
+    "brown_combined": [],
+    "black": {
+      "black_shoe 360.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      },
+      "black_shoe close up.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      },
+      "black_shoe parts.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      },
+      "black_shoe reveal.mp4": {
+        "frames_sampled": 12,
+        "hits": [],
+        "width": 854,
+        "height": 480
+      }
+    },
+    "black_combined": []
+  },
+  "frames": {
+    "blue": {
+      "sampled": 20,
+      "recurring": [],
+      "total_components": 48
+    },
+    "brown": {
+      "sampled": 20,
+      "recurring": [],
+      "total_components": 11
+    },
+    "black": {
+      "sampled": 20,
+      "recurring": [],
+      "total_components": 0
+    }
+  }
+}

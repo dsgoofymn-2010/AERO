@@ -1,0 +1,1260 @@
+{
+  "generated": "2026-11-07T11:43:37",
+  "elapsed_seconds": 301.5,
+  "shoes": {
+    "blue": {
+      "name": "Cirra",
+      "still": {
+        "source": "BLUE SHOE\\blue shoe.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 892,
+          "bottom_right_max": 100,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 105,
+            "hot": 0
+          },
+          "veo": {
+            "max": 100,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 892,
+        "files": {
+          "still-1600.webp": 62240,
+          "still-800.webp": 24662,
+          "detail-1600.webp": 80090
+        },
+        "id": "blue",
+        "name": "Cirra"
+      },
+      "videos": {
+        "360": {
+          "source": null,
+          "marks": [],
+          "action": "rebuilt from clean frames",
+          "before": {
+            "action": "rebuilt from clean frames"
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 215,
+            "star_max": 159,
+            "star_hot": 0,
+            "star_match": 0.219,
+            "veo_max": 142,
+            "veo_hot": 0,
+            "veo_match": 0.03
+          },
+          "files": {
+            "360.mp4": 3800946,
+            "360.webm": 1091586,
+            "poster-360.webp": 17952
+          },
+          "shoe": "blue",
+          "name": "Cirra",
+          "label": "360"
+        },
+        "exploded": {
+          "source": "BLUE SHOE\\blue_shoe parts.mp4",
+          "marks": [
+            "veo"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 190,
+            "star_max": 108,
+            "star_hot": 0,
+            "star_match": 0.336,
+            "veo_max": 167,
+            "veo_hot": 0,
+            "veo_match": 0.0
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 190,
+            "star_max": 108,
+            "star_hot": 0,
+            "star_match": 0.332,
+            "veo_max": 103,
+            "veo_hot": 0,
+            "veo_match": 0.172
+          },
+          "files": {
+            "exploded.mp4": 2344973,
+            "exploded.webm": 909527,
+            "poster-exploded.webp": 26616
+          },
+          "shoe": "blue",
+          "name": "Cirra",
+          "label": "exploded"
+        },
+        "closeup": {
+          "source": "BLUE SHOE\\blue_shoe close up.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 227,
+            "star_hot": 23,
+            "star_match": 0.999,
+            "veo_max": 223,
+            "veo_hot": 0,
+            "veo_match": 0.203
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 214,
+            "star_hot": 0,
+            "star_match": 0.46,
+            "veo_max": 224,
+            "veo_hot": 0,
+            "veo_match": 0.217
+          },
+          "files": {
+            "closeup.mp4": 3537245,
+            "closeup.webm": 1195507,
+            "poster-closeup.webp": 68470
+          },
+          "shoe": "blue",
+          "name": "Cirra",
+          "label": "closeup"
+        },
+        "reveal": {
+          "source": "BLUE SHOE\\blue_shoe reveal.mp4",
+          "marks": [
+            "veo"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 190,
+            "star_max": 188,
+            "star_hot": 0,
+            "star_match": 0.121,
+            "veo_max": 173,
+            "veo_hot": 0,
+            "veo_match": 0.0
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 190,
+            "star_max": 188,
+            "star_hot": 0,
+            "star_match": 0.121,
+            "veo_max": 126,
+            "veo_hot": 0,
+            "veo_match": 0.0
+          },
+          "files": {
+            "reveal.mp4": 2481407,
+            "reveal.webm": 644149,
+            "poster-reveal.webp": 20352
+          },
+          "shoe": "blue",
+          "name": "Cirra",
+          "label": "reveal"
+        }
+      },
+      "frames": {
+        "desktop": {
+          "count": 215,
+          "width": 1280,
+          "height": 720,
+          "bytes": 4362736,
+          "first": "frame_001.webp",
+          "last": "frame_215.webp"
+        },
+        "mobile": {
+          "count": 215,
+          "width": 720,
+          "height": 405,
+          "bytes": 1777584,
+          "first": "frame_001.webp",
+          "last": "frame_215.webp"
+        }
+      }
+    },
+    "brown": {
+      "name": "Terrae",
+      "still": {
+        "source": "BROWN_SHOE\\brown_shoe .jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 884,
+          "height": 579,
+          "bottom_right_max": 107,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 92,
+            "hot": 0
+          },
+          "veo": {
+            "max": 105,
+            "hot": 0
+          }
+        },
+        "width": 884,
+        "height": 579,
+        "files": {
+          "still-1600.webp": 35712,
+          "still-800.webp": 26282,
+          "detail-1600.webp": 49424
+        },
+        "id": "brown",
+        "name": "Terrae"
+      },
+      "videos": {
+        "360": {
+          "source": "BROWN_SHOE\\brown_shoe  360.mp4",
+          "marks": [
+            "veo"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 98,
+            "star_hot": 0,
+            "star_match": 0.0,
+            "veo_max": 176,
+            "veo_hot": 0,
+            "veo_match": 0.0
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 98,
+            "star_hot": 0,
+            "star_match": 0.0,
+            "veo_max": 103,
+            "veo_hot": 0,
+            "veo_match": 0.177
+          },
+          "files": {
+            "360.mp4": 1588281,
+            "360.webm": 509137,
+            "poster-360.webp": 11378
+          },
+          "shoe": "brown",
+          "name": "Terrae",
+          "label": "360"
+        },
+        "exploded": {
+          "source": "BROWN_SHOE\\brown_shoe  parts.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 156,
+            "star_hot": 0,
+            "star_match": 0.921,
+            "veo_max": 102,
+            "veo_hot": 0,
+            "veo_match": 0.057
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 88,
+            "star_hot": 0,
+            "star_match": 0.064,
+            "veo_max": 102,
+            "veo_hot": 0,
+            "veo_match": 0.048
+          },
+          "files": {
+            "exploded.mp4": 1983755,
+            "exploded.webm": 593896,
+            "poster-exploded.webp": 32730
+          },
+          "shoe": "brown",
+          "name": "Terrae",
+          "label": "exploded"
+        },
+        "closeup": {
+          "source": "BROWN_SHOE\\brown_shoe close up.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 185,
+            "star_hot": 0,
+            "star_match": 0.971,
+            "veo_max": 148,
+            "veo_hot": 0,
+            "veo_match": 0.179
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 149,
+            "star_hot": 0,
+            "star_match": 0.318,
+            "veo_max": 148,
+            "veo_hot": 0,
+            "veo_match": 0.208
+          },
+          "files": {
+            "closeup.mp4": 2950806,
+            "closeup.webm": 736488,
+            "poster-closeup.webp": 58892
+          },
+          "shoe": "brown",
+          "name": "Terrae",
+          "label": "closeup"
+        },
+        "reveal": {
+          "source": "BROWN_SHOE\\brown_shoe  reveal.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 94,
+            "star_hot": 0,
+            "star_match": 0.923,
+            "veo_max": 20,
+            "veo_hot": 0,
+            "veo_match": 0.153
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 17,
+            "star_hot": 0,
+            "star_match": 0.15,
+            "veo_max": 20,
+            "veo_hot": 0,
+            "veo_match": 0.156
+          },
+          "files": {
+            "reveal.mp4": 1100211,
+            "reveal.webm": 194216,
+            "poster-reveal.webp": 13754
+          },
+          "shoe": "brown",
+          "name": "Terrae",
+          "label": "reveal"
+        }
+      },
+      "frames": {
+        "desktop": {
+          "count": 192,
+          "width": 1280,
+          "height": 720,
+          "bytes": 2600924,
+          "first": "frame_001.webp",
+          "last": "frame_192.webp"
+        },
+        "mobile": {
+          "count": 192,
+          "width": 720,
+          "height": 405,
+          "bytes": 1094158,
+          "first": "frame_001.webp",
+          "last": "frame_192.webp"
+        }
+      }
+    },
+    "black": {
+      "name": "Onyx",
+      "still": {
+        "source": "BLACK_SHOE\\black shoe.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 968,
+          "height": 584,
+          "bottom_right_max": 94,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 98,
+            "hot": 0
+          },
+          "veo": {
+            "max": 94,
+            "hot": 0
+          }
+        },
+        "width": 968,
+        "height": 584,
+        "files": {
+          "still-1600.webp": 24922,
+          "still-800.webp": 15450,
+          "detail-1600.webp": 33524
+        },
+        "id": "black",
+        "name": "Onyx"
+      },
+      "videos": {
+        "360": {
+          "source": "BLACK_SHOE\\black_shoe 360.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 172,
+            "star_hot": 0,
+            "star_match": 0.718,
+            "veo_max": 138,
+            "veo_hot": 0,
+            "veo_match": 0.243
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 137,
+            "star_hot": 0,
+            "star_match": 0.0,
+            "veo_max": 138,
+            "veo_hot": 0,
+            "veo_match": 0.215
+          },
+          "files": {
+            "360.mp4": 1482577,
+            "360.webm": 383738,
+            "poster-360.webp": 12150
+          },
+          "shoe": "black",
+          "name": "Onyx",
+          "label": "360"
+        },
+        "exploded": {
+          "source": "BLACK_SHOE\\black_shoe parts.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 144,
+            "star_hot": 0,
+            "star_match": 0.883,
+            "veo_max": 87,
+            "veo_hot": 0,
+            "veo_match": 0.176
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 86,
+            "star_hot": 0,
+            "star_match": 0.0,
+            "veo_max": 88,
+            "veo_hot": 0,
+            "veo_match": 0.178
+          },
+          "files": {
+            "exploded.mp4": 1386964,
+            "exploded.webm": 337105,
+            "poster-exploded.webp": 19704
+          },
+          "shoe": "black",
+          "name": "Onyx",
+          "label": "exploded"
+        },
+        "closeup": {
+          "source": "BLACK_SHOE\\black_shoe close up.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 189,
+            "star_hot": 0,
+            "star_match": 0.937,
+            "veo_max": 114,
+            "veo_hot": 0,
+            "veo_match": 0.141
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 156,
+            "star_hot": 0,
+            "star_match": 0.227,
+            "veo_max": 115,
+            "veo_hot": 0,
+            "veo_match": 0.158
+          },
+          "files": {
+            "closeup.mp4": 2711845,
+            "closeup.webm": 721849,
+            "poster-closeup.webp": 38856
+          },
+          "shoe": "black",
+          "name": "Onyx",
+          "label": "closeup"
+        },
+        "reveal": {
+          "source": "BLACK_SHOE\\black_shoe reveal.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 94,
+            "star_hot": 0,
+            "star_match": 0.927,
+            "veo_max": 83,
+            "veo_hot": 0,
+            "veo_match": 0.165
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 25,
+            "star_hot": 0,
+            "star_match": 0.248,
+            "veo_max": 97,
+            "veo_hot": 0,
+            "veo_match": 0.18
+          },
+          "files": {
+            "reveal.mp4": 1500695,
+            "reveal.webm": 256045,
+            "poster-reveal.webp": 14738
+          },
+          "shoe": "black",
+          "name": "Onyx",
+          "label": "reveal"
+        }
+      },
+      "frames": {
+        "desktop": {
+          "count": 192,
+          "width": 1280,
+          "height": 720,
+          "bytes": 2043926,
+          "first": "frame_001.webp",
+          "last": "frame_192.webp"
+        },
+        "mobile": {
+          "count": 192,
+          "width": 720,
+          "height": 405,
+          "bytes": 845440,
+          "first": "frame_001.webp",
+          "last": "frame_192.webp"
+        }
+      }
+    },
+    "kestrel": {
+      "name": "Kestrel",
+      "still": {
+        "source": "Chelsea boot\\Chelsea boot.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 893,
+          "bottom_right_max": 101,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 106,
+            "hot": 0
+          },
+          "veo": {
+            "max": 100,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 893,
+        "files": {
+          "still-1600.webp": 62084,
+          "still-800.webp": 19608,
+          "detail-1600.webp": 81156
+        },
+        "id": "kestrel",
+        "name": "Kestrel"
+      },
+      "videos": {
+        "360": {
+          "source": "Chelsea boot\\Chelsea boot 360.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 201,
+            "star_hot": 0,
+            "star_match": 0.909,
+            "veo_max": 203,
+            "veo_hot": 0,
+            "veo_match": 0.185
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 159,
+            "star_hot": 0,
+            "star_match": 0.306,
+            "veo_max": 207,
+            "veo_hot": 0,
+            "veo_match": 0.193
+          },
+          "files": {
+            "360.mp4": 4515749,
+            "360.webm": 1482887,
+            "poster-360.webp": 101290
+          },
+          "shoe": "kestrel",
+          "name": "Kestrel",
+          "label": "360"
+        },
+        "exploded": {
+          "source": "Chelsea boot\\Chelsea boot exploded.mp4",
+          "marks": [
+            "veo"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 121,
+            "star_max": 71,
+            "star_hot": 0,
+            "star_match": 0.0,
+            "veo_max": 255,
+            "veo_hot": 39,
+            "veo_match": 1.0
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 121,
+            "star_max": 71,
+            "star_hot": 0,
+            "star_match": 0.0,
+            "veo_max": 174,
+            "veo_hot": 0,
+            "veo_match": 0.44
+          },
+          "files": {
+            "exploded.mp4": 1573176,
+            "exploded.webm": 460635,
+            "poster-exploded.webp": 36044
+          },
+          "shoe": "kestrel",
+          "name": "Kestrel",
+          "label": "exploded"
+        },
+        "closeup": {
+          "source": "Chelsea boot\\Chelsea boot close up.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 201,
+            "star_hot": 0,
+            "star_match": 0.909,
+            "veo_max": 203,
+            "veo_hot": 0,
+            "veo_match": 0.185
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 159,
+            "star_hot": 0,
+            "star_match": 0.306,
+            "veo_max": 207,
+            "veo_hot": 0,
+            "veo_match": 0.193
+          },
+          "files": {
+            "closeup.mp4": 4515749,
+            "closeup.webm": 1482887,
+            "poster-closeup.webp": 70874
+          },
+          "shoe": "kestrel",
+          "name": "Kestrel",
+          "label": "closeup"
+        }
+      },
+      "frames": null
+    },
+    "vertex": {
+      "name": "Vertex",
+      "still": {
+        "source": "High-top basketball sneaker\\High-top basketball sneaker.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 893,
+          "bottom_right_max": 98,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 101,
+            "hot": 0
+          },
+          "veo": {
+            "max": 96,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 893,
+        "files": {
+          "still-1600.webp": 66614,
+          "still-800.webp": 26476,
+          "detail-1600.webp": 85212
+        },
+        "id": "vertex",
+        "name": "Vertex"
+      },
+      "videos": {
+        "360": {
+          "source": "High-top basketball sneaker\\High-top basketball sneaker 360.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 155,
+            "star_hot": 0,
+            "star_match": 0.883,
+            "veo_max": 104,
+            "veo_hot": 0,
+            "veo_match": 0.263
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 104,
+            "star_hot": 0,
+            "star_match": 0.0,
+            "veo_max": 104,
+            "veo_hot": 0,
+            "veo_match": 0.255
+          },
+          "files": {
+            "360.mp4": 2571818,
+            "360.webm": 1039180,
+            "poster-360.webp": 28176
+          },
+          "shoe": "vertex",
+          "name": "Vertex",
+          "label": "360"
+        },
+        "exploded": {
+          "source": "High-top basketball sneaker\\High-top basketball sneaker exploded.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 160,
+            "star_hot": 0,
+            "star_match": 0.878,
+            "veo_max": 97,
+            "veo_hot": 0,
+            "veo_match": 0.185
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 104,
+            "star_hot": 0,
+            "star_match": 0.0,
+            "veo_max": 97,
+            "veo_hot": 0,
+            "veo_match": 0.197
+          },
+          "files": {
+            "exploded.mp4": 2220584,
+            "exploded.webm": 779023,
+            "poster-exploded.webp": 41704
+          },
+          "shoe": "vertex",
+          "name": "Vertex",
+          "label": "exploded"
+        },
+        "closeup": {
+          "source": "High-top basketball sneaker\\High-top basketball sneaker close up.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 169,
+            "star_hot": 0,
+            "star_match": 0.896,
+            "veo_max": 102,
+            "veo_hot": 0,
+            "veo_match": 0.207
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 107,
+            "star_hot": 0,
+            "star_match": 0.156,
+            "veo_max": 102,
+            "veo_hot": 0,
+            "veo_match": 0.225
+          },
+          "files": {
+            "closeup.mp4": 4249630,
+            "closeup.webm": 1585777,
+            "poster-closeup.webp": 87078
+          },
+          "shoe": "vertex",
+          "name": "Vertex",
+          "label": "closeup"
+        }
+      },
+      "frames": null
+    },
+    "trace": {
+      "name": "Trace",
+      "still": {
+        "source": "Trail running shoe\\Trail running shoe.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 893,
+          "bottom_right_max": 87,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 93,
+            "hot": 0
+          },
+          "veo": {
+            "max": 85,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 893,
+        "files": {
+          "still-1600.webp": 55728,
+          "still-800.webp": 22358,
+          "detail-1600.webp": 72964
+        },
+        "id": "trace",
+        "name": "Trace"
+      },
+      "videos": {
+        "360": {
+          "source": "Trail running shoe\\Trail running shoe 360.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 149,
+            "star_hot": 0,
+            "star_match": 0.923,
+            "veo_max": 88,
+            "veo_hot": 0,
+            "veo_match": 0.192
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 94,
+            "star_hot": 0,
+            "star_match": 0.16,
+            "veo_max": 88,
+            "veo_hot": 0,
+            "veo_match": 0.219
+          },
+          "files": {
+            "360.mp4": 2220552,
+            "360.webm": 847758,
+            "poster-360.webp": 22326
+          },
+          "shoe": "trace",
+          "name": "Trace",
+          "label": "360"
+        },
+        "exploded": {
+          "source": "Trail running shoe\\Trail running shoe exploded.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 152,
+            "star_hot": 0,
+            "star_match": 0.926,
+            "veo_max": 89,
+            "veo_hot": 0,
+            "veo_match": 0.135
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 94,
+            "star_hot": 0,
+            "star_match": 0.133,
+            "veo_max": 89,
+            "veo_hot": 0,
+            "veo_match": 0.124
+          },
+          "files": {
+            "exploded.mp4": 2185464,
+            "exploded.webm": 725705,
+            "poster-exploded.webp": 35086
+          },
+          "shoe": "trace",
+          "name": "Trace",
+          "label": "exploded"
+        },
+        "closeup": {
+          "source": "Trail running shoe\\Trail running shoe close up.mp4",
+          "marks": [
+            "star"
+          ],
+          "action": "delogo",
+          "before": {
+            "width": 854,
+            "height": 480,
+            "frames": 192,
+            "star_max": 232,
+            "star_hot": 64,
+            "star_match": 0.924,
+            "veo_max": 93,
+            "veo_hot": 0,
+            "veo_match": 0.12
+          },
+          "residual": {
+            "width": 1280,
+            "height": 720,
+            "frames": 192,
+            "star_max": 221,
+            "star_hot": 0,
+            "star_match": 0.407,
+            "veo_max": 93,
+            "veo_hot": 0,
+            "veo_match": 0.131
+          },
+          "files": {
+            "closeup.mp4": 3726689,
+            "closeup.webm": 1161399,
+            "poster-closeup.webp": 68918
+          },
+          "shoe": "trace",
+          "name": "Trace",
+          "label": "closeup"
+        }
+      },
+      "frames": null
+    },
+    "covent": {
+      "name": "Covent",
+      "still": {
+        "source": "new shoes\\Derby shoe.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 893,
+          "bottom_right_max": 84,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 91,
+            "hot": 0
+          },
+          "veo": {
+            "max": 82,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 893,
+        "files": {
+          "still-1600.webp": 72744,
+          "still-800.webp": 27132,
+          "detail-1600.webp": 91458
+        },
+        "id": "covent",
+        "name": "Covent"
+      },
+      "videos": {},
+      "frames": null
+    },
+    "cairn": {
+      "name": "Cairn",
+      "still": {
+        "source": "new shoes\\Hiking boot.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 893,
+          "bottom_right_max": 99,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 101,
+            "hot": 0
+          },
+          "veo": {
+            "max": 95,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 893,
+        "files": {
+          "still-1600.webp": 59754,
+          "still-800.webp": 22358,
+          "detail-1600.webp": 76354
+        },
+        "id": "cairn",
+        "name": "Cairn"
+      },
+      "videos": {},
+      "frames": null
+    },
+    "kerb": {
+      "name": "Kerb",
+      "still": {
+        "source": "new shoes\\Low-top skate shoe.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 893,
+          "bottom_right_max": 90,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 93,
+            "hot": 0
+          },
+          "veo": {
+            "max": 88,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 893,
+        "files": {
+          "still-1600.webp": 81280,
+          "still-800.webp": 26380,
+          "detail-1600.webp": 102990
+        },
+        "id": "kerb",
+        "name": "Kerb"
+      },
+      "videos": {},
+      "frames": null
+    },
+    "alba": {
+      "name": "Alba",
+      "still": {
+        "source": "new shoes\\Minimalist white sneaker.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 893,
+          "bottom_right_max": 72,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 80,
+            "hot": 0
+          },
+          "veo": {
+            "max": 71,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 893,
+        "files": {
+          "still-1600.webp": 37208,
+          "still-800.webp": 15636,
+          "detail-1600.webp": 48402
+        },
+        "id": "alba",
+        "name": "Alba"
+      },
+      "videos": {},
+      "frames": null
+    },
+    "ledger": {
+      "name": "Ledger",
+      "still": {
+        "source": "new shoes\\Penny loafer.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 893,
+          "bottom_right_max": 94,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 98,
+            "hot": 0
+          },
+          "veo": {
+            "max": 93,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 893,
+        "files": {
+          "still-1600.webp": 57898,
+          "still-800.webp": 19300,
+          "detail-1600.webp": 75556
+        },
+        "id": "ledger",
+        "name": "Ledger"
+      },
+      "videos": {},
+      "frames": null
+    },
+    "dune": {
+      "name": "Dune",
+      "still": {
+        "source": "new shoes\\Slide sandal.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 893,
+          "bottom_right_max": 88,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 89,
+            "hot": 0
+          },
+          "veo": {
+            "max": 86,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 893,
+        "files": {
+          "still-1600.webp": 46898,
+          "still-800.webp": 18134,
+          "detail-1600.webp": 60984
+        },
+        "id": "dune",
+        "name": "Dune"
+      },
+      "videos": {},
+      "frames": null
+    },
+    "loom": {
+      "name": "Loom",
+      "still": {
+        "source": "new shoes\\Slip-on knit sneaker.jpeg",
+        "action": "clean",
+        "scan": {
+          "width": 1599,
+          "height": 893,
+          "bottom_right_max": 79,
+          "bottom_right_hot": 0,
+          "star": {
+            "max": 86,
+            "hot": 0
+          },
+          "veo": {
+            "max": 77,
+            "hot": 0
+          }
+        },
+        "width": 1599,
+        "height": 893,
+        "files": {
+          "still-1600.webp": 85700,
+          "still-800.webp": 28384,
+          "detail-1600.webp": 105446
+        },
+        "id": "loom",
+        "name": "Loom"
+      },
+      "videos": {},
+      "frames": null
+    }
+  },
+  "totals": {
+    "files": 1307,
+    "bytes": 88624709,
+    "by_kind": {
+      "stills": 2004502,
+      "videos": 72614698,
+      "frames": 12724768
+    }
+  },
+  "proofs": [
+    "_verification\\still-corners.jpg",
+    "_verification\\watermark-before-after.jpg",
+    "_verification\\cleaned-corners.jpg"
+  ]
+}

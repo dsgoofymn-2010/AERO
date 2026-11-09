@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base href="../" />
+    <title>AERO scrub test harness</title>
+  </head>
+  <body>
+    <script type="module">
+      import { FrameSequence, ScrubStage } from "../js/scrub.js";
+      import { SHOES } from "../js/data.js";
+
+      window.__scrub = { FrameSequence, ScrubStage, SHOES };
+      window.__scrubReady = true;
+    </script>
+  </body>
+</html>
