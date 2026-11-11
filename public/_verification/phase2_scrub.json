@@ -89,11 +89,7 @@
       "pass": true
     },
     {
-      "name": "page: boot completes",
-      "pass": true
-    },
-    {
-      "name": "page: ScrollTrigger pin initializes",
+      "name": "page: study stage boots",
       "pass": true
     },
     {
@@ -101,11 +97,11 @@
       "pass": true
     },
     {
-      "name": "page: scroll changes the frame counter",
+      "name": "page: study section is scroll-driven",
       "pass": true
     },
     {
-      "name": "page: ScrollTrigger pin active",
+      "name": "page: scroll changes the frame counter",
       "pass": true
     },
     {
@@ -149,7 +145,7 @@
       "pass": true
     },
     {
-      "name": "mobile page: boot and pin",
+      "name": "mobile page: study stage boots",
       "pass": true
     },
     {
@@ -186,7 +182,7 @@
       "load": {
         "loaded": 20,
         "ready": true,
-        "elapsed": 118,
+        "elapsed": 297,
         "progressCount": 20,
         "progressFirst": 0.05,
         "progressLast": 1,
@@ -253,22 +249,22 @@
   "page": {
     "before": {
       "shoe": "blue",
+      "name": "Cirra",
       "counter": "001",
       "canvas": {
-        "width": 1425,
+        "width": 1430,
         "height": 900,
-        "cssWidth": 1425,
+        "cssWidth": 1430,
         "cssHeight": 900
       },
-      "preloaderHidden": true
+      "sectionHeight": 2880,
+      "viewport": 900
     },
     "after": {
-      "counter": "072",
+      "counter": "088",
       "name": "Cirra",
-      "pinned": true,
-      "callout": "Toe spring",
-      "lit": 1235,
-      "samples": 1287
+      "lit": 1286,
+      "samples": 1291
     }
   },
   "network": {
@@ -316,14 +312,7 @@
   },
   "videoAttrs": [
     {
-      "id": "heroVideo",
-      "muted": true,
-      "playsInline": true,
-      "preload": "metadata",
-      "poster": true
-    },
-    {
-      "id": "techVideo",
+      "id": "anatomyVideo",
       "muted": true,
       "playsInline": true,
       "preload": "metadata",
@@ -335,19 +324,12 @@
       "playsInline": true,
       "preload": "metadata",
       "poster": true
-    },
-    {
-      "id": "collectionVideo",
-      "muted": true,
-      "playsInline": true,
-      "preload": "metadata",
-      "poster": true
     }
   ],
   "videoPlayback": {
     "visible": {
       "paused": false,
-      "time": 0.8059,
+      "time": 1.6154,
       "readyState": 4
     },
     "hiddenPaused": true
@@ -363,7 +345,7 @@
       }
     },
     "after": {
-      "counter": "052",
+      "counter": "129",
       "name": "Cirra",
       "canvas": {
         "width": 390,
@@ -371,7 +353,7 @@
         "cssWidth": 390,
         "cssHeight": 844
       },
-      "lit": 331,
+      "lit": 330,
       "samples": 331
     }
   }

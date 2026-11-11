@@ -2,7 +2,7 @@
 
 A frontend-only concept footwear studio. Thirteen shoes, one continuous dark-studio experience: a Three.js opening, three scroll-scrubbed 360 films, ten pseudo-3D still studies, an exploded anatomy section, materials films, a local bag, and a demo checkout.
 
-No framework, no build step, no backend. GSAP, ScrollTrigger, Lenis, and Three.js load from pinned CDN versions; Syne and Inter are self-hosted.
+No framework, no build step, no backend. GSAP, ScrollTrigger, Lenis, and Three.js are pinned and vendored under `public/vendor/`; Syne and Inter are self-hosted.
 
 ---
 
@@ -46,15 +46,16 @@ No `npm install`. No compile step.
 | Markup | Semantic HTML5 |
 | Styles | Hand-written CSS, custom properties, `clamp()`, `color-mix()`, `svh` |
 | Behaviour | ES modules |
-| Motion | GSAP 3.12.5 + ScrollTrigger 3.12.5 + Lenis 1.1.20 (CDN) |
-| Intro | Three.js 0.161.0 (CDN) |
+| Motion | GSAP 3.12.5 + ScrollTrigger 3.12.5 + Lenis 1.1.20 (vendored) |
+| Intro | Three.js 0.161.0 (vendored) |
+| Routing | Hash router: `#home` and `#hangar` |
 | 360 | WebP frame sequences drawn to `<canvas>` |
 | Gallery | CSS 3D transforms, pointer drag, keyboard controls |
 | Type | Syne for display, Inter for text (self-hosted WOFF2) |
 | Bag | `localStorage`, drawer, native `<dialog>` for demo checkout |
 | Backend | None |
 
-If the CDN fails, the page still renders and the content stays visible. The intro falls back, motion becomes static, and the console reports the missing layer.
+If WebGL is unavailable, the intro falls back to a static title card and the showroom points to the collection grid. If a vendored library is missing, motion becomes static and the console reports the missing layer.
 
 ---
 
@@ -64,11 +65,14 @@ If the CDN fails, the page still renders and the content stays visible. The intr
 .
 ├─ index.html
 ├─ css/
-│  ├─ styles.css
-│  └─ hangar.css      # showroom section, HUD, details panel
+│  ├─ styles.css       # base visual system and home view
+│  ├─ views.css        # view swap, nav tabs, wipe
+│  ├─ intro.css        # opening sequence
+│  └─ hangar.css       # showroom, HUD, details panel
 ├─ js/
 │  ├─ data.js          # 13 products, notes, sizes, prices
 │  ├─ main.js          # shell, collection, study, anatomy, materials, dialogs
+│  ├─ router.js        # #home / #hangar routing, nav tabs
 │  ├─ hangar.js        # showroom: 3D wall, shelves, hover, teardown
 │  ├─ hangar-focus.js  # showroom: camera states, HUD, details panel
 │  ├─ wishlist.js      # saved shoes, localStorage
@@ -78,16 +82,23 @@ If the CDN fails, the page still renders and the content stays visible. The intr
 │  └─ intro.js         # Three.js opening sequence
 ├─ public/
 │  ├─ fonts/           # syne.woff2, inter-var-latin.woff2
+│  ├─ vendor/          # pinned three, gsap, lenis copies
 │  ├─ shoes/<id>/      # stills, detail, posters, films, frames
+│  ├─ showroom/        # transparent Hangar cutouts + manifest
 │  ├─ favicon.svg
 │  └─ _verification/   # scans, reports, screenshots
 ├─ scripts/
 │  ├─ build_assets.py  # watermark scan, clean, encode, frame extraction
+│  ├─ cutout.py        # Hangar cutouts and turntables
+│  ├─ vendor_cdn.mjs   # refresh public/vendor/ from pinned versions
 │  ├─ serve.mjs
 │  ├─ verify_scrub.mjs
 │  ├─ verify_site.mjs
 │  ├─ verify_catalog.mjs
 │  ├─ verify_polish.mjs
+│  ├─ verify_routing.mjs
+│  ├─ verify_site_hangar.mjs
+│  ├─ verify_hangar.mjs
 │  └─ shots.mjs
 ├─ assets/             # legacy STRATA output, read-only
 ├─ BLUE SHOE/          # original delivery, untouched
@@ -105,17 +116,23 @@ The original delivery folders stay as received. Nothing in them is modified.
 
 ## The page
 
-1. **Intro** — Three.js wireframe sole, studio rings, dust, a soft halo, and a skip control. Runs once per browser session (`sessionStorage["aero:intro"]`).
+Two views share one document. `#home` is the scrolling site; `#hangar` is the full-viewport showroom. The nav tabs, the hero CTA, browser back/forward, and deep links all use the hash. A section link such as `#materials` returns to home first and then scrolls.
+
+**Home**
+
+1. **Intro** — Three.js wireframe sole, studio rings, dust, a soft halo, and a skip control. Runs once per browser session (`sessionStorage["aero:intro"]`). Enter goes straight to the showroom on a first visit.
 2. **Hero** — collection line, split headline, featured shoe, and three collection counts. The CTA and the scroll cue both lead to the showroom.
-3. **Showroom** — the Hangar: thirteen shoes on glass shelves in 3D. See below.
-4. **Collection** — thirteen cards with category filters. The first three open film studies; the other ten open still studies.
-5. **Study** — a pinned scroll section with a 360 frame scrubber for Cirra, Terrae, and Onyx.
-6. **Anatomy** — exploded film, four selectable parts, and a note that seeks the film.
-7. **Materials** — close-up film, material caption, and three concept metrics.
-8. **Notes** — three studio notes, labelled as development notes, not reviews.
-9. **Letters** — validated demo newsletter with an explicit no-list state.
-10. **Footer** — contact, navigation, credits, back to top.
-11. **Overlays** — product study dialog, bag drawer, checkout dialog, mobile menu.
+3. **Collection** — thirteen cards with category filters. The first three open film studies; the other ten open still studies.
+4. **Study** — a pinned scroll section with a 360 frame scrubber for Cirra, Terrae, and Onyx.
+5. **Anatomy** — exploded film, four selectable parts, and a note that seeks the film.
+6. **Materials** — close-up film, material caption, and three concept metrics.
+7. **Notes** — three studio notes, labelled as development notes, not reviews.
+8. **Letters** — validated demo newsletter with an explicit no-list state.
+9. **Footer** — contact, navigation, credits, replay intro, back to top.
+
+**Hangar** — the 3D showroom view. It keeps its camera state when you return home and come back.
+
+**Overlays** — product study dialog, bag drawer, checkout dialog, mobile menu.
 
 Selecting a shoe re-themes the interface accent and updates the product dialog, specs, metrics, materials, and media.
 
@@ -148,11 +165,9 @@ pointer tilt, a sheen that travels across the shoe, and a zoom on hover.
 | Drag | Rotate the turntable (Terrae, Onyx) |
 | Swipe left / right | Previous / next shoe |
 
-**Files.** `js/hangar.js` builds the scene, the layout and hover, and exposes
-the camera state plus teardown. `js/hangar-focus.js` owns the camera states,
-the HUD and the panel. `css/hangar.css` styles the section. The wall boots only
-when the section is nearly in view, and rendering pauses when it scrolls away
-or the tab is hidden.
+**Opening it.** Use the Hangar tab, the hero CTA, or `http://127.0.0.1:5500/#hangar`. The wall boots on first open rather than at page load; returning to home and coming back keeps the camera where you left it. The collection grid stays as the no-WebGL fallback.
+
+**Files.** `js/hangar.js` builds the scene, the layout and hover, and exposes the camera state plus teardown. `js/hangar-focus.js` owns the camera states, the HUD and the panel. `css/hangar.css` styles the view. Rendering pauses when the tab is hidden.
 
 ### Adding a shoe
 
@@ -179,7 +194,7 @@ the only fix.
 
 ### Fallbacks
 
-- **No WebGL** — the section says so and links to the collection grid, which is
+- **No WebGL** — the view says so and links to the collection grid, which is
   the same thirteen shoes.
 - **Reduced motion** — no flights and no idle drift; focus cross-fades instead.
 - **Mobile** — one column that pans with page scroll, 220 dust particles
@@ -262,9 +277,9 @@ python scripts/build_assets.py
 
 After a rebuild, check `frameCount`/`frames.count` in `js/data.js` and clear the browser cache.
 
-### Legacy cutouts
+### Showroom cutouts
 
-`public/showroom/` holds transparent cutouts generated by `scripts/cutout.py` for an unused showroom direction. The current site does not reference them. They can be deleted without affecting the page.
+`public/showroom/` holds the transparent shoe cutouts and `manifest.json` that the Hangar wall uses. They are generated by `scripts/cutout.py`, not hand-made. Re-run it after adding a shoe; the wall falls back to measuring the image if a manifest entry is missing.
 
 ---
 
@@ -286,19 +301,24 @@ Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" -ArgumentL
   "--remote-debugging-port=9222",
   "--user-data-dir=$env:TEMP\aero-verify",
   "--window-size=1440,900",
-  "about:blank"
+  "http://127.0.0.1:5500/index.html"
 )
 ```
 
 Terminal 3:
 
 ```powershell
-node scripts/verify_scrub.mjs    # frame engine, 43 checks
+node scripts/verify_scrub.mjs    # frame engine + study scrubber, 42 checks
 node scripts/verify_site.mjs     # site shell and interactions, 108 checks
 node scripts/verify_catalog.mjs  # all 13 products and filters, 72 checks
 node scripts/verify_polish.mjs   # semantics, keyboard, contrast, targets, 32 checks
+node scripts/verify_routing.mjs  # intro, routing, fallbacks, 40 checks
+node scripts/verify_site_hangar.mjs # Hangar in the real page, 31 checks
+node scripts/verify_hangar.mjs --headless # scene + focus, 26 checks
 node scripts/shots.mjs           # visual QA screenshots
 ```
+
+The 9222 suites expect Chrome to already be on the site, not `about:blank`: they clear `sessionStorage`, so an origin-less tab has no storage to clear. The routing, site-hangar, and scene harnesses launch their own throwaway Chrome on their own ports and need no manual browser.
 
 Reports and screenshots land in `public/_verification/`:
 
@@ -306,9 +326,10 @@ Reports and screenshots land in `public/_verification/`:
 - `phase4_site.json`
 - `phase5_catalog.json`
 - `phase5_polish.json`
-- `phase4-*.png`, `qa-*.png`
+- `routing.json`, `hangar_h4.json`, `hangar_h2.json`
+- `phase4-*.png`, `phase2-study.png`, `phase2-mobile-study.png`, `hangar-*.png`, `route-hangar.png`
 
-The site harness covers boot, intro skip, filters, gallery and video dialogs, 360 frames, cart and checkout, study switching, anatomy, materials, newsletter, footer, mobile menu, a five-width overflow sweep, and reduced motion. The catalog harness opens every product and loads every still, detail image, film, and 360 set. The polish harness checks landmarks, headings, duplicate IDs, accessible names, skip link, dialog and bag focus traps, Escape behaviour, WCAG AA contrast, and 44 px touch targets.
+The site harness covers boot, intro skip, filters, gallery and video dialogs, 360 frames, cart and checkout, study switching, anatomy, materials, newsletter, footer, mobile menu, a five-width overflow sweep, and reduced motion. The catalog harness opens every product and loads every still, detail image, film, and 360 set. The polish harness checks landmarks, headings, duplicate IDs, accessible names, skip link, dialog and bag focus traps, Escape behaviour, WCAG AA contrast, and 44 px touch targets. The routing harness covers the intro, `#home` / `#hangar`, back/forward, deep links, reduced motion, and no WebGL. The showroom harnesses cover the wall, focus mode, mobile pan, the bottom sheet, theming, and teardown.
 
 ---
 
@@ -334,29 +355,26 @@ The site harness covers boot, intro skip, filters, gallery and video dialogs, 36
 - The study canvas caps DPR at 2 and the product orbit keeps a bounded frame cache.
 - Posters cover every film before playback.
 - `IntersectionObserver` pauses anatomy and materials films offscreen; `visibilitychange` pauses them when the tab is hidden.
-- GSAP, ScrollTrigger, Lenis, and Three.js are the only network dependencies.
-- The showroom boots only when its section is nearly in view, pauses rendering
-  offscreen and on tab hide, and frees a turntable's frames when focus leaves
-  that shoe.
+- GSAP, ScrollTrigger, Lenis, and Three.js are vendored, so the page has no third-party network dependency.
+- The showroom boots only when the Hangar view is first opened, pauses rendering on tab hide, and frees a turntable's frames when focus leaves that shoe.
 
-### Measured Lighthouse, 2026-11-07
+### Measured Lighthouse, 2026-11-11
 
-Desktop, `--headless=new`, local server, machine running other apps:
+Desktop and mobile, Lighthouse 13.6.0, `--headless=new`, local server,
+2026-11-11:
 
-| Category | Without showroom | With showroom |
-| --- | --- | --- |
-| Performance | 55 | 53 |
-| Accessibility | 100 | 100 |
-| Best practices | 100 | 100 |
-| SEO | 100 | 100 |
+| Run | Performance | Accessibility | Best practices | SEO |
+| --- | --- | --- | --- | --- |
+| Desktop | 77 | 100 | 100 | 100 |
+| Mobile | 46 | 100 | 100 | 100 |
 
-The showroom costs about two points, which is inside run-to-run noise. The
-performance number itself is **not** 90+ and was not before the showroom
-either: Lighthouse starts with a clean profile, so the Three.js intro plays
-during the trace and, with the CDN libraries on a simulated slow connection,
-that is what sets TBT (~700 ms) and TTI (~13.8 s). Returning visitors skip the
-intro and never pay that. Getting performance into the nineties means
-addressing the intro and the CDN dependencies, which is a separate change.
+The desktop run is up from 55/53 before vendoring. Automated Chrome is
+detected as a bot, so these traces skip the intro; a cold human first visit
+still plays it and pays more TBT/TTI than the table shows. The mobile run
+carried Lighthouse's "slower CPU than expected" warning, and its LCP was
+11.3 s under simulated throttling, so treat 46 as a floor rather than a
+stable score. The pre-vendoring showroom delta was about two points, inside
+noise.
 
 ---
 
@@ -369,7 +387,7 @@ addressing the intro and the CDN dependencies, which is a separate change.
 - **Blue upper mark.** The supplied Cirra render carries a sportswear-like graphic. It is left intact; clear asset rights before publication.
 - **Film resolution.** Supplied clips are 854×480. Exports are 1280×720 with light sharpening.
 - **Three hero shoes.** Cirra, Terrae, and Onyx carry the full film treatment. The other ten are still studies, even where extra clips exist in the delivery folders.
-- **CDN dependency.** GSAP, ScrollTrigger, Lenis, and Three.js need network access. The fallback keeps the page readable without them.
+- **No library CDN.** GSAP, ScrollTrigger, Lenis, and Three.js are vendored under `public/vendor/`; the page boots offline. WebGL is the only optional capability, and the showroom falls back to the grid without it.
 - **Modern CSS.** `color-mix()`, `svh`, and `clamp()` are used. Very old browsers get a simpler but readable page.
 
 ---
@@ -430,7 +448,7 @@ Run `node scripts/serve.mjs` and open `http://127.0.0.1:5500`.
 
 **The wall**
 
-- [ ] Scroll to Showroom. A loader counts up and all thirteen shoes appear on glass shelves.
+- [ ] Open the Hangar tab (or `#hangar`). A loader counts up and all thirteen shoes appear on glass shelves.
 - [ ] Each shelf has a light strip in that shoe's colour, and a faint reflection below.
 - [ ] Hovering a shoe lifts it, brightens its strip, and the cursor becomes a pointer.
 - [ ] The wall is still when nothing is hovered apart from a slow drift, and it follows the mouse a little.
@@ -472,11 +490,12 @@ Run `node scripts/serve.mjs` and open `http://127.0.0.1:5500`.
 
 - [ ] With `prefers-reduced-motion: reduce`, focus cross-fades with no flight and nothing drifts.
 - [ ] With WebGL disabled (`chrome --disable-3d-apis`), the section explains itself and links to the grid, and the grid still shows thirteen shoes.
-- [ ] Scroll past the showroom and back: no console errors, and the frame rate holds.
+- [ ] Return home and reopen the Hangar: no console errors, and the frame rate holds.
 
-Automated cover: `node scripts/verify_hangar.mjs` (28 checks, the scene and
-focus mode) and `node scripts/verify_site_hangar.mjs` (29 checks, the showroom
-inside the real page, mobile, reduced motion, no WebGL).
+Automated cover: `node scripts/verify_hangar.mjs --headless` (26 checks, the scene
+and focus mode), `node scripts/verify_site_hangar.mjs` (31 checks, the showroom
+inside the real page, mobile, reduced motion, no WebGL), and
+`node scripts/verify_routing.mjs` (40 checks, the `#home` / `#hangar` flow).
 
 ---
 
@@ -484,9 +503,9 @@ inside the real page, mobile, reduced motion, no WebGL).
 
 - **Syne** — Bonjour Monde, SIL Open Font License 1.1.
 - **Inter** — Rasmus Andersson, SIL Open Font License 1.1.
-- **GSAP / ScrollTrigger** — GreenSock, loaded from jsDelivr under GreenSock's licence.
-- **Lenis** — Studio Freight, MIT.
-- **Three.js** — three.js authors, MIT.
+- **GSAP / ScrollTrigger** — GreenSock, vendored under `public/vendor/` under GreenSock's licence.
+- **Lenis** — Studio Freight, MIT, vendored under `public/vendor/`.
+- **Three.js** — three.js authors, MIT, vendored under `public/vendor/`.
 - Shoe renders, films, and stills were supplied by the project owner. Confirm rights before commercial publication.
 
 The interface is original code written for this project. No UI kit, template, or stock layout was used.

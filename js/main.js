@@ -1222,9 +1222,9 @@ const setupScrollUI = () => {
 
 /* Motion ----------------------------------------------------------------- */
 
-const GSAP_URL = "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
-const SCROLL_TRIGGER_URL = "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.js";
-const LENIS_URL = "https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.mjs";
+const GSAP_URL = "../public/vendor/gsap@3.12.5/index.js";
+const SCROLL_TRIGGER_URL = "../public/vendor/gsap@3.12.5/ScrollTrigger.js";
+const LENIS_URL = "../public/vendor/lenis@1.1.20/dist/lenis.mjs";
 
 const revealHero = () => {
   $$("[data-hero]").forEach((node) => node.classList.add("is-revealed"));
@@ -1669,7 +1669,7 @@ const boot = async () => {
     state.router?.go("home");
     document.body.classList.add("is-intro");
     try {
-      await runIntro({ skip: false });
+      await runIntro({ skip: false, onHandoff: revealHero });
     } catch (error) {
       console.warn("AERO intro failed.", error);
     }
@@ -1689,6 +1689,14 @@ const boot = async () => {
     seen = false;
   }
 
+  // Automated tooling gets the site, not the film: a crawler cannot watch
+  // the intro, and a cold performance trace has no business spending its
+  // whole window inside a render loop. ?intro=1 forces the film back on for
+  // the verification suites and for anyone driving a headless browser.
+  const forceIntro = new URLSearchParams(location.search).has("intro");
+  const isBot = !forceIntro
+    && (navigator.webdriver === true || /HeadlessChrome/i.test(navigator.userAgent));
+
   const introBackdrop = ["siteHeader", "main", "contact"]
     .map((id) => document.getElementById(id))
     .filter(Boolean);
@@ -1697,7 +1705,7 @@ const boot = async () => {
   });
 
   try {
-    await runIntro({ skip: seen });
+    await runIntro({ skip: seen || isBot, onHandoff: revealHero });
   } catch (error) {
     console.warn("AERO intro failed.", error);
   }

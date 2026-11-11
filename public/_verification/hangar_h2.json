@@ -24,7 +24,7 @@
   "teardown": {
     "before": {
       "geometries": 5,
-      "textures": 35
+      "textures": 40
     },
     "after": {
       "geometries": 1,
@@ -107,8 +107,8 @@
       "cleared": [],
       "size": 45
     },
-    "spinA": "http://127.0.0.1:5500/public/showroom/frames/brown/f_007.webp",
-    "spinB": "http://127.0.0.1:5500/public/showroom/frames/brown/f_012.webp"
+    "spinA": "http://127.0.0.1:5500/public/showroom/frames/brown/f_006.webp",
+    "spinB": "http://127.0.0.1:5500/public/showroom/frames/brown/f_011.webp"
   },
   "checks": [
     {

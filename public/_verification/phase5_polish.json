@@ -108,17 +108,17 @@
     {
       "name": "arrow key turns the gallery",
       "ok": true,
-      "detail": "matrix(1, 0, 0, 1, 0, 0) -> matrix3d(0.997586, 0, -0.0694459, 0, 0, 1, 0, 0, 0.0694459, 0, 0.997586, 0, 0, 0, 0, 1)"
+      "detail": "matrix(1, 0, 0, 1, 0, 0) -> matrix3d(0.997585, 0, -0.0694492, 0, 0, 1, 0, 0, 0.0694492, 0, 0.997585, 0, 0, 0, 0, 1)"
     },
     {
       "name": "bag opens from the keyboard",
-      "ok": true,
+      "ok": false,
       "detail": ""
     },
     {
       "name": "cart focuses its close button",
-      "ok": true,
-      "detail": "cartClose"
+      "ok": false,
+      "detail": "menuClose"
     },
     {
       "name": "Escape closes the bag",
@@ -127,8 +127,8 @@
     },
     {
       "name": "bag returns focus to its trigger",
-      "ok": true,
-      "detail": "bagToggle"
+      "ok": false,
+      "detail": "main"
     },
     {
       "name": "bag close unlocks the page",
@@ -152,8 +152,8 @@
     },
     {
       "name": "gallery product controls are at least 44 px",
-      "ok": true,
-      "detail": "[]"
+      "ok": false,
+      "detail": "[{\"tag\":\"BUTTON\",\"cls\":\"gallery__control\",\"text\":\"Left\",\"w\":42,\"h\":40},{\"tag\":\"BUTTON\",\"cls\":\"gallery__control\",\"text\":\"Right\",\"w\":50,\"h\":40},{\"tag\":\"BUTTON\",\"cls\":\"gallery__control\",\"text\":\"Zoom\",\"w\":49,\"h\":40},{\"tag\":\"BUTTON\",\"cls\":\"gallery__control\",\"text\":\"Reset\",\"w\":50,\"h\":40}]"
     },
     {
       "name": "bag controls are at least 44 px",
@@ -161,7 +161,7 @@
       "detail": "[]"
     }
   ],
-  "passed": 32,
+  "passed": 28,
   "total": 32,
   "contrast": [],
   "targets": [],

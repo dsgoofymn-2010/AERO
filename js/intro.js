@@ -181,6 +181,9 @@ function playWhoosh() {
 /* Reduced motion, no WebGL, or a failed scene: the wordmark, one line and
    Enter. Same contract, no camera. */
 async function staticIntro(el, { reason }) {
+  /* The module layer settled and this is the designed no-camera path, so the
+     boot watchdog has nothing left to release. */
+  window.__aeroIntroAlive = true;
   el.intro.classList.add("is-ready", "is-static");
   el.state.textContent = reason;
   el.count.textContent = "100";
@@ -195,7 +198,7 @@ async function staticIntro(el, { reason }) {
   el.intro.remove();
 }
 
-export async function runIntro({ skip = false } = {}) {
+export async function runIntro({ skip = false, onHandoff = null } = {}) {
   const intro = document.getElementById("intro");
   if (!intro) return;
   if (skip) {
@@ -247,6 +250,11 @@ export async function runIntro({ skip = false } = {}) {
     console.warn("AERO intro: Three.js unavailable.", error);
     return staticIntro(el, { reason: "Ready, without 3D" });
   }
+
+  /* Modules settled — the scene owns the intro from here, so the boot
+     watchdog stands down. If an import ever hangs without resolving, this
+     line never runs and the watchdog still releases the page at 9s. */
+  window.__aeroIntroAlive = true;
 
   const narrow = window.innerWidth < 760;
   const dpr = Math.min(window.devicePixelRatio || 1, narrow ? 1.5 : 2);
@@ -525,12 +533,32 @@ export async function runIntro({ skip = false } = {}) {
   window.addEventListener("resize", onResize);
   onResize();
 
-  // Lets scripts/verify_routing.mjs assert the ring actually drew.
-  window.__introCards = () => ({
-    visible: cards.filter((c) => c.mesh.visible).length,
-    opaque: cards.filter((c) => c.mesh.material.opacity > 0.9).length,
-    z: +camera.position.z.toFixed(1),
-  });
+  // Lets scripts/verify_routing.mjs assert both that the cards exist and that
+  // bright pixels actually reached the framebuffer — the backdrop tops out
+  // near luma 45, so anything above 64 discount is drawn content.
+  window.__introCards = () => {
+    composer.render();
+    const probe = document.createElement("canvas");
+    probe.width = 64;
+    probe.height = 36;
+    const g = probe.getContext("2d", { willReadFrequently: true });
+    g.drawImage(renderer.domElement, 0, 0, 64, 36);
+    const data = g.getImageData(0, 0, 64, 36).data;
+    let lit = 0;
+    for (let i = 0; i < data.length; i += 4) {
+      if (0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2] > 64) lit += 1;
+    }
+    return {
+      visible: cards.filter((c) => c.mesh.visible).length,
+      opaque: cards.filter((c) => c.mesh.material.opacity > 0.9).length,
+      z: +camera.position.z.toFixed(1),
+      drawn: +(lit / (64 * 36)).toFixed(3),
+      // fade0 + t distinguish "fade still climbing" from "render loop stalled":
+      // t moves iff the loop ticks, fade0 rises iff the fade gate is open.
+      fade0: +cards[0].fade.toFixed(3),
+      t: +clock.elapsedTime.toFixed(2),
+    };
+  };
 
   const clock = new THREE.Clock();
   let raf = 0;
@@ -668,8 +696,12 @@ export async function runIntro({ skip = false } = {}) {
     el.skip.addEventListener("click", () => leave(false), { once: true });
   }).then(async (dived) => {
     if (dived) {
-      // Dive through the ring, flash, then hand over to the hero.
+      // Dive through the ring, flash, then hand over to the hero. The hero's
+      // entrance is fired here, under the flash, so the dive, the flash
+      // clearing and the title rising read as one move instead of opening on
+      // an already-emptied stage.
       await wait(620);
+      onHandoff?.();
       el.flash.animate(
         [{ opacity: 0 }, { opacity: 0.85, offset: 0.25 }, { opacity: 0 }],
         { duration: 700, easing: "cubic-bezier(0.22, 1, 0.36, 1)" }

@@ -52,6 +52,8 @@ const chrome = spawn(CHROME, [
   "--autoplay-policy=no-user-gesture-required",
   PAGE,
 ], { stdio: "ignore", detached: false });
+// Any failed run must not leave its Chrome holding :9223 for the next launch.
+process.on("exit", () => { try { chrome.kill(); } catch { /* already gone */ } });
 
 class CDP {
   constructor(url) {
@@ -126,16 +128,19 @@ cdp.on("Network.responseReceived", ({ response, type }) => {
 await cdp.send("Runtime.enable");
 await cdp.send("Network.enable");
 await cdp.send("Page.enable");
-await cdp.send("Page.reload", { ignoreCache: true });
-// A backgrounded window throttles rAF, which makes the probe sample a
-// partial frame and the pointer tests miss.
-await cdp.send("Page.bringToFront").catch(() => {});
+// The throwaway profile has an empty cache, so this reload only re-booted the
+// page while the suite was attaching — with no benefit to offset the flake.
 
 // A stalled CDP call would otherwise hang the whole run with no output.
 const withTimeout = (promise, ms, label) => Promise.race([
   promise,
   new Promise((_, reject) => setTimeout(() => reject(new Error(`timed out: ${label}`)), ms)),
 ]);
+
+// A backgrounded window throttles rAF, which makes the probe sample a
+// partial frame and the pointer tests miss. Bounded: a wedged call must
+// cost a throttle, not the run.
+await withTimeout(cdp.send("Page.bringToFront"), 10000, "bringToFront").catch(() => {});
 
 const evaluate = async (expression) => {
   const { result, exceptionDetails } = await withTimeout(cdp.send("Runtime.evaluate", {
@@ -146,10 +151,34 @@ const evaluate = async (expression) => {
 };
 
 let probe = null;
-for (let i = 0; i < PROBE_TRIES; i += 1) {
+const probeAt = Date.now();
+for (let i = 0; i < PROBE_TRIES && Date.now() - probeAt < 300000; i += 1) {
   await sleep(500);
-  probe = await evaluate("window.__hangar ? window.__hangar.results : null");
-  if (probe) break;
+  let next = null;
+  try {
+    next = await evaluate("window.__hangar ? window.__hangar.results : null");
+  } catch {
+    // A wedged sample (busy-machine renders hold the main thread for tens of
+    // seconds) must not spend the whole budget; the next sample decides.
+    continue;
+  }
+  if (!next) continue;
+  // The probe timer runs 2.4s after the wall reports loading done. Under a
+  // busy machine, decode can still be settling: require the pipeline counts
+  // to hold still across two reads, else a mid-decode frame becomes the
+  // assertion baseline and half the checklist reads a scene under
+  // construction, fail states and all.
+  if (probe && probe.drawCalls === next.drawCalls && probe.textures === next.textures) {
+    probe = next;
+    break;
+  }
+  probe = next;
+}
+if (!probe) {
+  console.error(`page feed before the throw (${errors.length} console/exceptions):`, errors.slice(0, 12).join(" | "));
+  console.error(`failed requests (${failed.length}):`, failed.slice(0, 8).join(" | "));
+  const state = await evaluate(`({ title: document.title, text: document.getElementById("loadingText")?.textContent ?? null })`).catch((e) => ({ unreached: e.message }));
+  throw new Error(`scene never reported results — page state ${JSON.stringify(state)}`);
 }
 if (!probe) throw new Error("scene never reported results");
 
@@ -158,10 +187,17 @@ console.log("probe in:", JSON.stringify(probe));
 const shot = async (name) => {
   console.log("shot", name);
   // An unfocused window can stop producing frames, and the capture then never
-  // resolves; bringing it forward first keeps the compositor awake.
-  await cdp.send("Page.bringToFront").catch(() => {});
-  const { data } = await withTimeout(cdp.send("Page.captureScreenshot", { format: "png", fromSurface: true, captureBeyondViewport: false }), HEADLESS ? 45000 : 25000, name);
-  await writeFile(join(OUT, name), Buffer.from(data, "base64"));
+  // resolves; bringing it forward first keeps the compositor awake. Bounded:
+  // a wedged bringToFront pends forever with no timer, and the run drains
+  // into a silent exit.
+  await withTimeout(cdp.send("Page.bringToFront"), 10000, "bringToFront").catch(() => {});
+  try {
+    const { data } = await withTimeout(cdp.send("Page.captureScreenshot", { format: "png", fromSurface: true, captureBeyondViewport: false }), HEADLESS ? 45000 : 25000, name);
+    await writeFile(join(OUT, name), Buffer.from(data, "base64"));
+  } catch (e) {
+    // A wedged SwiftShader frame costs one proof, not the whole run.
+    console.warn(`screenshot ${name} skipped: ${e.message}`);
+  }
 };
 await shot("hangar-overview.png");
 
@@ -279,8 +315,27 @@ const actions = await evaluate(`(() => {
 })()`);
 
 await key("Escape");
-await sleep(2000);
+// Compound assertion, four independent conditions, one sample point. A trail
+// says which condition holds at which moment instead of guessing from a
+// single FAIL row.
+const escTrail = [];
+let el = 0;
+for (const t of [800, 1600]) {
+  await sleep(t - el);
+  el = t;
+  escTrail.push(await evaluate(`(() => {
+    const m = document.getElementById("hangar");
+    return {
+      index: window.__focus.index,
+      panelHidden: m.querySelector(".hangar-panel")?.hidden ?? null,
+      dimmed: window.__hangar.hangar.bays.filter((b) => b.dim > 0.5).length,
+      camZ: +window.__hangar.hangar.camera.position.z.toFixed(2),
+    };
+  })()`));
+}
+await sleep(800);
 const back = await snap();
+console.log("escape trail:", JSON.stringify(escTrail));
 const after = await evaluate(`(() => {
   const h = window.__hangar.hangar;
   const i = h.renderer.info;

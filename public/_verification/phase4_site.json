@@ -182,12 +182,12 @@
     {
       "name": "360 counter advances",
       "ok": true,
-      "detail": "027 / 215"
+      "detail": "026 / 215"
     },
     {
       "name": "360 canvas draws a frame",
       "ok": true,
-      "detail": "67,97,179,255"
+      "detail": "63,88,173,255"
     },
     {
       "name": "exploded film mounts",
@@ -347,7 +347,7 @@
     {
       "name": "part selection seeks the film",
       "ok": true,
-      "detail": "5.7781"
+      "detail": "5.9044"
     },
     {
       "name": "materials quote is set",
@@ -395,9 +395,9 @@
       "detail": ""
     },
     {
-      "name": "footer has 9 links",
+      "name": "footer has 10 links",
       "ok": true,
-      "detail": "9"
+      "detail": "10"
     },
     {
       "name": "footer email is set",
@@ -465,9 +465,9 @@
       "detail": "menuClose"
     },
     {
-      "name": "menu has 5 links",
+      "name": "menu has 6 links",
       "ok": true,
-      "detail": "5"
+      "detail": "6"
     },
     {
       "name": "menu closes after choosing a link",
@@ -487,7 +487,7 @@
     {
       "name": "menu link scrolls to collection",
       "ok": true,
-      "detail": "1035"
+      "detail": "1103"
     },
     {
       "name": "no horizontal overflow at 360",

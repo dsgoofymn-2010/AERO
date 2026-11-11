@@ -1,13 +1,12 @@
 /* AERO hangar showroom — the 3D wall.
 
    Thirteen shoes on glass shelves, laid out from data.js. Three.js is imported
-   only when the hangar actually runs, so a blocked CDN cannot stop the rest of
-   the site from booting (same contract as intro.js).
+   only when the hangar actually runs, and it resolves through the importmap
+   to the vendored copy in public/vendor/, so the site boots even offline
+   (same contract as intro.js).
 
    Camera states and the details panel land in hangar-focus; this module owns
    the scene, the layout, hover, and teardown. */
-
-const THREE_URL = "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js";
 
 const DEFAULTS = {
   manifestUrl: "public/showroom/manifest.json",
@@ -125,7 +124,7 @@ export async function createHangar(options = {}) {
     throw new Error("createHangar needs a mount element and a non-empty shoes array");
   }
 
-  const THREE = await import(/* @vite-ignore */ THREE_URL);
+  const THREE = await import("three");
   const manifest = await loadManifest(opts.manifestUrl);
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

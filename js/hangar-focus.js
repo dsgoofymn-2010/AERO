@@ -6,7 +6,7 @@
 
 import { SIZES, formatPrice } from "./data.js";
 
-const GSAP_URL = "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+const GSAP_URL = "../public/vendor/gsap@3.12.5/index.js";
 const TURNTABLE_MANIFEST = "public/showroom/frames/manifest.json";
 
 const FOCUS_FOV = 30;

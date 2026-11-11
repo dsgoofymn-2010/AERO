@@ -2476,6 +2476,7 @@ body.is-ready .hero__title em::after {
 }
 
 .footer__nav a,
+.footer__link-button,
 .footer__top-button {
   display: flex;
   min-height: 44px;
@@ -2487,6 +2488,7 @@ body.is-ready .hero__title em::after {
 }
 
 .footer__nav a:hover,
+.footer__link-button:hover,
 .footer__top-button:hover {
   color: var(--bone);
 }

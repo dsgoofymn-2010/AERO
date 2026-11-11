@@ -4,7 +4,7 @@
 
 A premium, frontend-only 3D footwear site for the fictional brand **AERO**. Thirteen shoes, one continuous cinematic experience, no backend and no database.
 
-Stack: HTML5, modern CSS, ES modules, GSAP + ScrollTrigger, Lenis, and Three.js. Libraries are pinned CDN versions. The finished site must run through Live Server with no build step.
+Stack: HTML5, modern CSS, ES modules, GSAP + ScrollTrigger, Lenis, and Three.js. Libraries are pinned versions, self-hosted under `public/vendor/` (vendored by `scripts/vendor_cdn.mjs`); index.html's importmap maps `three` and `three/addons/` at the vendored copy. The finished site must run through Live Server with no build step.
 
 - GSAP `3.12.5` + ScrollTrigger `3.12.5`
 - Lenis `1.1.20`
@@ -50,16 +50,24 @@ Totals: 13 shoe sets. Six folders contain video. Seven sets are still-only. The 
 ```
 index.html
 css/
-  styles.css
+  styles.css       # base visual system and home view
+  views.css        # view swap, nav tabs, wipe
+  intro.css        # opening sequence
+  hangar.css       # showroom, HUD, details panel
 js/
   data.js          # AERO products, 13 shoes
   main.js          # site shell, collection, study, anatomy, materials, dialogs
+  router.js        # #home / #hangar view routing, nav tabs
   scrub.js         # canvas frame engine for the 3 hero shoes
   cart.js          # bag state, drawer, demo checkout
+  wishlist.js      # saved shoes, aero:wishlist:v1
   intro.js         # Three.js intro
+  hangar.js        # Three.js showroom wall (imports three via the importmap)
+  hangar-focus.js  # focus camera, HUD, details panel (imports gsap, vendored)
   gallery.js       # pseudo-3D still viewer
 public/
   fonts/                 # syne.woff2, inter-var-latin.woff2
+  vendor/                # pinned three, gsap, lenis copies (scripts/vendor_cdn.mjs)
   favicon.svg
   shoes/<id>/
     still-1600.webp
@@ -72,16 +80,25 @@ public/
     frames/desktop/frame_001.webp …
     frames/mobile/frame_001.webp …
   _verification/           # scans, reports, screenshots
-  showroom/                # unused cutout experiment, safe to delete
+  showroom/                # Hangar cutouts + manifest (scripts/cutout.py)
 scripts/
   build_assets.py
+  cutout.py              # H1 transparent cutouts + turntable frames
   serve.mjs
+  cdp.mjs                # shared CDP client for the verifiers
+  vendor_cdn.mjs         # refreshes public/vendor/ from the pinned CDN versions
   verify_scrub.mjs
-  verify_site.mjs
-  verify_catalog.mjs
-  verify_polish.mjs
+  verify_routing.mjs     # intro + routing + view fallbacks (headless)
+  verify_site_hangar.mjs # hangar inside index.html, headless
+  verify_hangar.mjs      # hangar scene + focus, headful unless --headless
+  diag_intro.mjs         # boot timeline probe (kept for CDN regressions)
+  diag_cdn.mjs           # CDN latency probe (kept for regressions)
+  verify_site.mjs        # legacy STRATA-era browser checks (port 9222)
+  verify_catalog.mjs     # legacy, same era
+  verify_polish.mjs      # legacy, same era
   shots.mjs
   scrub-test.html
+  hangar-test.html       # standalone hangar scene page (own importmap)
 AGENTS.md
 README.md
 ```
@@ -138,8 +155,8 @@ Phase 1 writes `scripts/build_assets.py` and outputs only to `public/`.
 - `js/scrub.js` now exports `FrameSequence` and `ScrubStage`. `FrameSequence` reads the new `assets.frames` paths and still accepts the legacy `framePath` fields for the old STRATA page.
 - Loading is progressive: the first 20 frames arrive before boot completes, then the rest fill in at 6 concurrent requests on desktop and 4 on mobile. Frames are fetched as blobs and decoded to `ImageBitmap` with an `HTMLImageElement` fallback.
 - `ScrubStage` lerps scroll progress at 0.12 into a frame index, draws cover-fit on a DPR-aware canvas (capped at 2), keeps the poster underneath until frames arrive, and redraws when a nearer frame finishes loading. Reduced motion jumps straight to the target frame.
-- `scripts/scrub-test.html` and `scripts/verify_scrub.mjs` cover new and legacy paths, 20-frame preload, ImageBitmap dimensions, HTML image fallback, bounded cache, DPR 1/2, reduced motion, desktop and mobile live pages, shoe switching, video attributes, and observer play/pause. Result: 43/43 checks pass, no console errors, no failed requests.
-- Verification artifacts: `public/_verification/phase2_scrub.json`, `phase2-orbit.png`, `phase2-mobile-orbit.png`. The live page now scrubs the new `public/shoes/*/frames` sets; the old `assets/` frames remain readable through the legacy path. `maxCached` defaults to unlimited; Phase 4 can bound it if mobile memory needs a smaller window.
+- `scripts/scrub-test.html` and `scripts/verify_scrub.mjs` cover new and legacy paths, 20-frame preload, ImageBitmap dimensions, HTML image fallback, bounded cache, DPR 1/2, reduced motion, the desktop and mobile study scrubber, shoe switching, video attributes, and observer play/pause. Result: 42/42 checks pass, no console errors, no failed requests.
+- Verification artifacts: `public/_verification/phase2_scrub.json`, `phase2-study.png`, `phase2-mobile-study.png`. The live page now scrubs the new `public/shoes/*/frames` sets; the old `assets/` frames remain readable through the legacy path. `maxCached` defaults to unlimited; the study and product viewers pass their own bounds.
 
 ## Design system
 
@@ -176,10 +193,16 @@ Phase 1 writes `scripts/build_assets.py` and outputs only to `public/`.
 node scripts/serve.mjs          # range-capable preview, http://127.0.0.1:5500
 python scripts/build_assets.py  # Phase 1 asset build
 python scripts/cutout.py        # Hangar H1 transparent cutouts
-node scripts/verify_hangar.mjs  # Hangar H2/H3 scene + focus (headful, real GPU)
+node scripts/vendor_cdn.mjs     # refreshes the vendored library copies
+node scripts/verify_routing.mjs # intro + routing + view fallbacks (headless)
 node scripts/verify_site_hangar.mjs # Hangar H4 in index.html (headless: desktop, mobile, reduced motion, no WebGL)
-node scripts/verify.mjs         # legacy browser verification, needs port 9222
-node scripts/verify_scrub.mjs   # Phase 2 frame-engine verification, needs port 9222
+node scripts/verify_hangar.mjs --headless # Hangar H2/H3 scene + focus
+node scripts/verify_hangar.mjs  # headful, real GPU frame-rate assertions
+node scripts/verify_site.mjs    # AERO shell, 108 checks, needs Chrome on the site at :9222
+node scripts/verify_catalog.mjs # 13 products + filters, 72 checks, :9222
+node scripts/verify_polish.mjs  # semantics, keyboard, contrast, targets, 32 checks, :9222
+node scripts/verify_scrub.mjs   # frame engine + study scrubber, 42 checks, :9222
+node scripts/verify.mjs         # legacy STRATA-era browser checks, :9222
 ```
 
 ## Current assumptions
@@ -188,7 +211,7 @@ node scripts/verify_scrub.mjs   # Phase 2 frame-engine verification, needs port 
 - Prices are INR concept prices between ₹3,999 and ₹14,999.
 - All copy, specs, and metrics are fictional concept data, not certified product claims.
 - The blue shoe has a sportswear-like mark in the supplied render. It is left intact; asset rights must be cleared before publication.
-- The old STRATA page remains in place until Phase 4. Do not delete it early.
+- The old STRATA page is gone; `assets/` remains as read-only legacy and is not referenced by the AERO page. `public/showroom/` is live Hangar output, not legacy.
 
 ## Hangar showroom
 
@@ -242,8 +265,8 @@ a checkerboard), `showroom-corners.jpg` (watermark corner before/after),
 ### H2 output — 2026-11-07
 
 `js/hangar.js` exports `createHangar({ mount, shoes, ... })`. It imports Three
-0.161.0 from the pinned CDN only when the hangar runs, the same contract
-intro.js uses, so a blocked CDN cannot stop the site booting.
+0.161.0 from the vendored copy only when the hangar runs, the same contract
+intro.js uses, so a missing WebGL context cannot stop the site booting.
 
 - Layout comes from `data.js` plus `public/showroom/manifest.json`: `SHOES`
   gives order, accent and name; the manifest gives each cutout's aspect so
@@ -324,7 +347,7 @@ the shoe does not jump as it turns. Brown 48 frames at 773x601 (1.14 MB), black
   gradient is the `alphaMap`, which three.js samples from the green channel, so
   the sheen is clipped to the silhouette) and a zoom-on-hover.
 
-Verified: `node scripts/verify_hangar.mjs` is now 28/28 including focus entry,
+Verified: `node scripts/verify_hangar.mjs --headless` is now 26/26 including focus entry,
 lens change, dimming, the 1600px swap, panel contents and accent, HUD bay/tier/
 counter, arrow-key stepping, turntable advance, size selection, wishlist
 localStorage round trip, escape to overview, and live textures after a
@@ -340,19 +363,15 @@ running other apps and sits at 57-59.
 
 ### H4 output — 2026-11-07
 
-The showroom is its own full-viewport section, `#showroom`, between the hero
-and the collection grid. The grid stays as the no-WebGL fallback.
+The showroom is its own full-viewport view, `#hangar`, alongside the scrolling
+home view. The collection grid stays as the no-WebGL fallback.
 
-- Nav and mobile menu both link to it; the hero CTA reads "Enter the showroom"
-  and the scroll cue follows. After the intro, Enter goes straight to the wall
-  rather than the hero, but only on a first visit — a returning viewer who
-  never saw the intro lands at the top as before. `INTRO_ENTERS_SHOWROOM` in
-  `main.js` turns that off in one line if it should land on the hero.
-- The wall boots on an IntersectionObserver with a 200px margin, not at page
-  load. Verified: `window.__aeroShowroom` is absent until the section is
-  scrolled near.
+- Nav and mobile menu both link to it; the hero CTA reads "Enter the hangar".
+  The intro's Enter lands on the hero, not the showroom.
+- The wall boots on first open of the Hangar view, not at page load. Verified:
+  `window.__aeroShowroom` is absent until the tab is opened.
 - Focusing a shoe writes `--accent` on `:root`, so the whole page re-themes.
-- Mobile is a designed state, not an override: one column, the section is
+- Mobile is a designed state, not an override: one column, the view is
   280svh with a sticky stage so the wall pans on ordinary page scroll rather
   than fighting the touch gesture, 220 dust particles, pixel ratio 1.5, the
   panel becomes a bottom sheet, and the HUD moves to a row under the site
@@ -371,11 +390,12 @@ headful because its frame-rate assertions need the real GPU. Note that headless
 SwiftShader flattens additive blending, so judge the lighting from the headful
 proofs (`hangar-focus-black.png`), not the headless ones.
 
-### Lighthouse, measured 2026-11-07
+### Lighthouse, measured 2026-11-11
 
-Performance 55 without the showroom, 53 with it. Accessibility, best practices
-and SEO are 100 either way. The showroom costs about two points, inside noise.
-The site was **not** at 90+ performance before this work: Lighthouse starts
-with a clean profile so the Three.js intro plays during the trace, and with the
-CDN libraries on a simulated slow connection that sets TBT (~700 ms) and TTI
-(~13.8 s). Raising it means tackling the intro and the CDN dependencies.
+Lighthouse 13.6.0, local server: desktop performance 77, mobile 46, with
+accessibility, best practices and SEO at 100 on both. The desktop score is up
+from 55/53 before vendoring. Automated Chrome is detected as a bot, so these
+traces skip the intro; a cold human first visit still pays the intro's
+TBT/TTI. The mobile run carried Lighthouse's slower-CPU warning and an 11.3 s
+LCP under simulated throttling, so treat 46 as a floor. The pre-vendoring
+showroom delta was about two points, inside noise.

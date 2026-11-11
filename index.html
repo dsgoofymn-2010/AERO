@@ -21,7 +21,7 @@
   <meta name="twitter:image" content="public/shoes/blue/still-1600.webp">
   <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="public/favicon.svg">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="modulepreload" href="./public/vendor/three@0.161.0/build/three.module.js">
   <link rel="preload" href="public/fonts/syne.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="public/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" href="public/shoes/blue/still-1600.webp" fetchpriority="high">
@@ -32,8 +32,8 @@
   <script type="importmap">
   {
     "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+      "three": "./public/vendor/three@0.161.0/build/three.module.js",
+      "three/addons/": "./public/vendor/three@0.161.0/examples/jsm/"
     }
   }
   </script>
@@ -570,8 +570,15 @@
   </script>
 
   <script>
-    /* If the module layer never boots, release the intro and show the static page. */
+    /* Boot watchdog: release the page to the static fallback only when the
+       module layer never arrives. Once the intro's own modules have settled
+       (intro.js sets __aeroIntroAlive), the intro owns the page — its
+       fallbacks cover a missing or failed Three.js. The old unconditional
+       release killed the intro on every cold visit: the cinematic boots on
+       time, not on network (canvas at ~8.6s, Ready at ~13.9s on localhost),
+       and boot only completes when the viewer presses Enter, always past 9s. */
     window.__aeroBootTimer = window.setTimeout(function () {
+      if (window.__aeroIntroAlive) return;
       document.documentElement.classList.add("is-fallback");
       document.body.classList.remove("is-intro");
       var intro = document.getElementById("intro");

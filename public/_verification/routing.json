@@ -28,6 +28,21 @@
       "pass": true
     },
     {
+      "name": "wordmark gradient stays legible at the end of the sweep",
+      "pass": true,
+      "note": "{\"end\":\"0% 0px\",\"darkest\":197.66666666666666}"
+    },
+    {
+      "name": "the ring of shoes is rendering",
+      "pass": true,
+      "note": "{\"visible\":13,\"opaque\":13,\"z\":11.5,\"drawn\":0.102,\"fade0\":0.991,\"t\":4.24}"
+    },
+    {
+      "name": "hero entrance starts while the intro is still on screen",
+      "pass": true,
+      "note": "{\"introStillThere\":true,\"heroEntering\":true}"
+    },
+    {
       "name": "enter removes the intro and disposes it",
       "pass": true
     },
@@ -38,6 +53,10 @@
     },
     {
       "name": "intro is marked seen for the session",
+      "pass": true
+    },
+    {
+      "name": "the hero title rise completes after the flash",
       "pass": true
     },
     {
@@ -159,8 +178,22 @@
       "name": "no console errors without WebGL",
       "pass": true,
       "note": ""
+    },
+    {
+      "name": "an automated session boots without the film",
+      "pass": true
+    },
+    {
+      "name": "automation sees the hero, not the film",
+      "pass": true,
+      "note": "{\"introGone\":true,\"view\":\"home\",\"heroRevealed\":true}"
+    },
+    {
+      "name": "no console errors on the automation path",
+      "pass": true,
+      "note": ""
     }
   ],
-  "passed": 36,
-  "total": 36
+  "passed": 43,
+  "total": 43
 }

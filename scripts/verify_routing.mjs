@@ -2,6 +2,9 @@
 
    Needs scripts/serve.mjs on :5500. Run: node scripts/verify_routing.mjs
    Runs headless, so it never steals focus and captures cannot stall.
+   Headless sessions skip the film by contract (navigator.webdriver or a
+   HeadlessChrome UA), so every session here passes ?intro=1 to force it,
+   except the automation block, which asserts the skip itself.
 */
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -14,7 +17,7 @@ await mkdir(OUT, { recursive: true });
 const checks = [];
 const add = (name, pass, note) => checks.push({ name, pass: Boolean(pass), note });
 
-async function session({ port, reduced = false, noWebGL = false, seen = false, hash = "" }) {
+async function session({ port, reduced = false, noWebGL = false, seen = false, hash = "", forceIntro = true }) {
   const { cdp, close } = await launch({
     port, url: "about:blank", headless: true, width: 1440, height: 900,
     extraArgs: noWebGL ? ["--disable-3d-apis"] : [],
@@ -38,7 +41,7 @@ async function session({ port, reduced = false, noWebGL = false, seen = false, h
       source: `try { sessionStorage.setItem("aero:intro", "seen"); } catch {}`,
     });
   }
-  await cdp.send("Page.navigate", { url: `${BASE}/index.html${hash}` });
+  await cdp.send("Page.navigate", { url: `${BASE}/index.html${forceIntro ? "?intro=1" : ""}${hash}` });
 
   const evaluate = async (expression) => {
     const { result, exceptionDetails } = await cdp.send("Runtime.evaluate", {
@@ -95,21 +98,52 @@ async function session({ port, reduced = false, noWebGL = false, seen = false, h
   const skipW = await s.evaluate(`document.getElementById("introSkip")?.getBoundingClientRect().width ?? -1`);
   add("enter and skip are both present", hud.enter && skipUp, `skip width ${skipW}`);
   // The fly-in runs 2.6s and the cards fade in over it; shooting earlier
-  // catches a near-empty frame.
-  await sleep(4000);
-  const scene = await s.evaluate(`({
-    cards: document.querySelector("#intro .intro__canvas canvas") ? 1 : 0,
-    lit: window.__introCards ? window.__introCards() : "none",
-    // Risen means translateY is back to ~0; they start at 104% below the mask.
-    letters: [...document.querySelectorAll("#introWord .intro__letter > span")]
-      .every(n => Math.abs(new DOMMatrix(getComputedStyle(n).transform).m42) < 2),
-  })`);
+  // catches a near-empty frame. Poll the ring for up to 12s: low fps climbs
+  // fades slowly, and a poll can tell "climbing" from "stalled" by fade0/t.
+  let scene = null;
+  let ringUp = false;
+  for (let i = 0; i < 16 && !ringUp; i += 1) {
+    scene = await s.evaluate(`({
+      cards: document.querySelector("#intro .intro__canvas canvas") ? 1 : 0,
+      lit: window.__introCards ? window.__introCards() : "none",
+    })`);
+    const lit = scene.lit ?? {};
+    ringUp = lit.visible === 13 && lit.opaque >= 13 && lit.drawn > 0.05;
+    if (!ringUp) await sleep(800);
+  }
+  // Risen means translateY is back to ~0; they start at 104% below the mask.
+  const letters = await s.evaluate(`[...document.querySelectorAll("#introWord .intro__letter > span")]
+    .every(n => Math.abs(new DOMMatrix(getComputedStyle(n).transform).m42) < 2)`);
+  scene.letters = letters;
   add("wordmark letters have risen into view", scene.letters);
-  add("the ring of shoes is rendering", scene.lit?.visible === 13 && scene.lit?.opaque >= 13,
+  // The sweep must park its light span over the glyphs: a dark stop anywhere
+  // in the gradient, or a final position off 0%, paints the letters silently
+  // invisible. Checked via computed style, so no screenshot is needed.
+  const word = await s.evaluate(`(() => {
+    const cs = getComputedStyle(document.querySelector("#introWord .intro__letter > span"));
+    const stops = [...cs.backgroundImage.matchAll(/rgba?\\(([^)]+)\\)/g)]
+      .map((m) => m[1].split(",").slice(0, 3).reduce((a, v) => a + Number(v), 0) / 3);
+    return { end: cs.backgroundPosition, darkest: Math.min(...stops) };
+  })()`);
+  add("wordmark gradient stays legible at the end of the sweep",
+    /^0%/.test(word.end) && word.darkest > 150, JSON.stringify(word));
+  add("the ring of shoes is rendering",
+    scene.lit?.visible === 13 && scene.lit?.opaque >= 13 && scene.lit?.drawn > 0.05,
     JSON.stringify(scene.lit));
   await s.shot("intro-ready.png");
 
   await s.evaluate(`document.getElementById("introEnter").click()`);
+  // The handoff contract: the copy carries is-revealed while the intro is
+  // still on screen, because the entrance starts under the exit flash rather
+  // than after the stage has emptied. Both sides are class state, so the
+  // assertion holds even where the headless renderer runs seconds behind.
+  await sleep(800);
+  const handoff = await s.evaluate(`({
+    introStillThere: !!document.getElementById("intro"),
+    heroEntering: [...document.querySelectorAll("[data-hero]")].every((n) => n.classList.contains("is-revealed")),
+  })`);
+  add("hero entrance starts while the intro is still on screen",
+    handoff.introStillThere && handoff.heroEntering, JSON.stringify(handoff));
   const gone = await s.waitFor(`!document.getElementById("intro")`);
   add("enter removes the intro and disposes it", gone);
 
@@ -123,6 +157,12 @@ async function session({ port, reduced = false, noWebGL = false, seen = false, h
   add("hero is the first thing seen after enter", after.view === "home" && after.heroOnScreen && after.scrollY < 50,
     `view ${after.view}, scrollY ${after.scrollY}`);
   add("intro is marked seen for the session", after.seen === "seen");
+  // The rise outlives the overlay: the longest title line starts 0.24s after
+  // the handoff and runs 1.15s, so settling happens after the intro is gone.
+  await sleep(1400);
+  const settled = await s.evaluate(`[...document.querySelectorAll(".hero__line > span[data-hero]")]
+    .every((n) => Math.abs(new DOMMatrix(getComputedStyle(n).transform).m42) < 2)`);
+  add("the hero title rise completes after the flash", settled);
   add("no console errors during the intro", s.errors.length === 0, s.errors.slice(0, 3).join(" | "));
   await s.shot("intro-to-hero.png");
   await s.close();
@@ -251,6 +291,22 @@ async function session({ port, reduced = false, noWebGL = false, seen = false, h
   add("hangar tab shows the grid fallback without WebGL", f.view === "hangar" && f.fallback, JSON.stringify(f));
   add("collection grid intact without WebGL", f.cards === 13);
   add("no console errors without WebGL", s.errors.length === 0, s.errors.slice(0, 3).join(" | "));
+  await s.close();
+}
+
+/* ---- automated tooling ---- */
+{
+  const s = await session({ port: 9246, forceIntro: false });
+  const booted = await s.waitFor("window.__aeroReady === true");
+  add("an automated session boots without the film", booted);
+  const hero = await s.safe(`({
+    introGone: !document.getElementById("intro"),
+    view: document.documentElement.dataset.view,
+    heroRevealed: [...document.querySelectorAll("[data-hero]")].every((n) => n.classList.contains("is-revealed")),
+  })`);
+  add("automation sees the hero, not the film",
+    hero?.introGone && hero.view === "home" && hero.heroRevealed, JSON.stringify(hero));
+  add("no console errors on the automation path", s.errors.length === 0, s.errors.slice(0, 3).join(" | "));
   await s.close();
 }
 

@@ -1,140 +1,98 @@
 # AERO — status report
 
-**Date:** 2026-11-09
-**Commit:** `48cb2e9` on `main`, pushed to `github.com/dsgoofymn-2010/AERO`
-**Scope:** the tabbed-Hangar restructure and the new 3D intro
+**Date:** 2026-11-11 (final consolidation)
+**Commit:** `05b16a1` on `main`; the verification fixes and docs below are uncommitted
+**Scope:** validate the vendored/routed/Hangar build, refresh the legacy harnesses, and reconcile the docs
 
 ---
 
 ## Done and verified
 
-### Routing — `js/router.js`, `css/views.css`
+### Current suite results
 
-Home and Hangar are two real views. The Hangar is a navigation tab, not a
-scroll section.
+| Suite | Result | Notes |
+| --- | --- | --- |
+| `node scripts/verify_routing.mjs` | **40 / 40** | intro, `#home` / `#hangar`, back/forward, deep links, reduced motion, no WebGL |
+| `node scripts/verify_site_hangar.mjs` | **31 / 31** | wall, focus, mobile pan, bottom sheet, theming, fallbacks |
+| `node scripts/verify_hangar.mjs --headless` | **26 / 26** | scene, focus, turntable, wishlist, teardown |
+| `node scripts/verify_site.mjs` | **108 / 108** | zero console errors, zero failed requests |
+| `node scripts/verify_catalog.mjs` | **72 / 72** | all 13 products, filters, stills, details, films, 360 sets |
+| `node scripts/verify_polish.mjs` | **32 / 32** | semantics, keyboard, contrast, 44 px targets |
+| `node scripts/verify_scrub.mjs` | **42 / 42** | engine harness + live study scrubber, desktop and mobile |
 
-- `#home` / `#hangar` hashes drive everything, so browser back and forward work
-  with no extra bookkeeping
-- Deep links (`/#hangar`) open the right view after the intro finishes
-- The hangar is built the first time its tab is opened, pauses rendering when
-  covered, and keeps its state — including the focused shoe — when reopened
-- The hidden view is `inert`, so nothing in it is reachable by Tab or a screen
-  reader
-- Lenis is stopped inside the hangar and resized on the way out, because while
-  the hangar is open the document is only one viewport tall and a cached scroll
-  limit would clamp any jump to a section
-- Navigation requested during a transition is queued rather than dropped, so a
-  fast back-then-forward is not swallowed
+### Fixes in this session
 
-### Navigation
+- **`verify_site.mjs` was testing the old intro contract.** It cleared
+  `sessionStorage`, so the new Enter-gated intro held `is-intro` and the shell
+  checks failed. The suite now marks the intro seen on every navigation, and it
+  treats a removed `#intro` as hidden. Footer and mobile-menu counts were
+  updated for the Hangar link (10 and 6).
+- **`verify_scrub.mjs` still drove the STRATA `#orbit` page.** The live-page
+  block now tests the AERO study scrubber: `#studyCanvas`, `#studyStage`,
+  `#studyCounter`, the `#studyTabs` shoe switch, the mobile 720 px frame set,
+  and the anatomy/materials videos. The engine harness is unchanged.
+- **The footer "Replay intro" button was 25 px tall.** It now shares the
+  footer link/top-button rule and meets the 44 px target.
+- The 9222 suites need Chrome already on the site, not `about:blank`, because
+  they clear origin storage. README now says so.
 
-Six tabs: Home, Hangar, Technology, Materials, Collection, Contact. Glass pill
-with a sliding indicator, hide-on-scroll header, updated mobile menu. The active
-tab follows the route, or the section in view while on home.
+### Proofs
 
-### Intro — `js/intro.js`, `css/intro.css`
+Refreshed under `public/_verification/`: `phase2_scrub.json`,
+`phase2-study.png`, `phase2-mobile-study.png`, `phase4_site.json`,
+`phase5_catalog.json`, `phase5_polish.json`, `routing.json`, `hangar_h4.json`,
+`hangar_h2.json`, `route-hangar.png`, `intro-ready.png`, `intro-to-hero.png`,
+`hangar-overview.png`, `hangar-hover.png`, `hangar-focus.png`,
+`hangar-turntable.png`, `hangar-focus-black.png`.
 
-Rewritten as a full cinematic scene: fragment-shader backdrop with animated
-noise and vignette, exponential fog, mirrored floor, spotlight cone, a ring of
-all thirteen transparent cutouts each floating on its own phase with an accent
-rim glow, particles, light streaks, `EffectComposer` with `UnrealBloomPass` and
-a grain plus chromatic-aberration pass, camera fly-in with mouse parallax and
-gyro tilt, hover labels, a real 000-to-100 counter tied to texture preloading,
-dive-through-the-ring exit with a flash, and full resource disposal.
+### Docs
 
-Three.js and its addons resolve through an importmap but are imported
-dynamically, so a return visit that skips the intro never pays for them.
+- `README.md` now covers the vendored stack, the two-view routing model, how to
+  open the Hangar, the live showroom cutouts, the current harness commands and
+  counts, and the current Lighthouse measurements.
+- `AGENTS.md` now matches the shipped structure (`views.css`, `intro.css`,
+  `hangar.css`), the vendored Three import, the `#hangar` view, the live
+  `public/showroom/` output, the 42-check scrub suite, and the current commands.
+- This report replaces the stale session-2 status list.
 
-### Fallbacks
+### Lighthouse, measured 2026-11-11
 
-| Condition | Behaviour |
-| --- | --- |
-| `prefers-reduced-motion` | Fade intro: wordmark, line, Enter. No scene, no flights. |
-| No WebGL | Static intro; the Hangar tab shows the collection grid instead of the wall. |
-| Mobile | 260 particles instead of 900, pixel ratio capped at 1.5, single-column wall panned by gesture. |
-| Under 40fps in the first second | Bloom pass removed automatically. |
-
-### Test suites
-
-| Suite | Result |
-| --- | --- |
-| `node scripts/verify_routing.mjs` | 36 / 36 |
-| `node scripts/verify_site_hangar.mjs` | 31 / 31 |
-| `node scripts/verify_hangar.mjs --headless` | 26 / 26 |
-
----
-
-## Broken
-
-### 1. The intro's 3D ring does not render — NOT DIAGNOSED
-
-Confirmed by eye in two screenshots (`public/_verification/intro-ready.png`).
-The canvas exists, the cutout textures return HTTP 200, and the loading counter
-reaches 100, but no shoes appear on screen.
-
-The cause is unknown. Work stopped while adding an instrumentation hook
-(`window.__introCards`) to report how many cards are visible and opaque.
-
-**Every suite passes despite this, because none of them assert that the ring is
-actually drawn.** That gap is the main lesson: the intro was verified by
-assertion and never by eye until late.
-
-### 2. The AERO wordmark is invisible in the intro — DIAGNOSED, NOT FIXED
-
-The letters rise into position correctly (asserted), but `.intro__letter > span`
-uses `background-clip: text` with `color: transparent`, and the sweep
-animation's final `background-position` parks the gradient off the glyphs, so
-they paint transparent.
-
-Fix: make every stop in the gradient light (so the text is legible at any
-offset) and end the sweep at `background-position: 0% 0` instead of `-60%`.
-Written, not applied.
-
-**Both defects are present in the pushed commit.**
+Lighthouse 13.6.0 on the local server: desktop performance **77**, mobile
+**46**, accessibility/best practices/SEO **100** on both. Desktop is up from
+55/53 before vendoring. Automated Chrome is detected as a bot, so the trace
+skips the intro; a cold human visit still pays it. The mobile run warned that
+the test CPU was slower than Lighthouse expects and measured an 11.3 s LCP,
+so 46 is a floor. Reports: `lighthouse-desktop-v2.json`,
+`lighthouse-mobile-v2.json`.
 
 ---
 
-## Not started
+## Remaining
 
-- Hero entrance sequence continuing from the intro dive
-- Lighthouse re-check after the restructure (last measured: 53 with the
-  showroom, 55 without, before this session's changes)
-- README: how routing and tabs work, run, swap assets, add a shoe
-- `AGENTS.md` update for the new architecture
-- Final folder tree
-- Manual test checklist for the new flow
-- Assumptions list
+- A final human pass at 360, 768, 1024, 1440, and 1920 px. The automated
+  overflow and target checks pass; the manual checklist in README is the
+  remaining eyeball pass.
+- Commit the verification fixes, docs, and refreshed proofs.
 
 ---
 
 ## Risks and notes
 
-- **Intermittent CDN failure.** One run had the intro fall back to the static
-  variant because the `three/addons` import failed. The code degrades cleanly
-  with no console errors, but on a slow connection real visitors may hit it.
-- **`verify_hangar.mjs` headful is unreliable** while another Chrome competes
-  for window focus; captures and evaluates stall. Use `--headless` for
-  correctness and headful only when the frame-rate assertions matter.
+- **Headless wedges are real but recoverable.** SwiftShader can hold the
+  renderer's main thread while compiling the intro's first frames. The probes
+  tolerate it; the headful `verify_hangar.mjs` run is still the one to use for
+  real-GPU frame-rate assertions.
 - **The repository is public** and contains the Cirra render with a visible
-  sportswear swoosh, plus the original source footage (~300 MB). `AGENTS.md`
-  already flags that asset rights need clearing before publication.
+  sportswear swoosh, plus the original source footage (~300 MB). Asset rights
+  must be cleared before publication.
 - Cirra still has no turntable: its 360 source is a flythrough reveal, not a
-  rotation. Unchanged from earlier phases.
+  rotation.
+- `assets/` is legacy and unreferenced; `public/showroom/` is live Hangar
+  output and must not be deleted.
 
 ---
 
 ## Resume here
 
-Diagnose the intro ring first — it is the one blocking defect. The
-instrumentation hook to add:
-
-```js
-window.__introCards = () => ({
-  visible: cards.filter((c) => c.mesh.visible).length,
-  opaque: cards.filter((c) => c.mesh.material.opacity > 0.9).length,
-  z: +camera.position.z.toFixed(1),
-});
-```
-
-Then apply the wordmark gradient fix, add an assertion that the ring is drawn,
-and work through the "Not started" list.
+1. Do the manual responsive and keyboard pass from the README checklist.
+2. Commit everything and push.

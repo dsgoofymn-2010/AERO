@@ -85,6 +85,11 @@ await cdp.send("Log.enable");
 await cdp.send("Network.enable");
 await cdp.send("Network.clearBrowserCache");
 await cdp.send("Page.bringToFront");
+// This suite covers the site shell, not the opening sequence. Mark the intro
+// seen on every navigation so the page boots straight into the home view.
+await cdp.send("Page.addScriptToEvaluateOnNewDocument", {
+  source: `try { sessionStorage.setItem("aero:intro", "seen"); } catch {}`,
+});
 
 async function evaluate(expression) {
   const result = await cdp.send("Runtime.evaluate", {
@@ -167,7 +172,7 @@ try {
     anatomyTabs: document.querySelectorAll('#anatomyTabs .anatomy-tab').length,
     heroRevealed: document.querySelectorAll('[data-hero].is-revealed').length,
     overflowX: document.documentElement.scrollWidth > window.innerWidth + 1,
-    introHidden: document.getElementById('intro').hidden,
+    introHidden: !document.getElementById('intro') || document.getElementById('intro').hidden,
     introInert: document.getElementById('main').inert,
     lenis: document.documentElement.dataset.lenis,
     motion: document.documentElement.classList.contains('motion'),
@@ -475,7 +480,7 @@ try {
     year: document.getElementById('year').textContent,
     top: !!document.getElementById('backToTop'),
   }))()`);
-  check("footer has 9 links", footer.links === 9, footer.links);
+  check("footer has 10 links", footer.links === 10, footer.links);
   check("footer email is set", footer.email === "studio@aero.example", footer.email);
   check("year is current", footer.year === String(new Date().getFullYear()), footer.year);
 
@@ -516,7 +521,7 @@ try {
   check("menu aria-hidden is false", menu.hidden === "false", menu.hidden);
   check("menu locks the page", menu.locked);
   check("menu focuses its close button", menu.focus === "menuClose", menu.focus);
-  check("menu has 5 links", menu.links === 5, menu.links);
+  check("menu has 6 links", menu.links === 6, menu.links);
   await screenshot("phase4-mobile-menu.png");
 
   await evaluate("document.querySelector('#siteMenu .menu__link[href=\"#collection\"]').click()");
@@ -557,7 +562,7 @@ try {
   await setViewport(1440, 900, false);
   await load({ reduced: true, clearSession: true });
   const reduced = await evaluate(`(() => ({
-    introHidden: document.getElementById('intro').hidden || getComputedStyle(document.getElementById('intro')).display === 'none',
+    introHidden: !document.getElementById('intro') || document.getElementById('intro').hidden || getComputedStyle(document.getElementById('intro')).display === 'none',
     motion: document.documentElement.classList.contains('motion'),
     revealed: [...document.querySelectorAll('[data-reveal]')].every((node) => getComputedStyle(node).opacity === '1'),
     hero: [...document.querySelectorAll('[data-hero]')].every((node) => getComputedStyle(node).opacity === '1'),

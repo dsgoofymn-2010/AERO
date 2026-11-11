@@ -98,6 +98,10 @@ await cdp.send("Log.enable");
 await cdp.send("Network.enable");
 await cdp.send("Network.clearBrowserCache");
 await cdp.send("Page.bringToFront");
+// The live-page checks exercise the study scrubber, not the opening sequence.
+await cdp.send("Page.addScriptToEvaluateOnNewDocument", {
+  source: `try { sessionStorage.setItem("aero:intro", "seen"); } catch {}`,
+});
 
 async function evaluate(expression) {
   const result = await cdp.send("Runtime.evaluate", {
@@ -397,29 +401,33 @@ check("harness: no failed requests", harnessConsole.failedRequests.length === 0)
 
 frameResponses.length = 0;
 await navigate(`${BASE}/index.html?phase2=${Date.now()}`);
-const booted = await waitFor(`Boolean(
-  document.getElementById("orbitCanvas") &&
-  (document.body.classList.contains("is-ready") || !document.body.classList.contains("is-loading"))
-)`, 20000);
-check("page: boot completes", booted);
-const pinReady = await waitFor("document.documentElement.classList.contains('has-pin')", 12000);
-check("page: ScrollTrigger pin initializes", pinReady);
+const booted = await waitFor(
+  `Boolean(document.getElementById("studyCanvas") && document.getElementById("studyStage")?.classList.contains("is-ready"))`,
+  30000,
+);
+check("page: study stage boots", booted);
 await sleep(800);
 
 const pageBefore = await evaluate(`(() => {
-  const canvas = document.getElementById("orbitCanvas");
+  const canvas = document.getElementById("studyCanvas");
   return {
     shoe: document.documentElement.dataset.shoe,
-    counter: document.getElementById("orbitCounter")?.textContent,
+    name: document.getElementById("studyName")?.textContent,
+    counter: document.getElementById("studyCounter")?.textContent,
     canvas: canvas ? { width: canvas.width, height: canvas.height, cssWidth: canvas.clientWidth, cssHeight: canvas.clientHeight } : null,
-    preloaderHidden: Boolean(document.getElementById("preloader")?.hidden),
+    sectionHeight: document.getElementById("study")?.offsetHeight || 0,
+    viewport: window.innerHeight,
   };
 })()`);
 
-await evaluate(`window.scrollTo(0, document.getElementById("orbit").offsetTop + 900)`);
+await evaluate(`(() => {
+  const section = document.getElementById("study");
+  window.scrollTo(0, section.offsetTop + window.innerHeight * 0.9);
+  return true;
+})()`);
 await sleep(2200);
 const pageAfter = await evaluate(`(() => {
-  const canvas = document.getElementById("orbitCanvas");
+  const canvas = document.getElementById("studyCanvas");
   const ctx = canvas?.getContext("2d");
   let lit = 0;
   let samples = 0;
@@ -431,23 +439,21 @@ const pageAfter = await evaluate(`(() => {
     }
   }
   return {
-    counter: document.getElementById("orbitCounter")?.textContent,
-    name: document.getElementById("orbitName")?.textContent,
-    pinned: document.documentElement.classList.contains("has-pin"),
-    callout: document.querySelector(".orbit__callout.is-active h3")?.textContent || null,
+    counter: document.getElementById("studyCounter")?.textContent,
+    name: document.getElementById("studyName")?.textContent,
     lit,
     samples,
   };
 })()`);
 report.page = { before: pageBefore, after: pageAfter };
 check("page: canvas has a backing store", pageBefore.canvas && pageBefore.canvas.width > 0 && pageBefore.canvas.height > 0);
+check("page: study section is scroll-driven", pageBefore.sectionHeight > pageBefore.viewport * 2);
 check("page: scroll changes the frame counter", pageBefore.counter !== pageAfter.counter);
-check("page: ScrollTrigger pin active", pageAfter.pinned);
 check("page: canvas draws the shoe", pageAfter.lit > pageAfter.samples * 0.2);
-await shot("phase2-orbit");
+await shot("phase2-study");
 
 /* Video playback stays muted, inline, and observer-driven. */
-const videoAttrs = await evaluate(`["heroVideo", "techVideo", "materialVideo", "collectionVideo"].map((id) => {
+const videoAttrs = await evaluate(`["anatomyVideo", "materialVideo"].map((id) => {
   const video = document.getElementById(id);
   return video ? {
     id,
@@ -471,7 +477,7 @@ const videoHidden = await evaluate(`document.getElementById("materialVideo").pau
 report.videoPlayback = { visible: videoVisible, hiddenPaused: videoHidden };
 check("video: plays when visible", !videoVisible.paused && videoVisible.readyState >= 2);
 check("video: pauses offscreen", videoHidden === true);
-await evaluate(`window.scrollTo(0, document.getElementById("orbit").offsetTop + 900)`);
+await evaluate(`window.scrollTo(0, document.getElementById("study").offsetTop + window.innerHeight * 0.9)`);
 await sleep(500);
 
 const frameNames = frameResponses.map((entry) => entry.url.split("/").slice(-3).join("/"));
@@ -485,21 +491,21 @@ check("network: frame requests succeed", frameResponses.length > 20 && frameResp
 check("network: public blue frames used", frameResponses.some((entry) => entry.url.includes("/public/shoes/blue/frames/desktop/frame_001.webp")));
 
 /* Switch shoes on the live page. */
-await evaluate(`document.querySelector('.swatch[data-shoe="brown"]').click()`);
+await evaluate(`document.querySelector('#studyTabs .study-tab[data-shoe="brown"]').click()`);
 await sleep(1800);
 const brown = await evaluate(`({
   shoe: document.documentElement.dataset.shoe,
-  name: document.getElementById("orbitName")?.textContent,
-  counter: document.getElementById("orbitCounter")?.textContent,
+  name: document.getElementById("studyName")?.textContent,
+  counter: document.getElementById("studyCounter")?.textContent,
 })`);
 check("page: switch to brown updates stage", brown.shoe === "brown" && brown.name === "Terrae");
 check("network: brown frames requested", frameResponses.some((entry) => entry.url.includes("/public/shoes/brown/frames/desktop/frame_001.webp")));
 
-await evaluate(`document.querySelector('.swatch[data-shoe="black"]').click()`);
+await evaluate(`document.querySelector('#studyTabs .study-tab[data-shoe="black"]').click()`);
 await sleep(1800);
 const black = await evaluate(`({
   shoe: document.documentElement.dataset.shoe,
-  name: document.getElementById("orbitName")?.textContent,
+  name: document.getElementById("studyName")?.textContent,
 })`);
 check("page: switch to black updates stage", black.shoe === "black" && black.name === "Onyx");
 check("network: black frames requested", frameResponses.some((entry) => entry.url.includes("/public/shoes/black/frames/desktop/frame_001.webp")));
@@ -508,23 +514,26 @@ check("network: black frames requested", frameResponses.some((entry) => entry.ur
 await setViewport(390, 844, 1);
 frameResponses.length = 0;
 await navigate(`${BASE}/index.html?phase2=mobile&t=${Date.now()}`);
-const mobileBooted = await waitFor(`Boolean(
-  document.getElementById("orbitCanvas") &&
-  (document.body.classList.contains("is-ready") || !document.body.classList.contains("is-loading"))
-)`, 20000);
-const mobilePin = await waitFor("document.documentElement.classList.contains('has-pin')", 12000);
+const mobileBooted = await waitFor(
+  `Boolean(document.getElementById("studyCanvas") && document.getElementById("studyStage")?.classList.contains("is-ready"))`,
+  30000,
+);
 await sleep(800);
 const mobileBefore = await evaluate(`(() => {
-  const canvas = document.getElementById("orbitCanvas");
+  const canvas = document.getElementById("studyCanvas");
   return {
-    counter: document.getElementById("orbitCounter")?.textContent,
+    counter: document.getElementById("studyCounter")?.textContent,
     canvas: canvas ? { width: canvas.width, height: canvas.height, cssWidth: canvas.clientWidth, cssHeight: canvas.clientHeight } : null,
   };
 })()`);
-await evaluate(`window.scrollTo(0, document.getElementById("orbit").offsetTop + 600)`);
+await evaluate(`(() => {
+  const section = document.getElementById("study");
+  window.scrollTo(0, section.offsetTop + window.innerHeight * 0.9);
+  return true;
+})()`);
 await sleep(2000);
 const mobileAfter = await evaluate(`(() => {
-  const canvas = document.getElementById("orbitCanvas");
+  const canvas = document.getElementById("studyCanvas");
   const ctx = canvas?.getContext("2d");
   let lit = 0;
   let samples = 0;
@@ -536,19 +545,19 @@ const mobileAfter = await evaluate(`(() => {
     }
   }
   return {
-    counter: document.getElementById("orbitCounter")?.textContent,
-    name: document.getElementById("orbitName")?.textContent,
+    counter: document.getElementById("studyCounter")?.textContent,
+    name: document.getElementById("studyName")?.textContent,
     canvas: canvas ? { width: canvas.width, height: canvas.height, cssWidth: canvas.clientWidth, cssHeight: canvas.clientHeight } : null,
     lit,
     samples,
   };
 })()`);
 report.mobilePage = { before: mobileBefore, after: mobileAfter };
-check("mobile page: boot and pin", mobileBooted && mobilePin);
+check("mobile page: study stage boots", mobileBooted);
 check("mobile page: 720 px frames requested", frameResponses.some((entry) => entry.url.includes("/public/shoes/blue/frames/mobile/frame_001.webp")));
 check("mobile page: scroll changes counter", mobileBefore.counter !== mobileAfter.counter);
 check("mobile page: canvas draws", mobileAfter.lit > mobileAfter.samples * 0.2);
-await shot("phase2-mobile-orbit");
+await shot("phase2-mobile-study");
 
 report.console = { errors, warnings, failedRequests };
 check("console: no runtime errors", errors.length === 0);
