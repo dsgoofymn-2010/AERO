@@ -187,6 +187,38 @@ Phase 1 writes `scripts/build_assets.py` and outputs only to `public/`.
 | H3 | Camera states, focus mode, details panel | done |
 | H4 | Integration, mobile, a11y, polish | done |
 
+## Intro boot contract
+
+Who sees the opening film, and what every boot path guarantees.
+
+- All libraries load vendored. `main.js` and `hangar-focus.js` import GSAP,
+  ScrollTrigger and Lenis from `../public/vendor/` URL constants; `hangar.js`
+  resolves `three` through index.html's importmap; the dynamic import
+  specifiers are `./`-prefixed and the modules are `modulepreload`ed.
+  `scripts/diag_intro.mjs` asserts zero external requests.
+- `runIntro({ skip, onHandoff })` in `js/intro.js` is the only entry. With
+  `skip: true` it removes `#intro` and never imports Three. `onHandoff` fires
+  just before the exit flash; `main.js` passes `revealHero` at both call
+  sites, so the hero entrance starts under the film's last frame.
+- While the film runs `body.is-intro` holds and the content is inert. At
+  handoff the class drops, the boot watchdog is cleared, `revealHero()` runs,
+  `#main` is focused, deep links are honoured through
+  `state.router.fromLocation()`, and `window.__aeroReady` is set.
+- Static fallbacks (reduced motion, no WebGL, a failed import) show the
+  `intro.is-static` card instead of the film.
+- The index.html watchdog early-returns while `window.__aeroIntroAlive` is
+  set — the static path sets it, and it is set again as soon as the import
+  chain settles — so the rescue timer only fires on a genuinely hung import.
+- The film is skipped for a returning visitor
+  (`sessionStorage["aero:intro"] === "seen"`, written only after the film
+  finishes) and for automated tooling (`navigator.webdriver === true` or a
+  `HeadlessChrome` user agent). `?intro=1` cancels the automation skip; a
+  returning visitor still skips, and the footer replay button always plays
+  the film.
+- Verified 2026-11-12: diag 2/2, `verify_routing.mjs` 43/43 (three checks
+  cover the automation path), `verify_site_hangar.mjs` 31/31,
+  `verify_hangar.mjs --headless` 26/26.
+
 ## Commands
 
 ```powershell

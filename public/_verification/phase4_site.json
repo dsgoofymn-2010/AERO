@@ -182,12 +182,12 @@
     {
       "name": "360 counter advances",
       "ok": true,
-      "detail": "026 / 215"
+      "detail": "027 / 215"
     },
     {
       "name": "360 canvas draws a frame",
       "ok": true,
-      "detail": "63,88,173,255"
+      "detail": "67,97,179,255"
     },
     {
       "name": "exploded film mounts",
@@ -347,7 +347,7 @@
     {
       "name": "part selection seeks the film",
       "ok": true,
-      "detail": "5.9044"
+      "detail": "5.7592"
     },
     {
       "name": "materials quote is set",

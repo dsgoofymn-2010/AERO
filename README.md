@@ -120,8 +120,8 @@ Two views share one document. `#home` is the scrolling site; `#hangar` is the fu
 
 **Home**
 
-1. **Intro** — Three.js wireframe sole, studio rings, dust, a soft halo, and a skip control. Runs once per browser session (`sessionStorage["aero:intro"]`). Enter goes straight to the showroom on a first visit.
-2. **Hero** — collection line, split headline, featured shoe, and three collection counts. The CTA and the scroll cue both lead to the showroom.
+1. **Intro** — Three.js wireframe sole, studio rings, dust, a soft halo, and a skip control. Runs once per browser session (`sessionStorage["aero:intro"]`). Enter lands on the hero. Automated sessions (`navigator.webdriver` or a `HeadlessChrome` user agent) skip the film and boot straight to the hero; `?intro=1` cancels that skip, and the footer replay button always plays the film.
+2. **Hero** — collection line, split headline, featured shoe, and three collection counts. The CTA leads to the showroom; the scroll cue leads to the collection.
 3. **Collection** — thirteen cards with category filters. The first three open film studies; the other ten open still studies.
 4. **Study** — a pinned scroll section with a 360 frame scrubber for Cirra, Terrae, and Onyx.
 5. **Anatomy** — exploded film, four selectable parts, and a note that seeks the film.
@@ -312,13 +312,13 @@ node scripts/verify_scrub.mjs    # frame engine + study scrubber, 42 checks
 node scripts/verify_site.mjs     # site shell and interactions, 108 checks
 node scripts/verify_catalog.mjs  # all 13 products and filters, 72 checks
 node scripts/verify_polish.mjs   # semantics, keyboard, contrast, targets, 32 checks
-node scripts/verify_routing.mjs  # intro, routing, fallbacks, 40 checks
+node scripts/verify_routing.mjs  # intro, routing, fallbacks, automation skip, 43 checks
 node scripts/verify_site_hangar.mjs # Hangar in the real page, 31 checks
 node scripts/verify_hangar.mjs --headless # scene + focus, 26 checks
 node scripts/shots.mjs           # visual QA screenshots
 ```
 
-The 9222 suites expect Chrome to already be on the site, not `about:blank`: they clear `sessionStorage`, so an origin-less tab has no storage to clear. The routing, site-hangar, and scene harnesses launch their own throwaway Chrome on their own ports and need no manual browser.
+The 9222 suites expect Chrome to already be on the site, not `about:blank` and not a failed-load error page: both are origin-less documents, and `verify_site.mjs` clears `sessionStorage` on the current document before it navigates. The routing, site-hangar, and scene harnesses launch their own throwaway Chrome on their own ports and need no manual browser.
 
 Reports and screenshots land in `public/_verification/`:
 
@@ -329,7 +329,7 @@ Reports and screenshots land in `public/_verification/`:
 - `routing.json`, `hangar_h4.json`, `hangar_h2.json`
 - `phase4-*.png`, `phase2-study.png`, `phase2-mobile-study.png`, `hangar-*.png`, `route-hangar.png`
 
-The site harness covers boot, intro skip, filters, gallery and video dialogs, 360 frames, cart and checkout, study switching, anatomy, materials, newsletter, footer, mobile menu, a five-width overflow sweep, and reduced motion. The catalog harness opens every product and loads every still, detail image, film, and 360 set. The polish harness checks landmarks, headings, duplicate IDs, accessible names, skip link, dialog and bag focus traps, Escape behaviour, WCAG AA contrast, and 44 px touch targets. The routing harness covers the intro, `#home` / `#hangar`, back/forward, deep links, reduced motion, and no WebGL. The showroom harnesses cover the wall, focus mode, mobile pan, the bottom sheet, theming, and teardown.
+The site harness covers boot, intro skip, filters, gallery and video dialogs, 360 frames, cart and checkout, study switching, anatomy, materials, newsletter, footer, mobile menu, a five-width overflow sweep, and reduced motion. The catalog harness opens every product and loads every still, detail image, film, and 360 set. The polish harness checks landmarks, headings, duplicate IDs, accessible names, skip link, dialog and bag focus traps, Escape behaviour, WCAG AA contrast, and 44 px touch targets. The routing harness covers the intro, `#home` / `#hangar`, back/forward, deep links, reduced motion, no WebGL, and the automation contract: a headless session boots straight to the hero, and `?intro=1` brings the film back. The showroom harnesses cover the wall, focus mode, mobile pan, the bottom sheet, theming, and teardown.
 
 ---
 
@@ -373,7 +373,9 @@ detected as a bot, so these traces skip the intro; a cold human first visit
 still plays it and pays more TBT/TTI than the table shows. The mobile run
 carried Lighthouse's "slower CPU than expected" warning, and its LCP was
 11.3 s under simulated throttling, so treat 46 as a floor rather than a
-stable score. The pre-vendoring showroom delta was about two points, inside
+stable score. The same trace's observed LCP is 0.83 s; the 11.3 s figure is
+the simulator's projection, which re-queues the hero image behind ~255 local
+requests. The pre-vendoring showroom delta was about two points, inside
 noise.
 
 ---
@@ -495,7 +497,8 @@ Run `node scripts/serve.mjs` and open `http://127.0.0.1:5500`.
 Automated cover: `node scripts/verify_hangar.mjs --headless` (26 checks, the scene
 and focus mode), `node scripts/verify_site_hangar.mjs` (31 checks, the showroom
 inside the real page, mobile, reduced motion, no WebGL), and
-`node scripts/verify_routing.mjs` (40 checks, the `#home` / `#hangar` flow).
+`node scripts/verify_routing.mjs` (43 checks, the `#home` / `#hangar` flow and
+the automation skip).
 
 ---
 
