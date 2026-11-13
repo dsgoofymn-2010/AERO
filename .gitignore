@@ -1,0 +1,11 @@
+# Local state that must never be committed
+.vercel/
+node_modules/
+
+# Python build caches from scripts/
+__pycache__/
+*.pyc
+
+# OS junk
+.DS_Store
+Thumbs.db

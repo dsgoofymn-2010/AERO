@@ -1,0 +1,20 @@
+# Keep the uploaded deployment to the real site payload (~90 MB).
+# Nothing here is deleted from disk or from GitHub; these are only
+# excluded from Vercel uploads.
+
+# Legacy STRATA output and prior-verification artifacts (read-only legacy)
+assets
+public/_verification
+
+# Local tooling: verifiers, cutout/asset builders, the preview server
+scripts
+
+# Original delivery folders — referenced only by inert legacy metadata in
+# js/data.js; the AERO page reads every asset from public/shoes/*.
+BLUE SHOE
+BROWN_SHOE
+BLACK_SHOE
+Chelsea boot
+High-top basketball sneaker
+Trail running shoe
+new shoes
