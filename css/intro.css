@@ -287,6 +287,9 @@
 .intro__border {
   position: absolute;
   pointer-events: none;
+  /* The site's media reset clamps every canvas to its container's width;
+     this one is a rim overlay larger than the button by design. */
+  max-width: none;
 }
 
 .intro__ripple {

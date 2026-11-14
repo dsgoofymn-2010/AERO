@@ -62,6 +62,7 @@ js/
   cart.js          # bag state, drawer, demo checkout
   wishlist.js      # saved shoes, aero:wishlist:v1
   intro.js         # Three.js intro
+  intro-border.js  # Canvas-2D pulsating rim on the intro Enter button
   hangar.js        # Three.js showroom wall (imports three via the importmap)
   hangar-focus.js  # focus camera, HUD, details panel (imports gsap, vendored)
   gallery.js       # pseudo-3D still viewer
