@@ -1,5 +1,13 @@
 /* AERO opening sequence.
-   Loaded after styles.css so it replaces the original intro layout. */
+
+   Loaded after styles.css. The wordmark rise, the sweep and the leaving
+   fade are asserted by scripts/verify_routing.mjs: the sweep has to end at
+   background-position 0% with every gradient stop light enough to read on
+   the studio dark, so those values move together with the test.
+
+   Direction: the established AERO studio look (charcoal #0e0e10, bone text,
+   Syne display, one accent). The glass ENTER is the single glass accent on
+   the screen; the pulsing ring marks the one control meant to be pressed. */
 
 .intro {
   position: fixed;
@@ -19,6 +27,9 @@
   height: 100%;
   display: block;
 }
+
+/* A crashed or unsupported scene leaves nothing behind the fallback card. */
+.intro.is-static .intro__canvas { display: none; }
 
 .intro__veil {
   position: absolute;
@@ -74,6 +85,8 @@
   gap: 1rem;
 }
 
+/* HUD labels stay in Inter with tabular figures, the same treatment as the
+   hangar HUD: instrument-panel voice, no second mono face. */
 .intro__tag,
 .intro__state,
 .intro__count {
@@ -191,7 +204,8 @@
   transition: width 0.4s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-/* Hover label on a shoe */
+/* Hover label on a shoe. The border takes the shoe's accent, set by the
+   scene when the label opens. */
 
 .intro__label {
   position: absolute;
@@ -212,7 +226,11 @@
   transition: opacity 0.25s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-.intro__label.is-on { opacity: 1; }
+.intro__label.is-on {
+  opacity: 1;
+  border-color: var(--accent, rgba(241, 238, 231, 0.35));
+}
+
 .intro__label b { font-weight: 500; font-size: 0.8125rem; }
 .intro__label i {
   font-style: normal;
@@ -221,7 +239,8 @@
   color: var(--quiet, #8a867e);
 }
 
-/* Enter */
+/* Enter. Invisible and unfocusable until the scene is ready, so the
+   pre-ready tab order holds only Skip and Sound. */
 
 .intro__actions {
   position: absolute;
@@ -248,6 +267,7 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   cursor: pointer;
+  visibility: hidden;
   opacity: 0;
   transition:
     opacity 0.7s var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
@@ -255,28 +275,18 @@
     background 0.3s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-.intro.is-ready .intro__enter { opacity: 1; }
+.intro.is-ready .intro__enter { visibility: visible; opacity: 1; }
 .intro__enter:hover { border-color: rgba(241, 238, 231, 0.5); background: rgba(241, 238, 231, 0.1); }
 .intro__enter:focus-visible { outline: 2px solid var(--bone, #f1eee7); outline-offset: 6px; }
 
-/* The ring is the only thing in the intro that loops, and it marks the one
-   control the viewer is meant to press. */
-.intro__enter-ring {
+/* Pulsating rim on Enter: drawn by js/intro-border.js on a 2D canvas, so the
+   film keeps its single WebGL context. It is the one element in the intro
+   that loops, marking the one control the viewer is meant to press. The
+   canvas spills past the button and stays pointer-transparent, leaving the
+   button's own hover and focus. */
+.intro__border {
   position: absolute;
-  inset: -9px;
-  border-radius: 50%;
-  border: 1px solid rgba(241, 238, 231, 0.22);
-  opacity: 0;
-}
-
-.intro.is-ready .intro__enter-ring {
-  animation: intro-ring 2.8s var(--ease, cubic-bezier(0.22, 1, 0.36, 1)) infinite;
-}
-
-@keyframes intro-ring {
-  0% { transform: scale(0.94); opacity: 0.55; }
-  70% { transform: scale(1.16); opacity: 0; }
-  100% { transform: scale(1.16); opacity: 0; }
+  pointer-events: none;
 }
 
 .intro__ripple {
@@ -353,8 +363,7 @@
 
   .intro__letter > span { animation: none; transform: none; background: none; color: var(--bone, #f1eee7); }
 
-  .intro.is-ready .intro__enter-ring { animation: none; opacity: 0; }
-  .intro__enter { opacity: 1; transition: none; }
+  .intro__enter { opacity: 1; visibility: visible; transition: none; }
   .intro.is-leaving { transition: opacity 0.2s linear; }
   .intro__meter span { transition: none; }
 }

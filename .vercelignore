@@ -6,6 +6,9 @@
 assets
 public/_verification
 
+# Superseded intro code, kept as a rollback copy
+_old
+
 # Local tooling: verifiers, cutout/asset builders, the preview server
 scripts
 

@@ -15,7 +15,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { readFile, readdir } from "node:fs/promises";
 import { dirname, relative, resolve, sep } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { execSync } from "node:child_process";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -186,6 +186,39 @@ for (const exact of disk.values()) {
   if (!tracked.has(exact) && /^(index\.html|404\.html|css\/|js\/|public\/)/.test(exact)) {
     untracked.push(exact);
   }
+}
+
+/* ---- dynamic showroom cutout paths ----
+   hangar.js and intro.js build these names at runtime from js/data.js ids,
+   so the string scanner cannot see them. Every shoe's cutout pair and the
+   manifest get the same disk-and-git casing judgement. */
+try {
+  const { SHOES } = await import(pathToFileURL(resolve(ROOT, "js", "data.js")).href);
+  const checkShelf = (raw, label) => {
+    checked += 1;
+    const rel = relative(ROOT, resolve(ROOT, raw)).split(sep).join("/");
+    const lower = rel.toLowerCase();
+    if (!disk.has(lower)) {
+      problems.push(`MISSING-ON-DISK  ${raw}  (${label})`);
+      return;
+    }
+    if (disk.get(lower) !== rel) {
+      problems.push(`CASE-DISK       code says "${rel}", disk has "${disk.get(lower)}"  (${label})`);
+    }
+    const gitExact = trackedLower.get(lower);
+    if (!gitExact) {
+      problems.push(`NOT-IN-GIT      "${rel}" is not tracked and would 404 on Vercel  (${label})`);
+    } else if (gitExact !== rel) {
+      problems.push(`CASE-GIT        code says "${rel}", git tracks "${gitExact}"  (${label})`);
+    }
+  };
+  for (const shoe of SHOES) {
+    checkShelf(`public/showroom/${shoe.id}.webp`, `showroom cutout for ${shoe.id}`);
+    checkShelf(`public/showroom/${shoe.id}-800.webp`, `showroom cutout for ${shoe.id}`);
+  }
+  checkShelf("public/showroom/manifest.json", "showroom manifest");
+} catch (error) {
+  problems.push(`showroom check skipped: js/data.js could not be imported (${error.message})`);
 }
 
 const cap = (lines, n) => {

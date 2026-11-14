@@ -218,6 +218,17 @@ Who sees the opening film, and what every boot path guarantees.
 - Verified 2026-11-12: diag 2/2, `verify_routing.mjs` 43/43 (three checks
   cover the automation path), `verify_site_hangar.mjs` 31/31,
   `verify_hangar.mjs --headless` 26/26.
+- Rebuilt 2026-11-14: the film now guarantees its own worst case. Enter/Skip
+  are forced interactive at an 8s deadline; textures get a 6s timeout with
+  generated stand-ins that swap in when they land; post-processing degrades
+  to plain rendering on a rolling sub-30 FPS window or a render error (never
+  `removePass`); Skip is live from the first frame; the cursor and magnetic
+  arm are intro-internal and released at teardown; the cinematic roll rides
+  in `camera.up` so `lookAt` cannot overwrite it. Enter carries a Canvas-2D
+  pulsating rim (`js/intro-border.js`) while the film owns the one WebGL
+  context. Verified 2026-11-14: diag 1/1 clean, `verify_routing.mjs` 43/43,
+  `verify_site_hangar.mjs` 31/31, `verify_paths.mjs` 204 refs / 0 problems
+  (now also checks the dynamic showroom cutout names).
 
 ## Commands
 

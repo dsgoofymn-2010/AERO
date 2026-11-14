@@ -5,7 +5,7 @@
       "evalError": "TypeError: Cannot read properties of null (reading 'className')\n    at <anonymous>:5:25\n    at <anonymous>:16:3"
     },
     {
-      "t": 1284,
+      "t": 1394,
       "body": "is-intro",
       "intro": true,
       "isReady": false,
@@ -18,7 +18,7 @@
       "aeroReady": false
     },
     {
-      "t": 2666,
+      "t": 3275,
       "body": "is-intro",
       "intro": true,
       "isReady": false,
@@ -31,7 +31,7 @@
       "aeroReady": false
     },
     {
-      "t": 3757,
+      "t": 4574,
       "body": "is-intro",
       "intro": true,
       "isReady": false,
@@ -40,24 +40,24 @@
       "state": "Loading the hangar",
       "count": "000",
       "hook": "undefined",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 4643,
+      "t": 5451,
       "body": "is-intro",
       "intro": true,
       "isReady": false,
       "isStatic": false,
       "isLeaving": false,
       "state": "Loading the hangar",
-      "count": "000",
+      "count": "046",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 5959,
+      "t": 6547,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -66,11 +66,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 6632,
+      "t": 7051,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -79,11 +79,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 7272,
+      "t": 8127,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -92,11 +92,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 7983,
+      "t": 8681,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -105,11 +105,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 8840,
+      "t": 9341,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -118,11 +118,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 10284,
+      "t": 9868,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -131,11 +131,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 10802,
+      "t": 10395,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -144,11 +144,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 11459,
+      "t": 10902,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -157,11 +157,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 12450,
+      "t": 11422,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -170,11 +170,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 13672,
+      "t": 11950,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -183,11 +183,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 14230,
+      "t": 12546,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -196,11 +196,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 15149,
+      "t": 13174,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -209,11 +209,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 15935,
+      "t": 13804,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -222,11 +222,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 16935,
+      "t": 14414,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -235,11 +235,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 17458,
+      "t": 15178,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -248,11 +248,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 18219,
+      "t": 15765,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -261,11 +261,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 18811,
+      "t": 16454,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -274,11 +274,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 19408,
+      "t": 17104,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -287,11 +287,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 19974,
+      "t": 17788,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -300,11 +300,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 20595,
+      "t": 18346,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -313,11 +313,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 21115,
+      "t": 19007,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -326,11 +326,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 21672,
+      "t": 19677,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -339,11 +339,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 22267,
+      "t": 20261,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -352,11 +352,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 22853,
+      "t": 21025,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -365,11 +365,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 23501,
+      "t": 21621,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -378,11 +378,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 24047,
+      "t": 22264,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -391,11 +391,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 24648,
+      "t": 22852,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -404,11 +404,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 25228,
+      "t": 23399,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -417,11 +417,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 25766,
+      "t": 23977,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -430,11 +430,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 26478,
+      "t": 24511,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -443,11 +443,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 26997,
+      "t": 25045,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -456,11 +456,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 27554,
+      "t": 25615,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -469,11 +469,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 28275,
+      "t": 26213,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -482,11 +482,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 28992,
+      "t": 26733,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -495,11 +495,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 29533,
+      "t": 27287,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -508,11 +508,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 30254,
+      "t": 27809,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -521,11 +521,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 31731,
+      "t": 28351,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -534,11 +534,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 36573,
+      "t": 28857,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -547,11 +547,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 46903,
+      "t": 29372,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -560,11 +560,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 57152,
+      "t": 29891,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -573,11 +573,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 58287,
+      "t": 30403,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -586,11 +586,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 59218,
+      "t": 30925,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -599,11 +599,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 60169,
+      "t": 31441,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -612,11 +612,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 61238,
+      "t": 31984,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -625,11 +625,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 62140,
+      "t": 32510,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -638,11 +638,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 62805,
+      "t": 33035,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -651,11 +651,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 63672,
+      "t": 33562,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -664,11 +664,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 64588,
+      "t": 34077,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -677,11 +677,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 65336,
+      "t": 34584,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -690,11 +690,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 66046,
+      "t": 35097,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -703,11 +703,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 66732,
+      "t": 35622,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -716,11 +716,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 67367,
+      "t": 36135,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -729,11 +729,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 67971,
+      "t": 36668,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -742,11 +742,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 68709,
+      "t": 37189,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -755,11 +755,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 69486,
+      "t": 37699,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -768,11 +768,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 70200,
+      "t": 38219,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -781,11 +781,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 70749,
+      "t": 38733,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -794,11 +794,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 71290,
+      "t": 39249,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -807,11 +807,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 71825,
+      "t": 39767,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -820,11 +820,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 72468,
+      "t": 40295,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -833,11 +833,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 73171,
+      "t": 40800,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -846,11 +846,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 73898,
+      "t": 41317,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -859,11 +859,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 74641,
+      "t": 41824,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -872,11 +872,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 75263,
+      "t": 42341,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -885,11 +885,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 76212,
+      "t": 42852,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -898,11 +898,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 76810,
+      "t": 43367,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -911,11 +911,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 77375,
+      "t": 43881,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -924,11 +924,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 77917,
+      "t": 44394,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -937,11 +937,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 78432,
+      "t": 44903,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -950,11 +950,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 78951,
+      "t": 45415,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -963,11 +963,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 79458,
+      "t": 45928,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -976,11 +976,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 79968,
+      "t": 46457,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -989,11 +989,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 80483,
+      "t": 46980,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1002,11 +1002,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 80999,
+      "t": 47493,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1015,11 +1015,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 81518,
+      "t": 48011,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1028,11 +1028,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 82026,
+      "t": 48529,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1041,11 +1041,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 82536,
+      "t": 49046,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1054,11 +1054,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 83065,
+      "t": 49562,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1067,11 +1067,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 83616,
+      "t": 50072,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1080,11 +1080,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 84147,
+      "t": 50588,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1093,11 +1093,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 84670,
+      "t": 51098,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1106,11 +1106,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 85196,
+      "t": 51609,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1119,11 +1119,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 85708,
+      "t": 52121,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1132,11 +1132,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 86217,
+      "t": 52634,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1145,11 +1145,11 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     },
     {
-      "t": 86724,
+      "t": 53150,
       "body": "is-intro",
       "intro": true,
       "isReady": true,
@@ -1158,7 +1158,7 @@
       "state": "Ready",
       "count": "100",
       "hook": "function",
-      "canvases": 1,
+      "canvases": 2,
       "aeroReady": false
     }
   ],
@@ -1167,94 +1167,103 @@
     {
       "url": "http://127.0.0.1:5500/js/main.js",
       "bytes": 60246,
-      "ms": 22,
+      "ms": 38,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/js/data.js",
       "bytes": 34260,
-      "ms": 23,
+      "ms": 30,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/js/scrub.js",
       "bytes": 12784,
-      "ms": 25,
+      "ms": 36,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/js/gallery.js",
       "bytes": 8340,
-      "ms": 26,
+      "ms": 35,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/js/cart.js",
       "bytes": 9893,
-      "ms": 27,
+      "ms": 34,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/js/intro.js",
-      "bytes": 26707,
-      "ms": 27,
+      "bytes": 39608,
+      "ms": 36,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/js/hangar.js",
       "bytes": 22936,
-      "ms": 27,
+      "ms": 43,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/js/hangar-focus.js",
       "bytes": 26437,
-      "ms": 30,
+      "ms": 49,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/js/wishlist.js",
       "bytes": 1794,
-      "ms": 34,
+      "ms": 49,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/js/router.js",
       "bytes": 7119,
-      "ms": 35,
+      "ms": 49,
+      "status": 200,
+      "kind": "script"
+    },
+    {
+      "url": "http://127.0.0.1:5500/js/intro-border.js",
+      "bytes": 6293,
+      "ms": 9,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/public/vendor/three@0.161.0/examples/jsm/shaders/CopyShader.js",
       "bytes": 871,
-      "ms": 120,
+      "ms": 46,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/public/vendor/three@0.161.0/examples/jsm/postprocessing/MaskPass.js",
       "bytes": 2531,
-      "ms": 137,
+      "ms": 72,
       "status": 200,
       "kind": "script"
     },
     {
       "url": "http://127.0.0.1:5500/public/vendor/three@0.161.0/examples/jsm/postprocessing/Pass.js",
       "bytes": 2006,
-      "ms": 321,
+      "ms": 48,
       "status": 200,
       "kind": "script"
     }
   ],
-  "log": []
+  "log": [
+    "warning: AERO intro: postprocessing disabled (frame rate): plain rendering."
+  ]
 }
